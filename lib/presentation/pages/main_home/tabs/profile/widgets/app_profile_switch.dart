@@ -9,12 +9,15 @@ class AppProfileSwitch extends StatelessWidget {
   final String secondaryText;
   final String icon;
   final bool isSwitched;
+  final Function(bool)? onChanged;
+
   const AppProfileSwitch({
     super.key,
     required this.mainText,
     required this.icon,
     required this.secondaryText,
-    this.isSwitched = false,
+    required this.isSwitched,
+    this.onChanged,
   });
 
   @override
@@ -72,23 +75,32 @@ class AppProfileSwitch extends StatelessWidget {
               SizedBox(width: 16.w),
               Switch(
                 value: !isSwitched,
-                onChanged: (value) {},
-                activeTrackColor: AppColors.body900, // Track color when ON
-                activeColor: AppColors.body300, // Thumb color when OFF
-                inactiveThumbColor:
-                    AppColors.primaryOrange, // Thumb color when ON
-                inactiveTrackColor: AppColors.body900, // Track color when OFF
+                onChanged: (value) {
+                  print(
+                    'Switch tapped: $mainText, new value: $value, current: $isSwitched',
+                  );
+                  onChanged?.call(!value);
+                },
+                // Left is on and Right is off according to design
+                activeTrackColor: AppColors.body900,
+                activeColor: AppColors.body300,
+                inactiveThumbColor: AppColors.primaryOrange,
+                inactiveTrackColor: AppColors.body900,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 thumbIcon: WidgetStateProperty.resolveWith<Icon?>((states) {
                   if (states.contains(WidgetState.selected)) {
                     return Icon(
                       Icons.check,
                       color: AppColors.body900,
-                    ); // Icon when ON
+                      size: 12.r,
+                    );
                   }
+
                   return Icon(
                     Icons.check,
-                    color: AppColors.body700,
-                  ); // Icon when OFF
+                    color: AppColors.body900,
+                    size: 12.r,
+                  );
                 }),
               ),
               SizedBox(width: 24.w),
