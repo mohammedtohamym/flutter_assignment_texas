@@ -10,6 +10,10 @@ abstract class AppAssets {
   static const String rightArrowIcon = 'assets/icons/right_arrow_icon.svg';
 
   //profile icons
+  static const String favoritesIcon = 'assets/icons/favorites_icon.svg';
+  static const String awardsIcon = 'assets/icons/awards_icon.svg';
+  static const String ordersIcon = 'assets/icons/texas_logo_icon.svg';
+
   static const String addressIcon = 'assets/icons/address_icon.svg';
   static const String notificationsIcon = 'assets/icons/notifications_icon.svg';
   static const String offersIcon = 'assets/icons/offers_icon.svg';
