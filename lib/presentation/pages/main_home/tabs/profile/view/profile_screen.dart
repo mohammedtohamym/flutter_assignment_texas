@@ -17,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
 
   //todo : change all strings
 
-  final int count = 0;
+  final int count = 1;
   @override
   Widget build(BuildContext context) {
     return Container(

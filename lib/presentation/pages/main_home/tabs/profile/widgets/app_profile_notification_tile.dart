@@ -42,18 +42,14 @@ class AppProfileNotificationTile extends StatelessWidget {
                   if (count > 0)
                     Transform.translate(
                       offset: Offset(8.w, -4.h),
-                      child: Positioned(
-                        right: 0,
-                        top: 0,
-                        child: CircleAvatar(
-                          backgroundColor: AppColors.primaryOrange,
-                          radius: 6.r,
-                          child: Text(
-                            '$count',
-                            style: TextStyle(
-                              color: AppColors.body25,
-                              fontSize: 8.h,
-                            ),
+                      child: CircleAvatar(
+                        backgroundColor: AppColors.primaryOrange,
+                        radius: 6.r,
+                        child: Text(
+                          '$count',
+                          style: TextStyle(
+                            color: AppColors.body25,
+                            fontSize: 8.h,
                           ),
                         ),
                       ),
