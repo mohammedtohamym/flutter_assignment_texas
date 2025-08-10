@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
-import 'package:flutter_assignment_texas/core/resources/app_fonts.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_circular_navigators.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_info_card.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_notification_tile.dart';
@@ -11,14 +10,14 @@ import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profi
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key});
+  const ProfileScreen({super.key});
 
   //todo : implement notification count logic
   //todo : implement switch count logic
 
   //todo : change all strings
 
-  int count = 0;
+  final int count = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -67,9 +66,18 @@ class ProfileScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      AppProfileCircularNavigators(title: 'Favorites', imagePath: AppAssets.favoritesIcon),
-                      AppProfileCircularNavigators(title: 'Rewards', imagePath: AppAssets.awardsIcon),
-                      AppProfileCircularNavigators(title: 'Orders', imagePath: AppAssets.ordersIcon),
+                      AppProfileCircularNavigators(
+                        title: 't',
+                        imagePath: AppAssets.favoritesIcon,
+                      ),
+                      AppProfileCircularNavigators(
+                        title: 'Rewards',
+                        imagePath: AppAssets.awardsIcon,
+                      ),
+                      AppProfileCircularNavigators(
+                        title: 'Orders',
+                        imagePath: AppAssets.ordersIcon,
+                      ),
                     ],
                   ),
                   SizedBox(height: 16.h),

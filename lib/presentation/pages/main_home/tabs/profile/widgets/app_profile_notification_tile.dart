@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppProfileNotificationTile extends StatelessWidget {
-  String text;
-  String icon;
-  Color? textColor;
-  bool hasSuffixIcon;
-  bool hasDivider;
-  int count;
-  AppProfileNotificationTile({
+  final String text;
+  final String icon;
+  final Color? textColor;
+  final bool hasSuffixIcon;
+  final bool hasDivider;
+  final int count;
+  const AppProfileNotificationTile({
     super.key,
     required this.text,
     required this.icon,

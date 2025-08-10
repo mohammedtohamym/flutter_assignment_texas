@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppProfileSwitch extends StatelessWidget {
-  String mainText;
-  String secondaryText;
-  String icon;
-  bool isSwitched;
-  AppProfileSwitch({
+  final String mainText;
+  final String secondaryText;
+  final String icon;
+  final bool isSwitched;
+  const AppProfileSwitch({
     super.key,
     required this.mainText,
     required this.icon,

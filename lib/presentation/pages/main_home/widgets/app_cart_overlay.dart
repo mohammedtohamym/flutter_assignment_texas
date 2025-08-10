@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppCartOverlay extends StatelessWidget {
+  const AppCartOverlay({super.key});
   @override
   Widget build(BuildContext context) {
     return Container();
