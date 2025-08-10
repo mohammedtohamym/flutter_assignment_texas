@@ -9,4 +9,5 @@ abstract class AppColors {
   static const Color body300 = Color(0xFFD9D9D9);
   static const Color body700 = Color(0xFF757575);
   static const Color body900 = Color(0xFF2D2A26);
+  static const Color transparent = Color(0x00000000);
 }
