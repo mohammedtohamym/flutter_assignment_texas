@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_states.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/widgets/app_bottom_navigation_bar.dart';
@@ -16,6 +17,7 @@ class MainHomeScreen extends StatelessWidget {
           final cubit = context.read<MainHomeCubit>();
           final currentPage = cubit.getCurrentPage();
           return Scaffold(
+            backgroundColor: AppColors.body25,
             body: currentPage,
             bottomNavigationBar: const AppBottomNavigationBar(),
           );
