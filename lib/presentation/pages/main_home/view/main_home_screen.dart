@@ -1,10 +1,26 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_cubit.dart';
+import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_states.dart';
+import 'package:flutter_assignment_texas/presentation/pages/main_home/widgets/app_bottom_navigation_bar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainHomeScreen extends StatelessWidget {
-  const MainHomeScreen({super.key});
+  const MainHomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return BlocProvider(
+      create: (context) => MainHomeCubit(),
+      child: BlocBuilder<MainHomeCubit, MainHomeState>(
+        builder: (context, state) {
+          final cubit = context.read<MainHomeCubit>();
+          final currentPage = cubit.getCurrentPage();
+          return Scaffold(
+            body: currentPage,
+            bottomNavigationBar: const AppBottomNavigationBar(),
+          );
+        },
+      ),
+    );
   }
 }
