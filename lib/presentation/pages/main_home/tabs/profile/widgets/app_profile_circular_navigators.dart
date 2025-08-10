@@ -18,16 +18,14 @@ class AppProfileCircularNavigators extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
-          backgroundColor: AppColors.primaryOrange,
+          backgroundColor: AppColors.primaryOrange.withValues(alpha: 0.07),
           radius: 40.r,
           child: imagePath != null
-              ? ClipOval(
-                  child: SvgPicture.asset(
-                    imagePath!,
-                    fit: BoxFit.cover,
-                    width: 80.r,
-                    height: 80.r,
-                  ),
+              ? SvgPicture.asset(
+                  imagePath!,
+                  fit: BoxFit.cover,
+                  width: 52.r,
+                  height: 52.r,
                 )
               : Icon(Icons.favorite, color: AppColors.body25, size: 16.r),
         ),

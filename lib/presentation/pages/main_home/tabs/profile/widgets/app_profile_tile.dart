@@ -33,7 +33,7 @@ class AppProfileTile extends StatelessWidget {
                   textColor ?? AppColors.body900,
                   BlendMode.srcIn,
                 ),
-                height: 16.h,
+                height: 20.h,
               ),
               SizedBox(width: 8.w),
               Text(

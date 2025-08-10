@@ -31,6 +31,7 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 SizedBox(width: 16.w),
                 CircleAvatar(
+                  radius: 20.r,
                   backgroundColor: AppColors.body100,
                   child: IconButton(
                     icon: Icon(
@@ -48,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
                   'PROFILE',
                   style: TextStyle(
                     color: AppColors.body900,
-                    fontSize: 24.r,
+                    fontSize: 22.r,
                     fontFamily: 'BERNIER',
                   ),
                 ),
@@ -60,14 +61,14 @@ class ProfileScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(height: 8.h, color: AppColors.body100),
+                  Container(height: 6.h, color: AppColors.body100),
                   AppProfileInfoCard(),
                   SizedBox(height: 16.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       AppProfileCircularNavigators(
-                        title: 't',
+                        title: 'Favorites',
                         imagePath: AppAssets.favoritesIcon,
                       ),
                       AppProfileCircularNavigators(
@@ -81,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 16.h),
-                  Container(height: 12.h, color: AppColors.body300),
+                  Container(height: 12.h, color: AppColors.body200),
                   SizedBox(height: 16.h),
                   AppProfileTile(
                     text: 'My Addresses',
@@ -92,6 +93,7 @@ class ProfileScreen extends StatelessWidget {
                     icon: AppAssets.passwordIcon,
                   ),
                   AppProfileTile(text: 'Offers', icon: AppAssets.offersIcon),
+                  AppProfileTile(text: 'Deals', icon: AppAssets.dealsIcon),
                   AppProfileNotificationTile(
                     text: 'Notifications',
                     icon: AppAssets.notificationsIcon,

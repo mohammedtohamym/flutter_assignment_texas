@@ -38,10 +38,10 @@ class AppProfileInfoCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: AppColors.body25,
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(4.r),
         boxShadow: [
           BoxShadow(
-            color: AppColors.body900.withValues(alpha: 0.2),
+            color: AppColors.body900.withValues(alpha: 0.16),
             blurRadius: 4.r,
             offset: Offset(0, 2),
           ),
