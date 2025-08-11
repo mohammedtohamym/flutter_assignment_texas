@@ -28,8 +28,5 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// todo : add the back button functionality to the profile back to move back a step (maybe use a stack)
 // todo : change all the strings to app strings
-// todo : add more and home page text
-// todo : use app assets
 // todo : organize code better (widgets)

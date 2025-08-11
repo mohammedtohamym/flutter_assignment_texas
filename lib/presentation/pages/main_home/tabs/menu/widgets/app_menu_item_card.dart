@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/domain/entities/restaurant_items_response_entity.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AppMenuItemCard extends StatelessWidget {
   final RestaurantItemsResponseEntity item;
@@ -270,10 +272,14 @@ class AppMenuItemCard extends StatelessWidget {
                                             color: AppColors.body900,
                                           ),
                                         )
-                                      : Icon(
-                                          Icons.delete_forever_outlined,
-                                          color: AppColors.body900,
-                                          size: 18.r,
+                                      : SvgPicture.asset(
+                                          AppAssets.trashIcon,
+                                          colorFilter: ColorFilter.mode(
+                                            AppColors.body900,
+                                            BlendMode.srcIn,
+                                          ),
+                                          width: 12.r,
+                                          height: 12.r,
                                         ),
                                 ),
                                 SizedBox(width: 16.w),
@@ -302,10 +308,14 @@ class AppMenuItemCard extends StatelessWidget {
                                     ),
                                     backgroundColor: AppColors.primaryOrange,
                                   ),
-                                  child: Icon(
-                                    Icons.add,
-                                    color: AppColors.body900,
-                                    size: 24.r,
+                                  child: SvgPicture.asset(
+                                    AppAssets.addIcon,
+                                    colorFilter: ColorFilter.mode(
+                                      AppColors.body900,
+                                      BlendMode.srcIn,
+                                    ),
+                                    width: 16.w,
+                                    height: 16.h,
                                   ),
                                 ),
                               ],
@@ -327,10 +337,14 @@ class AppMenuItemCard extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    Icons.add,
-                                    size: 20.r,
-                                    color: AppColors.body900,
+                                  SvgPicture.asset(
+                                    AppAssets.addIcon,
+                                    colorFilter: ColorFilter.mode(
+                                      AppColors.body900,
+                                      BlendMode.srcIn,
+                                    ),
+                                    width: 12.w,
+                                    height: 12.h,
                                   ),
                                   SizedBox(width: 4.w),
                                   Text(
