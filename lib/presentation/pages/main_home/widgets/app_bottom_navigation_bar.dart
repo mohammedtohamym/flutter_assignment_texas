@@ -20,129 +20,139 @@ class AppBottomNavigationBar extends StatelessWidget {
 
         return BlocBuilder<CartCubit, CartState>(
           builder: (context, cartState) {
-            return BottomNavigationBar(
-              selectedLabelStyle: TextStyle(
-                fontFamily: 'SpecialGothicCondensedOne',
-                fontSize: 14,
-                color: AppColors.body900,
+            // Wrapped with Theme to minimize splash (wave) effect size on tap
+            return Theme(
+              data: Theme.of(context).copyWith(
+                splashFactory:
+                    NoSplash.splashFactory, // Remove default large ripple
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
               ),
-              unselectedLabelStyle: TextStyle(
-                fontFamily: 'SpecialGothicCondensedOne',
-                fontSize: 12,
-                color: AppColors.body900,
-              ),
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: Colors.white,
-              selectedItemColor: AppColors.body900,
-              unselectedItemColor: AppColors.body900,
-              showSelectedLabels: true,
-              showUnselectedLabels: true,
-              items: [
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/icons/home_icon.svg',
-                    width: 24,
-                    height: 24,
-                    colorFilter: ColorFilter.mode(
-                      currentIndex == 0
-                          ? AppColors.primaryOrange
-                          : AppColors.body900,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  label: 'Home',
+              child: BottomNavigationBar(
+                selectedLabelStyle: TextStyle(
+                  fontFamily: 'SpecialGothicCondensedOne',
+                  fontSize: 14,
+                  color: AppColors.body900,
                 ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    'assets/icons/menu_icon.svg',
-                    width: 24,
-                    height: 24,
-                    colorFilter: ColorFilter.mode(
-                      currentIndex == 1
-                          ? AppColors.primaryOrange
-                          : AppColors.body900,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  label: 'Menu',
+                unselectedLabelStyle: TextStyle(
+                  fontFamily: 'SpecialGothicCondensedOne',
+                  fontSize: 12,
+                  color: AppColors.body900,
                 ),
-                BottomNavigationBarItem(
-                  icon: Transform.translate(
-                    offset: Offset(0, 8),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: AppColors.primaryOrange,
-                          radius: 32,
-                        ),
-                        SvgPicture.asset(
-                          AppAssets.texasLogoIcon,
-                          width: 40,
-                          height: 40,
-                        ),
-                        // Cart badge
-                        if (cartState.hasItems)
-                          Positioned(
-                            top: -6,
-                            left: -6,
-                            child: Container(
-                              padding: EdgeInsets.all(6),
-                              decoration: BoxDecoration(
-                                color: AppColors.body25,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Text(
-                                cartState.totalItems.toString(),
-                                style: TextStyle(
-                                  color: AppColors.body900,
-                                  fontSize: 18,
-                                  fontFamily: 'SpecialGothicCondensedOne',
-                                ),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                  label: '', // Empty label - no text will show
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    AppAssets.profileIcon,
-                    width: 24,
-                    height: 24,
-                    colorFilter: ColorFilter.mode(
-                      currentIndex == 3
-                          ? AppColors.primaryOrange
-                          : AppColors.body900,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  label: 'Profile',
-                ),
-                BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: EdgeInsets.only(bottom: 4.0),
-                    child: SvgPicture.asset(
-                      AppAssets.moreIcon,
-                      width: 8,
-                      height: 8,
+                type: BottomNavigationBarType.fixed,
+                backgroundColor: Colors.white,
+                selectedItemColor: AppColors.body900,
+                unselectedItemColor: AppColors.body900,
+                showSelectedLabels: true,
+                showUnselectedLabels: true,
+                items: [
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      'assets/icons/home_icon.svg',
+                      width: 24,
+                      height: 24,
                       colorFilter: ColorFilter.mode(
-                        currentIndex == 4
+                        currentIndex == 0
                             ? AppColors.primaryOrange
                             : AppColors.body900,
                         BlendMode.srcIn,
                       ),
                     ),
+                    label: 'Home',
                   ),
-                  label: 'More',
-                ),
-              ],
-              currentIndex: currentIndex,
-              onTap: (index) {
-                cubit.changeTab(index);
-              },
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      'assets/icons/menu_icon.svg',
+                      width: 24,
+                      height: 24,
+                      colorFilter: ColorFilter.mode(
+                        currentIndex == 1
+                            ? AppColors.primaryOrange
+                            : AppColors.body900,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    label: 'Menu',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Transform.translate(
+                      offset: Offset(0, 8),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: AppColors.primaryOrange,
+                            radius: 32,
+                          ),
+                          SvgPicture.asset(
+                            AppAssets.texasLogoIcon,
+                            width: 40,
+                            height: 40,
+                          ),
+                          // Cart badge
+                          if (cartState.hasItems)
+                            Positioned(
+                              top: -6,
+                              left: -6,
+                              child: Container(
+                                padding: EdgeInsets.all(6),
+                                decoration: BoxDecoration(
+                                  color: AppColors.body25,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Text(
+                                  cartState.totalItems.toString(),
+                                  style: TextStyle(
+                                    color: AppColors.body900,
+                                    fontSize: 18,
+                                    fontFamily: 'SpecialGothicCondensedOne',
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    label: '', // Empty label - no text will show
+                  ),
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      AppAssets.profileIcon,
+                      width: 24,
+                      height: 24,
+                      colorFilter: ColorFilter.mode(
+                        currentIndex == 3
+                            ? AppColors.primaryOrange
+                            : AppColors.body900,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    label: 'Profile',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Padding(
+                      padding: EdgeInsets.only(bottom: 4.0),
+                      child: SvgPicture.asset(
+                        AppAssets.moreIcon,
+                        width: 8,
+                        height: 8,
+                        colorFilter: ColorFilter.mode(
+                          currentIndex == 4
+                              ? AppColors.primaryOrange
+                              : AppColors.body900,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ),
+                    label: 'More',
+                  ),
+                ],
+                currentIndex: currentIndex,
+                onTap: (index) {
+                  cubit.changeTab(index);
+                },
+              ),
             );
           },
         );
