@@ -28,7 +28,10 @@ class AppMenuFooter extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text('\$${price.toStringAsFixed(0)}', style: AppTextStyles.price()),
+              Text(
+                '\$${price.toStringAsFixed(0)}',
+                style: AppTextStyles.price(),
+              ),
               SizedBox(width: 16),
               if (price > 0)
                 Text(

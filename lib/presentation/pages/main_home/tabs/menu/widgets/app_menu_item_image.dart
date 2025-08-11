@@ -5,7 +5,11 @@ class AppMenuItemImage extends StatelessWidget {
   final String? imageUrl;
   final bool isFavorite;
 
-  const AppMenuItemImage({super.key, required this.imageUrl, required this.isFavorite});
+  const AppMenuItemImage({
+    super.key,
+    required this.imageUrl,
+    required this.isFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
