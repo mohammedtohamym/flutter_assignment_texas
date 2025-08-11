@@ -44,7 +44,6 @@ class MenuCubit extends Cubit<MenuState> {
     final categoryList = categories.toList()..sort();
 
     // Add special categories at the beginning
-    categoryList.insert(0, 'Favorites');
     categoryList.insert(0, 'All');
 
     return categoryList;
