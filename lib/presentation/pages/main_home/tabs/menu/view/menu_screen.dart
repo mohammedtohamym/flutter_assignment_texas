@@ -164,73 +164,107 @@ class MenuScreen extends StatelessWidget {
 
   void _showSearchDialog(BuildContext context) {
     final menuCubit = context.read<MenuCubit>();
+    final currentSearchQuery = menuCubit.state.searchQuery;
 
     showDialog(
       context: context,
       builder: (dialogContext) {
         return BlocProvider.value(
           value: menuCubit,
-          child: BlocBuilder<MenuCubit, MenuState>(
-            builder: (context, state) {
-              return AlertDialog(
-                backgroundColor: AppColors.primaryOrange.withValues(alpha: .9),
-                title: Text(
-                  'Search The Menu',
-                  style: TextStyle(
-                    fontFamily: 'SpecialGothicCondensedOne',
-                    fontSize: 18.r,
-                    color: AppColors.body900,
-                  ),
-                ),
-                content: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search for items...',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.r),
-                      borderSide: BorderSide(
-                        color: AppColors.body900.withValues(alpha: .9),
-                      ),
-                    ),
-                    hintStyle: TextStyle(
-                      fontFamily: 'SpecialGothicCondensedOne',
-                      fontSize: 16.r,
-                      color: AppColors.body900.withValues(alpha: .8),
-                    ),
-                  ),
-                  onChanged: (query) => menuCubit.searchItems(query),
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      menuCubit.searchItems('');
-                      Navigator.of(dialogContext).pop();
-                    },
-                    child: Text(
-                      'Clear',
-                      style: TextStyle(
-                        fontFamily: 'SpecialGothicCondensedOne',
-                        fontSize: 18.r,
-                        color: AppColors.body900.withValues(alpha: .8),
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(dialogContext).pop();
-                    },
-                    child: Text(
-                      'Close',
-                      style: TextStyle(
-                        fontFamily: 'SpecialGothicCondensedOne',
-                        fontSize: 18.r,
-                        color: AppColors.body900.withValues(alpha: .8),
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            },
+          child: _SearchDialogContent(initialSearchQuery: currentSearchQuery),
+        );
+      },
+    );
+  }
+}
+
+class _SearchDialogContent extends StatefulWidget {
+  final String initialSearchQuery;
+
+  const _SearchDialogContent({required this.initialSearchQuery});
+
+  @override
+  State<_SearchDialogContent> createState() => _SearchDialogContentState();
+}
+
+class _SearchDialogContentState extends State<_SearchDialogContent> {
+  late final TextEditingController _searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController(text: widget.initialSearchQuery);
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<MenuCubit, MenuState>(
+      builder: (context, state) {
+        return AlertDialog(
+          backgroundColor: AppColors.primaryOrange.withValues(alpha: .9),
+          title: Text(
+            'Search The Menu',
+            style: TextStyle(
+              fontFamily: 'SpecialGothicCondensedOne',
+              fontSize: 18.r,
+              color: AppColors.body900,
+            ),
           ),
+          content: TextField(
+            controller: _searchController,
+            autofocus: true,
+            decoration: InputDecoration(
+              hintText: 'Search for items...',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.r),
+                borderSide: BorderSide(
+                  color: AppColors.body900.withValues(alpha: .9),
+                ),
+              ),
+              hintStyle: TextStyle(
+                fontFamily: 'SpecialGothicCondensedOne',
+                fontSize: 16.r,
+                color: AppColors.body900.withValues(alpha: .8),
+              ),
+            ),
+            onChanged: (query) => context.read<MenuCubit>().searchItems(query),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                _searchController.clear();
+                context.read<MenuCubit>().searchItems('');
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Clear',
+                style: TextStyle(
+                  fontFamily: 'SpecialGothicCondensedOne',
+                  fontSize: 18.r,
+                  color: AppColors.body900.withValues(alpha: .8),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Close',
+                style: TextStyle(
+                  fontFamily: 'SpecialGothicCondensedOne',
+                  fontSize: 18.r,
+                  color: AppColors.body900.withValues(alpha: .8),
+                ),
+              ),
+            ),
+          ],
         );
       },
     );
