@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MainHomeCubit extends Cubit<MainHomeState> {
   late final MenuCubit _menuCubit;
   late final CartCubit _cartCubit;
+  List<int> _navigationHistory = [0]; // Start with home page
 
   MainHomeCubit() : super(const MainHomeTabState()) {
     _initializeDependencies();
@@ -40,13 +41,61 @@ class MainHomeCubit extends Cubit<MainHomeState> {
       child: MenuScreen(),
     ),
     BlocProvider.value(value: _cartCubit, child: CartScreen()),
-    ProfileScreen(),
+    ProfileScreen(mainHomeCubit: this),
     MoreScreen(),
   ];
 
   void changeTab(int index) {
     final currentState = state as MainHomeTabState;
+    final currentIndex = currentState.currentIndex;
+
+    // Only add to history if it's a different tab and not the profile tab
+    if (index != currentIndex) {
+      if (index == 3) {
+        // Profile tab
+        // Don't add profile to history, just navigate
+      } else {
+        // Add current tab to history before changing (if it's not profile)
+        if (currentIndex != 3) {
+          _addToHistory(currentIndex);
+        }
+        // Add new tab to history
+        _addToHistory(index);
+      }
+    }
+
     emit(currentState.copyWith(currentIndex: index));
+  }
+
+  void _addToHistory(int index) {
+    // Remove if already exists to avoid duplicates
+    _navigationHistory.remove(index);
+    // Add to end
+    _navigationHistory.add(index);
+    // Keep only last 5 items for performance
+    if (_navigationHistory.length > 5) {
+      _navigationHistory.removeAt(0);
+    }
+  }
+
+  int getPreviousTab() {
+    // If we have history and current tab is profile, get the last non-profile tab
+    if (_navigationHistory.length >= 2) {
+      // Get the second to last item (last item is current, unless we're on profile)
+      for (int i = _navigationHistory.length - 1; i >= 0; i--) {
+        if (_navigationHistory[i] != 3) {
+          // Not profile tab
+          return _navigationHistory[i];
+        }
+      }
+    }
+    // Default to home if no valid history
+    return 0;
+  }
+
+  void navigateBack() {
+    final previousTab = getPreviousTab();
+    changeTab(previousTab);
   }
 
   int getCurrentIndex() {

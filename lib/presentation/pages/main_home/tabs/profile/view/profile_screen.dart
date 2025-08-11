@@ -7,11 +7,14 @@ import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profi
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_notification_tile.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_switch.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_tile.dart';
+import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  final MainHomeCubit mainHomeCubit;
+
+  const ProfileScreen({super.key, required this.mainHomeCubit});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,9 @@ class ProfileScreen extends StatelessWidget {
                               color: AppColors.body900,
                               size: 24.r,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mainHomeCubit.navigateBack();
+                            },
                           ),
                         ),
                         SizedBox(width: 16.w),
@@ -122,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
                             size: 24.r,
                           ),
                           onPressed: () {
-                            Navigator.pop(context);
+                            mainHomeCubit.navigateBack();
                           },
                         ),
                       ),

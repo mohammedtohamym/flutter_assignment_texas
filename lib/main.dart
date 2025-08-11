@@ -28,9 +28,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// todo : add the counter stack to the cart
 // todo : add the back button functionality to the profile back to move back a step (maybe use a stack)
-// todo : add the overlay to the cart in the navbar
 // todo : change all the strings to app strings
 // todo : add more and home page text
 // todo : use app assets
