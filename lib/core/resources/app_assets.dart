@@ -35,4 +35,7 @@ abstract class AppAssets {
 
   //mock data - static for the task
   static const String egyptFlagIcon = 'assets/icons/Egypt_flag_icon.svg';
+
+  static const String splashScreen =
+      'assets/images/splash_screen_texas_logo.png';
 }
