@@ -216,9 +216,11 @@ class ProfileScreen extends StatelessWidget {
                                 secondaryText: item.secondaryText,
                                 isSwitched: item.isEnabled,
                                 onChanged: item.onChanged,
+                                hasDivider: item.hasDivider,
                               ),
                             )
                             .toList(),
+                        SizedBox(height: 48),
                       ],
                     ),
                   ),

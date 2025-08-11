@@ -98,18 +98,25 @@ class AppBottomNavigationBar extends StatelessWidget {
                                 top: -6,
                                 left: -3,
                                 child: Container(
+                                  width: 20,
                                   padding: EdgeInsets.all(4),
                                   decoration: BoxDecoration(
                                     color: AppColors.white,
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Text(
-                                    cartState.totalItems.toString(),
-                                    style: TextStyle(
-                                      color: AppColors.body900,
-                                      fontSize: 12,
-                                      fontFamily: 'SpecialGothicCondensedOne',
-                                    ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        cartState.totalItems.toString(),
+                                        style: TextStyle(
+                                          color: AppColors.body900,
+                                          fontSize: 12,
+                                          fontFamily:
+                                              'SpecialGothicCondensedOne',
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),

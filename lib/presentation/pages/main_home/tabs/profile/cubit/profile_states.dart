@@ -146,6 +146,7 @@ class ProfileSwitchItem {
   final bool isEnabled;
   final Function(bool)? onChanged;
   final double? fontSize;
+  final bool hasDivider;
 
   const ProfileSwitchItem({
     required this.mainText,
@@ -154,6 +155,7 @@ class ProfileSwitchItem {
     this.isEnabled = false,
     this.onChanged,
     this.fontSize,
+    this.hasDivider = true,
   });
 
   ProfileSwitchItem copyWith({
@@ -163,6 +165,7 @@ class ProfileSwitchItem {
     bool? isEnabled,
     Function(bool)? onChanged,
     double? fontSize,
+    bool? hasDivider,
   }) {
     return ProfileSwitchItem(
       mainText: mainText ?? this.mainText,
@@ -171,6 +174,7 @@ class ProfileSwitchItem {
       isEnabled: isEnabled ?? this.isEnabled,
       onChanged: onChanged ?? this.onChanged,
       fontSize: fontSize ?? this.fontSize,
+      hasDivider: hasDivider ?? this.hasDivider,
     );
   }
 }

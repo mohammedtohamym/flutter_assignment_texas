@@ -94,6 +94,7 @@ class ProfileCubit extends Cubit<ProfileState> {
             'once you open it you will receive emails and offer on your inbox',
         isEnabled: false,
         onChanged: (value) => _onMarketingCommunicationChanged(value),
+        hasDivider: true,
       ),
       ProfileSwitchItem(
         mainText: 'App Communication',
@@ -103,6 +104,7 @@ class ProfileCubit extends Cubit<ProfileState> {
         isEnabled: true,
         onChanged: (value) => _onAppCommunicationChanged(value),
         fontSize: 18.0,
+        hasDivider: false,
       ),
     ];
   }

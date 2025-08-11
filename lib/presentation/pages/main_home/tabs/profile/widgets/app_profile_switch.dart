@@ -10,6 +10,7 @@ class AppProfileSwitch extends StatelessWidget {
   final String icon;
   final bool isSwitched;
   final Function(bool)? onChanged;
+  final bool hasDivider;
 
   const AppProfileSwitch({
     super.key,
@@ -19,6 +20,7 @@ class AppProfileSwitch extends StatelessWidget {
     required this.isSwitched,
     this.onChanged,
     this.fontSize,
+    this.hasDivider = true,
   });
 
   @override
@@ -103,14 +105,16 @@ class AppProfileSwitch extends StatelessWidget {
               SizedBox(width: 24),
             ],
           ),
-          SizedBox(height: 8),
-          Divider(
-            color: AppColors.body900.withValues(alpha: 0.05),
-            thickness: 1,
-            indent: 24,
-            endIndent: 24,
-          ),
-          SizedBox(height: 8),
+          if (hasDivider) ...[
+            SizedBox(height: 8),
+            Divider(
+              color: AppColors.body900.withValues(alpha: 0.05),
+              thickness: 1,
+              indent: 24,
+              endIndent: 24,
+            ),
+            SizedBox(height: 8),
+          ],
         ],
       ),
     );
