@@ -25,7 +25,7 @@ class MainHomeScreen extends StatelessWidget {
               BlocProvider.value(value: cubit.menuCubit),
             ],
             child: Scaffold(
-              backgroundColor: AppColors.body25,
+              backgroundColor: AppColors.white,
               body: currentPage,
               bottomNavigationBar: const AppBottomNavigationBar(),
               floatingActionButton:

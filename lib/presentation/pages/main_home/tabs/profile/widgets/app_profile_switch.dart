@@ -22,7 +22,7 @@ class AppProfileSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.body25,
+      color: AppColors.white,
       child: Column(
         children: [
           Row(

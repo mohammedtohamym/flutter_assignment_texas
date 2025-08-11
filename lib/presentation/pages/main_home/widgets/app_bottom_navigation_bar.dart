@@ -98,7 +98,7 @@ class AppBottomNavigationBar extends StatelessWidget {
                               child: Container(
                                 padding: EdgeInsets.all(6),
                                 decoration: BoxDecoration(
-                                  color: AppColors.body25,
+                                  color: AppColors.white,
                                   shape: BoxShape.circle,
                                 ),
                                 child: Text(

@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
                 backgroundColor: AppColors.secondaryRed,
                 action: SnackBarAction(
                   label: 'Dismiss',
-                  textColor: AppColors.body25,
+                  textColor: AppColors.white,
                   onPressed: () {
                     context.read<ProfileCubit>().clearError();
                   },
@@ -46,7 +46,7 @@ class ProfileScreen extends StatelessWidget {
                 backgroundColor: Colors.green,
                 action: SnackBarAction(
                   label: 'Dismiss',
-                  textColor: AppColors.body25,
+                  textColor: AppColors.white,
                   onPressed: () {
                     context.read<ProfileCubit>().clearSuccessMessage();
                   },
@@ -58,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
         builder: (context, state) {
           if (state.isLoading) {
             return Container(
-              color: AppColors.body25,
+              color: AppColors.white,
               child: Column(
                 children: [
                   SizedBox(height: 16),
@@ -108,46 +108,46 @@ class ProfileScreen extends StatelessWidget {
           final circularNavigators = cubit.getCircularNavigators();
 
           return Container(
-            color: AppColors.body25,
+            color: AppColors.white,
             child: Column(
               children: [
-                SizedBox(height: 16),
                 SafeArea(
                   child: Row(
                     children: [
                       SizedBox(width: 16),
                       CircleAvatar(
-                        radius: 20,
+                        radius: 18,
                         backgroundColor: AppColors.body100,
                         child: IconButton(
                           icon: Icon(
                             Icons.arrow_back_ios_new_rounded,
                             color: AppColors.body900,
-                            size: 24,
+                            size: 18,
                           ),
                           onPressed: () {
                             mainHomeCubit.navigateBack();
                           },
                         ),
                       ),
-                      SizedBox(width: 16),
+                      SizedBox(width: 12),
                       Text(
                         'PROFILE',
                         style: TextStyle(
                           color: AppColors.body900,
-                          fontSize: 22,
+                          fontSize: 21,
                           fontFamily: 'BERNIER',
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 13),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
                         Container(height: 6, color: AppColors.body100),
+                        SizedBox(height: 16),
                         Stack(
                           children: [
                             AppProfileInfoCard(
@@ -178,9 +178,9 @@ class ProfileScreen extends StatelessWidget {
                               )
                               .toList(),
                         ),
-                        SizedBox(height: 16),
-                        Container(height: 12, color: AppColors.body200),
-                        SizedBox(height: 16),
+                        SizedBox(height: 10),
+                        Container(height: 11, color: AppColors.body200),
+                        SizedBox(height: 22),
                         ...state.menuItems.map((item) {
                           if (item.text == 'Notifications' &&
                               item.count != null) {
