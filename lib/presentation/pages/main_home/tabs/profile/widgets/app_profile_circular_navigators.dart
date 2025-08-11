@@ -27,8 +27,8 @@ class AppProfileCircularNavigators extends StatelessWidget {
                 ? SvgPicture.asset(
                     imagePath!,
                     fit: BoxFit.cover,
-                    width: 52,
-                    height: 52,
+                    width: 55,
+                    height: 57,
                   )
                 : Icon(Icons.favorite, color: AppColors.white, size: 16),
           ),

@@ -93,7 +93,7 @@ class AppMenuCategoryBar extends StatelessWidget {
                                   fontSize: 18,
                                   fontFamily: 'SpecialGothicCondensedOne',
                                   color: isSelected
-                                      ? Colors.white
+                                      ? AppColors.body900
                                       : AppColors.body900,
                                 ),
                               ),
@@ -141,6 +141,6 @@ class AppMenuCategoryBar extends StatelessWidget {
         iconData = Icons.restaurant;
     }
 
-    return Icon(iconData, size: 16, color: iconColor);
+    return Icon(iconData, size: 24, color: iconColor);
   }
 }

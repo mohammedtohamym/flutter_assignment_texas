@@ -96,9 +96,9 @@ class AppBottomNavigationBar extends StatelessWidget {
                             if (cartState.hasItems)
                               Positioned(
                                 top: -6,
-                                left: -6,
+                                left: -3,
                                 child: Container(
-                                  // padding: EdgeInsets.all(6),
+                                  padding: EdgeInsets.all(4),
                                   decoration: BoxDecoration(
                                     color: AppColors.white,
                                     shape: BoxShape.circle,
@@ -107,7 +107,7 @@ class AppBottomNavigationBar extends StatelessWidget {
                                     cartState.totalItems.toString(),
                                     style: TextStyle(
                                       color: AppColors.body900,
-                                      fontSize: 18,
+                                      fontSize: 12,
                                       fontFamily: 'SpecialGothicCondensedOne',
                                     ),
                                   ),
@@ -134,18 +134,22 @@ class AppBottomNavigationBar extends StatelessWidget {
                     label: 'Profile',
                   ),
                   BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: EdgeInsets.only(bottom: 4.0),
-                      child: SvgPicture.asset(
-                        AppAssets.moreIcon,
-                        width: 8,
-                        height: 8,
-                        colorFilter: ColorFilter.mode(
-                          currentIndex == 4
-                              ? AppColors.primaryOrange
-                              : AppColors.body900,
-                          BlendMode.srcIn,
-                        ),
+                    icon: SizedBox(
+                      height: 24,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            AppAssets.moreIcon,
+                            width: 24,
+                            colorFilter: ColorFilter.mode(
+                              currentIndex == 4
+                                  ? AppColors.primaryOrange
+                                  : AppColors.body900,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     label: 'More',

@@ -112,7 +112,7 @@ class AppMenuItemCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 8),
+          SizedBox(width: 10),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -150,7 +150,7 @@ class AppMenuItemCard extends StatelessWidget {
                           key: ValueKey(isFavorite),
                           color: isFavorite
                               ? AppColors.secondaryRed
-                              : Colors.grey,
+                              : AppColors.black,
                           size: 24,
                         ),
                       ),
@@ -225,19 +225,24 @@ class AppMenuItemCard extends StatelessWidget {
                                   buttonType: MenuButtonType.remove,
                                   isMoreThanOne: isMoreThanOne,
                                 ),
-                                SizedBox(width: 16),
-                                Container(
-                                  width: 15,
-                                  child: Text(
-                                    '$cartQuantity',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: 'SpecialGothicCondensedOne',
-                                      color: Colors.black,
-                                    ),
+
+                                Expanded(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '$cartQuantity',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontFamily:
+                                              'SpecialGothicCondensedOne',
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                SizedBox(width: 8),
+
                                 AppMenuButton(
                                   onPressed: onAddToCart,
                                   buttonType: MenuButtonType.addSmall,
@@ -385,10 +390,18 @@ class AppMenuButton extends StatelessWidget {
               SizedBox(width: 4),
               Transform.translate(
                 offset: Offset(0, 2),
-                child: Icon(
-                  Icons.play_circle_filled,
-                  size: 20,
-                  color: AppColors.secondaryRed,
+                child: CircleAvatar(
+                  backgroundColor: AppColors.secondaryRed,
+                  radius: 8,
+                  child: SvgPicture.asset(
+                    AppAssets.rightArrowIcon,
+                    colorFilter: ColorFilter.mode(
+                      AppColors.white,
+                      BlendMode.srcIn,
+                    ),
+                    width: 8,
+                    height: 8,
+                  ),
                 ),
               ),
             ],

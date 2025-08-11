@@ -22,21 +22,21 @@ class MenuScreen extends StatelessWidget {
       children: [
         SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.only(left: 16, right: 12),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   'EXPLORE MENU',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 22,
+                    fontSize: 21,
                     fontFamily: 'BERNIER',
                   ),
                 ),
                 Spacer(),
                 IconButton(
-                  icon: Icon(Icons.search, size: 32),
+                  icon: Icon(Icons.search, size: 29),
                   onPressed: () {
                     _showSearchDialog(context);
                   },
