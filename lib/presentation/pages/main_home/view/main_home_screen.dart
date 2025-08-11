@@ -26,19 +26,16 @@ class MainHomeScreen extends StatelessWidget {
             ],
             child: Scaffold(
               backgroundColor: AppColors.body25,
-              body: Stack(
-                children: [
-                  currentPage,
-                  // Cart overlay - only show when there are items in cart and not on cart page
-                  if (cubit.getCurrentIndex() != 2) // Not on cart page
-                    BlocBuilder<MenuCubit, MenuState>(
+              body: currentPage,
+              bottomNavigationBar: const AppBottomNavigationBar(),
+              floatingActionButton: cubit.getCurrentIndex() != 2 // Not on cart page
+                  ? BlocBuilder<MenuCubit, MenuState>(
                       builder: (context, menuState) {
                         return AppCartOverlay(allItems: menuState.allItems);
                       },
-                    ),
-                ],
-              ),
-              bottomNavigationBar: const AppBottomNavigationBar(),
+                    )
+                  : null,
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             ),
           );
         },
