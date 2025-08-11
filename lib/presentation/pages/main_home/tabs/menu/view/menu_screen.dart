@@ -10,14 +10,18 @@ import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/
 import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/widgets/app_menu_search_dialog.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Fetch restaurant items when screen loads
-    context.read<MenuCubit>().fetchRestaurantItems();
+    // Trigger initial fetch when entering screen
+    final menuCubit = context.read<MenuCubit>();
+    if (menuCubit.state is MenuInitialState) {
+      menuCubit.fetchRestaurantItems();
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,111 +156,13 @@ class MenuScreen extends StatelessWidget {
 
   void _showSearchDialog(BuildContext context) {
     final menuCubit = context.read<MenuCubit>();
-    final currentSearchQuery = menuCubit.state.searchQuery;
 
     showDialog(
       context: context,
       builder: (dialogContext) {
         return BlocProvider.value(
           value: menuCubit,
-          child: _SearchDialogContent(initialSearchQuery: currentSearchQuery),
-        );
-      },
-    );
-  }
-}
-
-class _SearchDialogContent extends StatefulWidget {
-  final String initialSearchQuery;
-
-  const _SearchDialogContent({required this.initialSearchQuery});
-
-  @override
-  State<_SearchDialogContent> createState() => _SearchDialogContentState();
-}
-
-class _SearchDialogContentState extends State<_SearchDialogContent> {
-  late final TextEditingController _searchController;
-
-  @override
-  void initState() {
-    super.initState();
-    _searchController = TextEditingController(text: widget.initialSearchQuery);
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<MenuCubit, MenuState>(
-      builder: (context, state) {
-        return AlertDialog(
-          backgroundColor: AppColors.primaryOrange.withValues(alpha: .9),
-          title: Text(
-            AppStrings.searchTheMenu,
-            style: AppTextStyles.bodySmall.copyWith(color: AppColors.body900),
-          ),
-          content: TextField(
-            controller: _searchController,
-            autofocus: true,
-            style: AppTextStyles.bodySmall.copyWith(color: Colors.black),
-            decoration: InputDecoration(
-              hintText: AppStrings.searchHint,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(
-                  color: AppColors.body900.withValues(alpha: .9),
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(
-                  color: AppColors.body900.withValues(alpha: .9),
-                  width: 2.0,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(
-                  color: AppColors.body900.withValues(alpha: .9),
-                ),
-              ),
-              hintStyle: AppTextStyles.bodySmall.copyWith(
-                color: AppColors.body900.withValues(alpha: .8),
-              ),
-            ),
-            onChanged: (query) => context.read<MenuCubit>().searchItems(query),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                _searchController.clear();
-                context.read<MenuCubit>().searchItems('');
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                AppStrings.clear,
-                style: AppTextStyles.body.copyWith(
-                  color: AppColors.body900.withValues(alpha: .8),
-                ),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                AppStrings.close,
-                style: AppTextStyles.body.copyWith(
-                  color: AppColors.body900.withValues(alpha: .8),
-                ),
-              ),
-            ),
-          ],
+          child: const AppMenuSearchDialog(),
         );
       },
     );

@@ -113,33 +113,19 @@ class AppMenuCategoryBar extends StatelessWidget {
   }
 
   Widget _getCategoryIcon(String category) {
-    IconData iconData;
-    Color iconColor = AppColors.primaryOrange;
-
-    switch (category.toLowerCase()) {
-      case 'favorites':
-        iconData = Icons.favorite;
-        iconColor = AppColors.secondaryRed;
-        break;
-      case 'sandwiches':
-        iconData = Icons.lunch_dining;
-        break;
-      case 'burgers':
-        iconData = Icons.fastfood;
-        break;
-      case 'pizza':
-        iconData = Icons.local_pizza;
-        break;
-      case 'salads':
-        iconData = Icons.eco;
-        break;
-      case 'drinks':
-        iconData = Icons.local_drink;
-        break;
-      default:
-        iconData = Icons.restaurant;
-    }
-
+    final lower = category.toLowerCase();
+    final IconData iconData = switch (lower) {
+      'favorites' => Icons.favorite,
+      'sandwiches' => Icons.lunch_dining,
+      'burgers' => Icons.fastfood,
+      'pizza' => Icons.local_pizza,
+      'salads' => Icons.eco,
+      'drinks' => Icons.local_drink,
+      _ => Icons.restaurant,
+    };
+    final Color iconColor = lower == 'favorites'
+        ? AppColors.secondaryRed
+        : AppColors.primaryOrange;
     return Icon(iconData, size: 24, color: iconColor);
   }
 }
