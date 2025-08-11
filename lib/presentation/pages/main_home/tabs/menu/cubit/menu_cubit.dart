@@ -181,6 +181,42 @@ class MenuCubit extends Cubit<MenuState> {
     return filtered;
   }
 
+  List<RestaurantItemsResponseEntity> _applyFiltersWithFavorites(
+    List<RestaurantItemsResponseEntity> items,
+    String category,
+    String searchQuery,
+    Set<int> favoriteItems,
+  ) {
+    var filtered = items;
+
+    // Apply category filter
+    if (category.isNotEmpty && category != 'All') {
+      if (category == 'Favorites') {
+        // Filter to show only favorite items using the provided favorites set
+        filtered = filtered
+            .where((item) => favoriteItems.contains(item.itemID))
+            .toList();
+      } else {
+        // Filter by regular category
+        filtered = filtered
+            .where((item) => _getCategoryFromItem(item) == category)
+            .toList();
+      }
+    }
+
+    // Apply search filter
+    if (searchQuery.isNotEmpty) {
+      filtered = filtered.where((item) {
+        final name = item.itemName?.toLowerCase() ?? '';
+        final description = item.itemDescription?.toLowerCase() ?? '';
+        final query = searchQuery.toLowerCase();
+        return name.contains(query) || description.contains(query);
+      }).toList();
+    }
+
+    return filtered;
+  }
+
   void toggleFavorite(int itemId) {
     final favorites = Set<int>.from(state.favoriteItems);
     if (favorites.contains(itemId)) {
@@ -189,11 +225,12 @@ class MenuCubit extends Cubit<MenuState> {
       favorites.add(itemId);
     }
 
-    // Re-apply filters if currently viewing favorites to update the list
-    final filteredItems = _applyFilters(
+    // Re-apply filters with the updated favorites set
+    final filteredItems = _applyFiltersWithFavorites(
       state.allItems,
       state.selectedCategory,
       state.searchQuery,
+      favorites,
     );
 
     emit(
@@ -210,10 +247,11 @@ class MenuCubit extends Cubit<MenuState> {
       }
     }
 
-    final filteredItems = _applyFilters(
+    final filteredItems = _applyFiltersWithFavorites(
       state.allItems,
       state.selectedCategory,
       state.searchQuery,
+      favorites,
     );
 
     emit(
@@ -230,10 +268,11 @@ class MenuCubit extends Cubit<MenuState> {
       }
     }
 
-    final filteredItems = _applyFilters(
+    final filteredItems = _applyFiltersWithFavorites(
       state.allItems,
       state.selectedCategory,
       state.searchQuery,
+      favorites,
     );
 
     emit(
