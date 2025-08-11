@@ -1,90 +1,101 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
+import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_cubit.dart';
+import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_states.dart';
+import 'package:flutter_assignment_texas/domain/entities/restaurant_items_response_entity.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppCartOverlay extends StatelessWidget {
-  const AppCartOverlay({super.key});
+  final List<RestaurantItemsResponseEntity> allItems;
+
+  const AppCartOverlay({super.key, required this.allItems});
+
   @override
   Widget build(BuildContext context) {
-    return Container();
-  }
+    return BlocBuilder<CartCubit, CartState>(
+      builder: (context, cartState) {
+        if (!cartState.hasItems) {
+          return const SizedBox.shrink();
+        }
 
-  void _showHexagonalSnackBar(BuildContext context) {
-    final overlay = Overlay.of(context);
-    late OverlayEntry overlayEntry;
+        final cartCubit = context.read<CartCubit>();
+        final totalValue = cartCubit.getTotalCartValue(allItems);
 
-    overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        bottom: 100.h, // Position above the bottom nav bar
-        left: 20.w,
-        right: 20.w,
-        child: Material(
-          color: Colors.transparent,
-          child: Center(
+        return Positioned(
+          bottom: 10.h, // Position just above the bottom with some padding
+          left: 20.w,
+          right: 20.w,
+          child: GestureDetector(
+            onTap: () {
+              // Navigate to cart tab
+              // You can add navigation logic here
+            },
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
               child: Container(
-                width: 155.w,
-                height: 37.h,
+                width: double.infinity,
+                height: 50.h,
                 child: Stack(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   children: [
                     // Rounded rectangle background
                     CustomPaint(
-                      size: Size(155.w, 37.h),
+                      size: Size(double.infinity, 50.h),
                       painter: RoundedRectangleSnackBarPainter(
                         fillColor: AppColors.secondaryRed,
                       ),
                     ),
-                    SvgPicture.asset(
-                      AppAssets.cartBagIcon,
-                      width: 25.w,
-                      height: 25.h,
-                    ),
-                    // Text content
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(width: 5.w), // Add spacing
-                        Text(
-                          'View cart',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.sp,
-                            fontFamily: 'SpecialGothicCondensedOne',
+                    // Content
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              SvgPicture.asset(
+                                AppAssets.cartBagIcon,
+                                width: 25.w,
+                                height: 25.h,
+                                colorFilter: const ColorFilter.mode(
+                                  Colors.white,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                              SizedBox(width: 8.w),
+                              Text(
+                                'View cart (${cartState.totalItems})',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.sp,
+                                  fontFamily: 'SpecialGothicCondensedOne',
+                                ),
+                              ),
+                            ],
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer(),
-                        Text(
-                          '333 BD',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.sp,
-                            fontFamily: 'SpecialGothicCondensedOne',
+                          Text(
+                            '\$ ${totalValue.toStringAsFixed(2)}',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.sp,
+                              fontFamily: 'SpecialGothicCondensedOne',
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(width: 10.w),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
-
-    overlay.insert(overlayEntry);
-
-    // Remove the snackbar after 2 seconds
-    Future.delayed(Duration(seconds: 2), () {
-      overlayEntry.remove();
-    });
   }
 }
 

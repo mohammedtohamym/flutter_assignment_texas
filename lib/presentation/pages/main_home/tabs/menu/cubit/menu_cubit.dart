@@ -28,7 +28,6 @@ class MenuCubit extends Cubit<MenuState> {
         filteredItems: items,
         categories: categories,
         selectedCategory: categories.isNotEmpty ? categories.first : '',
-        cartItems: state.cartItems,
         favoriteItems: state.favoriteItems,
         searchQuery: '',
       ),
@@ -280,38 +279,6 @@ class MenuCubit extends Cubit<MenuState> {
     );
   }
 
-  void addToCart(int itemId) {
-    final cartItems = Map<int, int>.from(state.cartItems);
-    cartItems[itemId] = (cartItems[itemId] ?? 0) + 1;
-    emit(state.copyWith(cartItems: cartItems));
-  }
-
-  void removeFromCart(int itemId) {
-    final cartItems = Map<int, int>.from(state.cartItems);
-    final currentQuantity = cartItems[itemId] ?? 0;
-
-    if (currentQuantity > 1) {
-      cartItems[itemId] = currentQuantity - 1;
-    } else {
-      cartItems.remove(itemId);
-    }
-    emit(state.copyWith(cartItems: cartItems));
-  }
-
-  void removeItemCompletelyFromCart(int itemId) {
-    final cartItems = Map<int, int>.from(state.cartItems);
-    cartItems.remove(itemId);
-    emit(state.copyWith(cartItems: cartItems));
-  }
-
-  bool isItemInCart(int itemId) {
-    return state.cartItems.containsKey(itemId);
-  }
-
-  int getItemQuantityInCart(int itemId) {
-    return state.cartItems[itemId] ?? 0;
-  }
-
   bool isItemFavorite(int itemId) {
     return state.favoriteItems.contains(itemId);
   }
@@ -333,22 +300,4 @@ class MenuCubit extends Cubit<MenuState> {
 
   // Get items for current category and search
   List<RestaurantItemsResponseEntity> get currentItems => state.filteredItems;
-
-  // Get total items count in cart
-  int get totalCartItems {
-    return state.cartItems.values.fold(0, (sum, quantity) => sum + quantity);
-  }
-
-  // Get total cart value
-  double get totalCartValue {
-    double total = 0;
-    state.cartItems.forEach((itemId, quantity) {
-      final item = state.allItems.firstWhere(
-        (item) => item.itemID == itemId,
-        orElse: () => RestaurantItemsResponseEntity(),
-      );
-      total += (item.itemPrice ?? 0) * quantity;
-    });
-    return total;
-  }
 }

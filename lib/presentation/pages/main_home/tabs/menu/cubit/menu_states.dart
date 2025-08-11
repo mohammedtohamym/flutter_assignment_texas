@@ -6,7 +6,6 @@ class MenuState {
   final List<RestaurantItemsResponseEntity> filteredItems;
   final List<String> categories;
   final String selectedCategory;
-  final Map<int, int> cartItems; // itemId -> quantity
   final Set<int> favoriteItems;
   final bool isLoading;
   final String searchQuery;
@@ -17,7 +16,6 @@ class MenuState {
     this.filteredItems = const [],
     this.categories = const [],
     this.selectedCategory = '',
-    this.cartItems = const {},
     this.favoriteItems = const {},
     this.isLoading = false,
     this.searchQuery = '',
@@ -29,7 +27,6 @@ class MenuState {
     List<RestaurantItemsResponseEntity>? filteredItems,
     List<String>? categories,
     String? selectedCategory,
-    Map<int, int>? cartItems,
     Set<int>? favoriteItems,
     bool? isLoading,
     String? searchQuery,
@@ -40,7 +37,6 @@ class MenuState {
       filteredItems: filteredItems ?? this.filteredItems,
       categories: categories ?? this.categories,
       selectedCategory: selectedCategory ?? this.selectedCategory,
-      cartItems: cartItems ?? this.cartItems,
       favoriteItems: favoriteItems ?? this.favoriteItems,
       isLoading: isLoading ?? this.isLoading,
       searchQuery: searchQuery ?? this.searchQuery,
@@ -149,7 +145,6 @@ class MenuSuccessState extends MenuState {
     required super.filteredItems,
     required super.categories,
     required super.selectedCategory,
-    required super.cartItems,
     required super.favoriteItems,
     required super.searchQuery,
   }) : super(isLoading: false);

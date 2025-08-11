@@ -6,6 +6,7 @@ import 'package:flutter_assignment_texas/data/repositories/restaurant_items_repo
 import 'package:flutter_assignment_texas/domain/repositories/restaurant_items_repository.dart';
 import 'package:flutter_assignment_texas/domain/use_cases/get_restaurant_items_use_case.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_cubit.dart';
+import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -36,4 +37,7 @@ Future<void> configureDependencies() async {
       getRestaurantItemsUseCase: getIt<GetRestaurantItemsUseCase>(),
     ),
   );
+
+  // Register CartCubit as singleton since cart state should be shared across the app
+  getIt.registerLazySingleton<CartCubit>(() => CartCubit());
 }

@@ -5,6 +5,8 @@ import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/widgets/app_menu_item_card.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_states.dart';
+import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_cubit.dart';
+import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -128,23 +130,22 @@ class MenuScreen extends StatelessWidget {
                 padding: EdgeInsets.all(0),
                 itemBuilder: (context, index) {
                   final item = state.filteredItems[index];
-                  return BlocBuilder<MenuCubit, MenuState>(
-                    builder: (context, currentState) {
+                  return BlocBuilder<CartCubit, CartState>(
+                    builder: (context, cartState) {
                       return AppMenuItemCard(
                         item: item,
-                        isInCart: currentState.cartItems.containsKey(
+                        isInCart: cartState.isItemInCart(item.itemID ?? 0),
+                        cartQuantity: cartState.getItemQuantity(
                           item.itemID ?? 0,
                         ),
-                        cartQuantity:
-                            currentState.cartItems[item.itemID ?? 0] ?? 0,
-                        isFavorite: currentState.favoriteItems.contains(
+                        isFavorite: state.favoriteItems.contains(
                           item.itemID ?? 0,
                         ),
-                        onAddToCart: () => context.read<MenuCubit>().addToCart(
+                        onAddToCart: () => context.read<CartCubit>().addToCart(
                           item.itemID ?? 0,
                         ),
                         onRemoveFromCart: () => context
-                            .read<MenuCubit>()
+                            .read<CartCubit>()
                             .removeFromCart(item.itemID ?? 0),
                         onToggleFavorite: () => context
                             .read<MenuCubit>()

@@ -7,10 +7,12 @@ import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/more/view/more_screen.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/view/profile_screen.dart';
+import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainHomeCubit extends Cubit<MainHomeState> {
   late final MenuCubit _menuCubit;
+  late final CartCubit _cartCubit;
 
   MainHomeCubit() : super(const MainHomeTabState()) {
     _initializeDependencies();
@@ -19,12 +21,25 @@ class MainHomeCubit extends Cubit<MainHomeState> {
   void _initializeDependencies() {
     // Use GetIt to resolve dependencies - only domain layer abstractions
     _menuCubit = GetIt.instance<MenuCubit>();
+    _cartCubit = GetIt.instance<CartCubit>(); // Get cart cubit from DI
   }
+
+  // Expose cart cubit for access by children
+  CartCubit get cartCubit => _cartCubit;
+
+  // Expose menu cubit for access by children
+  MenuCubit get menuCubit => _menuCubit;
 
   List<Widget> get pages => [
     HomeScreen(),
-    BlocProvider.value(value: _menuCubit, child: MenuScreen()),
-    CartScreen(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: _menuCubit),
+        BlocProvider.value(value: _cartCubit),
+      ],
+      child: MenuScreen(),
+    ),
+    BlocProvider.value(value: _cartCubit, child: CartScreen()),
     ProfileScreen(),
     MoreScreen(),
   ];
@@ -49,6 +64,7 @@ class MainHomeCubit extends Cubit<MainHomeState> {
   @override
   Future<void> close() {
     _menuCubit.close();
+    // Don't close _cartCubit here since it's a singleton managed by DI
     return super.close();
   }
 }
