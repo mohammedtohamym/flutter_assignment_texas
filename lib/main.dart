@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment_texas/core/di/dependency_injection.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/view/main_home_screen.dart';
 import 'package:flutter_assignment_texas/utils/app_routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   runApp(MyApp());
 }
 
@@ -24,3 +27,10 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// todo : add the counter stack to the cart
+// todo : add the back button functionality to the profile back to move back a step (maybe use a stack)
+// todo : add the overlay to the cart in the navbar
+// todo : change all the strings to app strings
+// todo : add more and home page text
+// todo : use app assets

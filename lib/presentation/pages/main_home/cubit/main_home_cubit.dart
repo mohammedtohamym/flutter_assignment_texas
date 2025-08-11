@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_assignment_texas/core/api/api_manager.dart';
-import 'package:flutter_assignment_texas/data/data_sources/remote/restaurant_items_remote_data_source_impl.dart';
-import 'package:flutter_assignment_texas/data/repositories/restaurant_items_repository_impl.dart';
-import 'package:flutter_assignment_texas/domain/use_cases/get_restaurant_items_use_case.dart';
+import 'package:get_it/get_it.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_states.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/cart/view/cart_screen.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/home/view/home_screen.dart';
@@ -20,18 +17,8 @@ class MainHomeCubit extends Cubit<MainHomeState> {
   }
 
   void _initializeDependencies() {
-    // Setup dependencies
-    final apiManager = ApiManager();
-    final remoteDataSource = RestaurantItemsRemoteDataSourceImpl(
-      apiManager: apiManager,
-    );
-    final repository = RestaurantItemsRepositoryImpl(
-      remoteDataSource: remoteDataSource,
-    );
-    final getRestaurantItemsUseCase = GetRestaurantItemsUseCase(repository);
-    _menuCubit = MenuCubit(
-      getRestaurantItemsUseCase: getRestaurantItemsUseCase,
-    );
+    // Use GetIt to resolve dependencies - only domain layer abstractions
+    _menuCubit = GetIt.instance<MenuCubit>();
   }
 
   List<Widget> get pages => [
