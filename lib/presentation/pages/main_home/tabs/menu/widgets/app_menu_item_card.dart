@@ -178,44 +178,11 @@ class AppMenuItemCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8.h),
-                ElevatedButton(
+                AppMenuButton(
                   onPressed: () {
                     // Handle customize action - could navigate to customization page
                   },
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0.r,
-                    minimumSize: Size(4.w, 20.h),
-                    padding: EdgeInsets.zero,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4.r),
-                    ),
-                    backgroundColor: AppColors.transparent,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Customize',
-                        style: TextStyle(
-                          fontSize: 18.r,
-                          fontFamily: 'SpecialGothicCondensedOne',
-                          color: AppColors.secondaryRed,
-                        ),
-                      ),
-                      SizedBox(width: 4.w),
-                      Transform.translate(
-                        offset: Offset(0, 2.h),
-                        child: Icon(
-                          Icons.play_circle_filled,
-                          size: 20.r,
-                          color: AppColors.secondaryRed,
-                        ),
-                      ),
-                    ],
-                  ),
+                  buttonType: MenuButtonType.customize,
                 ),
                 SizedBox(height: 4.h),
                 Row(
@@ -254,38 +221,10 @@ class AppMenuItemCard extends StatelessWidget {
                         ? Expanded(
                             child: Row(
                               children: [
-                                ElevatedButton(
+                                AppMenuButton(
                                   onPressed: onRemoveFromCart,
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 0.r,
-                                    minimumSize: Size(40.w, 40.h),
-                                    padding: EdgeInsets.zero,
-                                    tapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4.r),
-                                    ),
-                                    backgroundColor: AppColors.primaryOrange,
-                                  ),
-                                  child: isMoreThanOne
-                                      ? Text(
-                                          '-',
-                                          style: TextStyle(
-                                            fontSize: 24.r,
-                                            fontFamily:
-                                                'SpecialGothicCondensedOne',
-                                            color: AppColors.body900,
-                                          ),
-                                        )
-                                      : SvgPicture.asset(
-                                          AppAssets.trashIcon,
-                                          colorFilter: ColorFilter.mode(
-                                            AppColors.body900,
-                                            BlendMode.srcIn,
-                                          ),
-                                          width: 12.r,
-                                          height: 12.r,
-                                        ),
+                                  buttonType: MenuButtonType.remove,
+                                  isMoreThanOne: isMoreThanOne,
                                 ),
                                 SizedBox(width: 16.w),
                                 Container(
@@ -300,68 +239,17 @@ class AppMenuItemCard extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(width: 8.w),
-                                ElevatedButton(
+                                AppMenuButton(
                                   onPressed: onAddToCart,
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 0.r,
-                                    minimumSize: Size(40.w, 40.h),
-                                    padding: EdgeInsets.zero,
-                                    tapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4.r),
-                                    ),
-                                    backgroundColor: AppColors.primaryOrange,
-                                  ),
-                                  child: SvgPicture.asset(
-                                    AppAssets.addIcon,
-                                    colorFilter: ColorFilter.mode(
-                                      AppColors.body900,
-                                      BlendMode.srcIn,
-                                    ),
-                                    width: 16.w,
-                                    height: 16.h,
-                                  ),
+                                  buttonType: MenuButtonType.addSmall,
                                 ),
                               ],
                             ),
                           )
                         : Expanded(
-                            child: ElevatedButton(
+                            child: AppMenuButton(
                               onPressed: onAddToCart,
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0.r,
-                                minimumSize: Size(140.w, 40.h),
-                                padding: EdgeInsets.zero,
-                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4.r),
-                                ),
-                                backgroundColor: AppColors.primaryOrange,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(
-                                    AppAssets.addIcon,
-                                    colorFilter: ColorFilter.mode(
-                                      AppColors.body900,
-                                      BlendMode.srcIn,
-                                    ),
-                                    width: 12.w,
-                                    height: 12.h,
-                                  ),
-                                  SizedBox(width: 4.w),
-                                  Text(
-                                    'Add to Cart',
-                                    style: TextStyle(
-                                      fontSize: 20.r,
-                                      fontFamily: 'SpecialGothicCondensedOne',
-                                      color: AppColors.body900,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              buttonType: MenuButtonType.addToCart,
                             ),
                           ),
                   ],
@@ -373,5 +261,184 @@ class AppMenuItemCard extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+enum MenuButtonType { addToCart, addSmall, remove, customize }
+
+/// A reusable button widget for menu items that handles different button types.
+///
+/// Usage examples:
+/// - `AppMenuButton(onPressed: () {}, buttonType: MenuButtonType.addToCart)`
+/// - `AppMenuButton(onPressed: () {}, buttonType: MenuButtonType.addSmall)`
+/// - `AppMenuButton(onPressed: () {}, buttonType: MenuButtonType.remove, isMoreThanOne: true)`
+/// - `AppMenuButton(onPressed: () {}, buttonType: MenuButtonType.customize)`
+class AppMenuButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final MenuButtonType buttonType;
+  final bool? isMoreThanOne; // Only needed for remove button
+  final int? cartQuantity; // Only needed for quantity display
+
+  const AppMenuButton({
+    super.key,
+    required this.onPressed,
+    required this.buttonType,
+    this.isMoreThanOne,
+    this.cartQuantity,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    switch (buttonType) {
+      case MenuButtonType.addToCart:
+        return ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            elevation: 0.r,
+            minimumSize: Size(140.w, 40.h),
+            padding: EdgeInsets.zero,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4.r),
+            ),
+            backgroundColor: AppColors.primaryOrange,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                AppAssets.addIcon,
+                colorFilter: ColorFilter.mode(
+                  AppColors.body900,
+                  BlendMode.srcIn,
+                ),
+                width: 12.w,
+                height: 12.h,
+              ),
+              SizedBox(width: 4.w),
+              Text(
+                'Add to Cart',
+                style: TextStyle(
+                  fontSize: 20.r,
+                  fontFamily: 'SpecialGothicCondensedOne',
+                  color: AppColors.body900,
+                ),
+              ),
+            ],
+          ),
+        );
+
+      case MenuButtonType.addSmall:
+      case MenuButtonType.remove:
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.r),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.body700.withValues(alpha: 0.2),
+                blurRadius: 4.r,
+                spreadRadius: 1.r,
+              ),
+            ],
+          ),
+          child: ElevatedButton(
+            onPressed: onPressed,
+            style: ElevatedButton.styleFrom(
+              elevation: 4.r,
+              minimumSize: Size(40.w, 40.h),
+              padding: EdgeInsets.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6.r),
+              ),
+              backgroundColor: _getButtonColor(),
+            ),
+            child: _getButtonChild(),
+          ),
+        );
+
+      case MenuButtonType.customize:
+        return ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            elevation: 0.r,
+            minimumSize: Size(4.w, 20.h),
+            padding: EdgeInsets.zero,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4.r),
+            ),
+            backgroundColor: AppColors.transparent,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Customize',
+                style: TextStyle(
+                  fontSize: 18.r,
+                  fontFamily: 'SpecialGothicCondensedOne',
+                  color: AppColors.secondaryRed,
+                ),
+              ),
+              SizedBox(width: 4.w),
+              Transform.translate(
+                offset: Offset(0, 2.h),
+                child: Icon(
+                  Icons.play_circle_filled,
+                  size: 20.r,
+                  color: AppColors.secondaryRed,
+                ),
+              ),
+            ],
+          ),
+        );
+    }
+  }
+
+  Color _getButtonColor() {
+    switch (buttonType) {
+      case MenuButtonType.addSmall:
+        return AppColors.primaryOrange;
+      case MenuButtonType.remove:
+        return AppColors.body300;
+      default:
+        return AppColors.primaryOrange;
+    }
+  }
+
+  Widget _getButtonChild() {
+    switch (buttonType) {
+      case MenuButtonType.addSmall:
+        return SvgPicture.asset(
+          AppAssets.addIcon,
+          colorFilter: ColorFilter.mode(AppColors.body900, BlendMode.srcIn),
+          width: 16.w,
+          height: 16.h,
+        );
+      case MenuButtonType.remove:
+        return (isMoreThanOne ?? false)
+            ? Text(
+                '-',
+                style: TextStyle(
+                  fontSize: 24.r,
+                  fontFamily: 'SpecialGothicCondensedOne',
+                  color: AppColors.body900,
+                ),
+              )
+            : SvgPicture.asset(
+                AppAssets.trashIcon,
+                colorFilter: ColorFilter.mode(
+                  AppColors.body900,
+                  BlendMode.srcIn,
+                ),
+                width: 12.r,
+                height: 12.r,
+              );
+      default:
+        return Container();
+    }
   }
 }
