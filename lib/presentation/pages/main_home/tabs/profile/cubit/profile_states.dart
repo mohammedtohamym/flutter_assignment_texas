@@ -99,6 +99,8 @@ class ProfileMenuItem {
   final bool hasDivider;
   final int? count;
   final VoidCallback? onTap;
+  final double? iconWidth;
+  final double? iconHeight;
 
   const ProfileMenuItem({
     required this.text,
@@ -108,6 +110,8 @@ class ProfileMenuItem {
     this.hasDivider = true,
     this.count,
     this.onTap,
+    this.iconWidth,
+    this.iconHeight,
   });
 
   ProfileMenuItem copyWith({
@@ -118,6 +122,8 @@ class ProfileMenuItem {
     bool? hasDivider,
     int? count,
     VoidCallback? onTap,
+    double? iconWidth,
+    double? iconHeight,
   }) {
     return ProfileMenuItem(
       text: text ?? this.text,
@@ -127,6 +133,8 @@ class ProfileMenuItem {
       hasDivider: hasDivider ?? this.hasDivider,
       count: count ?? this.count,
       onTap: onTap ?? this.onTap,
+      iconWidth: iconWidth ?? this.iconWidth,
+      iconHeight: iconHeight ?? this.iconHeight,
     );
   }
 }

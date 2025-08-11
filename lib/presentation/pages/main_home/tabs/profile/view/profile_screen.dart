@@ -201,6 +201,8 @@ class ProfileScreen extends StatelessWidget {
                             hasSuffixIcon: item.hasSuffixIcon,
                             hasDivider: item.hasDivider,
                             onTap: item.onTap,
+                            iconWidth: item.iconWidth,
+                            iconHeight: item.iconHeight,
                           );
                         }).toList(),
                         Container(height: 11, color: AppColors.body100),

@@ -45,32 +45,38 @@ class ProfileCubit extends Cubit<ProfileState> {
       ProfileMenuItem(
         text: 'My Addresses',
         icon: AppAssets.addressIcon,
+        iconWidth: 13,
         onTap: () => _onAddressesPressed(),
       ),
       ProfileMenuItem(
         text: 'Change Password',
         icon: AppAssets.passwordIcon,
+        iconWidth: 20,
         onTap: () => _onChangePasswordPressed(),
       ),
       ProfileMenuItem(
         text: 'Offers',
         icon: AppAssets.offersIcon,
+        iconWidth: 17,
         onTap: () => _onOffersPressed(),
       ),
       ProfileMenuItem(
         text: 'Deals',
         icon: AppAssets.dealsIcon,
+        iconWidth: 14,
         onTap: () => _onDealsPressed(),
       ),
       ProfileMenuItem(
         text: 'Notifications',
         icon: AppAssets.notificationsIcon,
+        iconWidth: 16,
         count: notificationCount,
         onTap: () => _onNotificationsPressed(),
       ),
       ProfileMenuItem(
         text: 'Delete my Account',
         icon: AppAssets.deleteAccountIcon,
+        iconWidth: 17,
         textColor: AppColors.secondaryRed,
         hasSuffixIcon: false,
         hasDivider: false,

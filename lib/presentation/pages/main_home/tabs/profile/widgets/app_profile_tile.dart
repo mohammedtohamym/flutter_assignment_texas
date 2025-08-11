@@ -9,6 +9,8 @@ class AppProfileTile extends StatelessWidget {
   final bool hasSuffixIcon;
   final bool hasDivider;
   final VoidCallback? onTap;
+  final double? iconWidth;
+  final double? iconHeight;
 
   const AppProfileTile({
     super.key,
@@ -18,6 +20,8 @@ class AppProfileTile extends StatelessWidget {
     this.hasSuffixIcon = true,
     this.hasDivider = true,
     this.onTap,
+    this.iconWidth,
+    this.iconHeight,
   });
 
   @override
@@ -37,7 +41,8 @@ class AppProfileTile extends StatelessWidget {
                     textColor ?? AppColors.body900,
                     BlendMode.srcIn,
                   ),
-                  width: 16,
+                  width: iconWidth ?? 16,
+                  height: iconHeight,
                 ),
                 SizedBox(width: 8),
                 Text(
