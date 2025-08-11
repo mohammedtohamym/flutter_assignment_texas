@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/cubit/profile_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/cubit/profile_states.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_circular_navigators.dart';
@@ -28,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
                 content: Text(state.error!),
                 backgroundColor: AppColors.secondaryRed,
                 action: SnackBarAction(
-                  label: 'Dismiss',
+                  label: AppStrings.dismiss,
                   textColor: AppColors.white,
                   onPressed: () {
                     context.read<ProfileCubit>().clearError();
@@ -45,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                 content: Text(state.successMessage!),
                 backgroundColor: Colors.green,
                 action: SnackBarAction(
-                  label: 'Dismiss',
+                  label: AppStrings.dismiss,
                   textColor: AppColors.white,
                   onPressed: () {
                     context.read<ProfileCubit>().clearSuccessMessage();
@@ -81,14 +83,8 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(width: 16),
-                        Text(
-                          'PROFILE',
-                          style: TextStyle(
-                            color: AppColors.body900,
-                            fontSize: 22,
-                            fontFamily: 'BERNIER',
-                          ),
-                        ),
+                        Text(AppStrings.profileTitle,
+              style: AppTextStyles.h1Bernier),
                       ],
                     ),
                   ),
@@ -130,14 +126,8 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 12),
-                      Text(
-                        'PROFILE',
-                        style: TextStyle(
-                          color: AppColors.body900,
-                          fontSize: 21,
-                          fontFamily: 'BERNIER',
-                        ),
-                      ),
+                      Text(AppStrings.profileTitle,
+              style: AppTextStyles.h2Bernier),
                     ],
                   ),
                 ),

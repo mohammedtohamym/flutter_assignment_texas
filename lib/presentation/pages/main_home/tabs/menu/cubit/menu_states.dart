@@ -1,4 +1,5 @@
 import 'package:flutter_assignment_texas/core/errors/failures.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
 import 'package:flutter_assignment_texas/domain/entities/restaurant_items_response_entity.dart';
 
 class MenuState {
@@ -45,12 +46,12 @@ class MenuState {
   }
 
   String get selectedCategoryName =>
-      selectedCategory.isEmpty ? 'All Items' : selectedCategory;
+      selectedCategory.isEmpty ? AppStrings.allItems : selectedCategory;
 
   int get selectedCategoryItemCount {
-    if (selectedCategory.isEmpty || selectedCategory == 'All') {
+  if (selectedCategory.isEmpty || selectedCategory == AppStrings.all) {
       return filteredItems.length;
-    } else if (selectedCategory == 'Favorites') {
+    } else if (selectedCategory == AppStrings.favorites) {
       return favoriteItems.length;
     } else {
       return allItems

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
-import 'package:flutter_assignment_texas/core/resources/app_fonts.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/cubit/profile_states.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -50,10 +51,8 @@ class AppProfileInfoCard extends StatelessWidget {
                         ? Image.network(profileData.imagePath!)
                         : Text(
                             profileData.name[0],
-                            style: TextStyle(
+                            style: AppTextStyles.body.copyWith(
                               color: AppColors.body900,
-                              fontFamily:
-                                  AppFonts.getSpecialGothicCondensedOne(),
                               fontSize: 31,
                             ),
                           ),
@@ -62,38 +61,22 @@ class AppProfileInfoCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        profileData.name,
-                        style: TextStyle(
-                          color: AppColors.body900,
-                          fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                          fontSize: 18,
-                        ),
-                      ),
+            Text(profileData.name,
+              style: AppTextStyles.body
+                .copyWith(fontSize: 18)),
                       // SizedBox(height: 4),
                       Row(
                         children: [
                           SvgPicture.asset(profileData.countryIcon, height: 33),
                           SizedBox(width: 10),
-                          Text(
-                            profileData.phone,
-                            style: TextStyle(
-                              color: AppColors.body900,
-                              fontFamily:
-                                  AppFonts.getSpecialGothicCondensedOne(),
-                              fontSize: 18,
-                            ),
-                          ),
+              Text(profileData.phone,
+                style: AppTextStyles.body
+                  .copyWith(fontSize: 18)),
                         ],
                       ),
-                      Text(
-                        profileData.email,
-                        style: TextStyle(
-                          color: AppColors.body700,
-                          fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                          fontSize: 18,
-                        ),
-                      ),
+            Text(profileData.email,
+              style: AppTextStyles.bodyMuted
+                .copyWith(fontSize: 18)),
                     ],
                   ),
                 ],
@@ -114,14 +97,9 @@ class AppProfileInfoCard extends StatelessWidget {
                     ),
                     backgroundColor: AppColors.primaryOrange,
                   ),
-                  child: Text(
-                    'Update Profile',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                      color: AppColors.body900,
-                    ),
-                  ),
+          child: Text(AppStrings.updateProfile,
+            style: AppTextStyles.body
+              .copyWith(fontSize: 17, color: AppColors.body900)),
                 ),
               ),
             ],
@@ -150,14 +128,9 @@ class AppProfileInfoCard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(width: 4),
-                  Text(
-                    'Logout',
-                    style: TextStyle(
-                      color: AppColors.body700,
-                      fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                      fontSize: 17,
-                    ),
-                  ),
+          Text(AppStrings.logout,
+            style: AppTextStyles.body
+              .copyWith(color: AppColors.body700, fontSize: 17)),
                 ],
               ),
             ),

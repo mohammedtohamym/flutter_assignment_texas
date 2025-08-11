@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/di/dependency_injection.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/view/main_home_screen.dart';
 import 'package:flutter_assignment_texas/utils/app_routes.dart';
+import 'package:flutter_assignment_texas/app/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: getAppTheme(context),
       initialRoute: AppRoutes.mainHome,
       routes: {AppRoutes.mainHome: (context) => MainHomeScreen()},
     );

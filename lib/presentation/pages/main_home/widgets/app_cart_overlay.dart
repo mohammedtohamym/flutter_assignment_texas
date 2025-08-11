@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_states.dart';
 import 'package:flutter_assignment_texas/domain/entities/restaurant_items_response_entity.dart';
@@ -61,25 +63,16 @@ class AppCartOverlay extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'view cart',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontFamily: 'SpecialGothicCondensedOne',
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
+              Text(AppStrings.viewCart,
+                style: AppTextStyles.body
+                  .copyWith(color: Colors.white),
+                textAlign: TextAlign.center),
                             Spacer(),
-                            Text(
-                              '\$ ${totalValue.toStringAsFixed(0)}',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontFamily: 'SpecialGothicCondensedOne',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            Text('\$ ${totalValue.toStringAsFixed(0)}',
+                                style: AppTextStyles.body.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                )),
                             SizedBox(width: 8),
                           ],
                         ),

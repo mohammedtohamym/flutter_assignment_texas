@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,17 +16,11 @@ class AppMenuCategoryCount extends StatelessWidget {
       child: BlocBuilder<MenuCubit, MenuState>(
         builder: (context, state) {
           if (state.isLoading) {
-            return Row(
+      return Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'Loading...',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontFamily: 'SpecialGothicCondensedOne',
-                    color: AppColors.body900,
-                  ),
-                ),
+        Text(AppStrings.loading,
+          style: AppTextStyles.body.copyWith(fontSize: 24)),
               ],
             );
           }
@@ -32,28 +28,16 @@ class AppMenuCategoryCount extends StatelessWidget {
           final categoryName = state.selectedCategoryName;
           final itemCount = state.selectedCategoryItemCount;
 
-          return Row(
+      return Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                categoryName,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontFamily: 'SpecialGothicCondensedOne',
-                  color: AppColors.body900,
-                ),
-              ),
+        Text(categoryName,
+          style: AppTextStyles.body.copyWith(fontSize: 24)),
               SizedBox(width: 4),
               Transform.translate(
                 offset: Offset(0, 2),
-                child: Text(
-                  '($itemCount Items)',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'SpecialGothicCondensedOne',
-                    color: AppColors.body700,
-                  ),
-                ),
+        child: Text(AppStrings.itemsCount(itemCount),
+          style: AppTextStyles.bodyMuted),
               ),
               if (state.favoriteItems.isNotEmpty) ...[
                 SizedBox(width: 16),
@@ -76,15 +60,11 @@ class AppMenuCategoryCount extends StatelessWidget {
                         size: 14,
                       ),
                       SizedBox(width: 4),
-                      Text(
-                        '${state.favoriteItems.length}',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'SpecialGothicCondensedOne',
-                          color: AppColors.secondaryRed,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      Text('${state.favoriteItems.length}',
+                          style: AppTextStyles.bodyMutedSm.copyWith(
+                            color: AppColors.secondaryRed,
+                            fontWeight: FontWeight.bold,
+                          )),
                     ],
                   ),
                 ),
@@ -94,12 +74,9 @@ class AppMenuCategoryCount extends StatelessWidget {
                 Transform.translate(
                   offset: Offset(0, 2),
                   child: Text(
-                    '• Search: "${state.searchQuery}"',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: 'SpecialGothicCondensedOne',
-                      color: AppColors.secondaryRed,
-                    ),
+                    AppStrings.searchQueryLabel(state.searchQuery),
+                    style: AppTextStyles.bodyMutedSm
+                        .copyWith(color: AppColors.secondaryRed),
                   ),
                 ),
               ],

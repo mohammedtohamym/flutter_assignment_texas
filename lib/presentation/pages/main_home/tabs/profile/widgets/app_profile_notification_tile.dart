@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 
 class AppProfileNotificationTile extends StatelessWidget {
   final String text;
@@ -49,26 +50,19 @@ class AppProfileNotificationTile extends StatelessWidget {
                         child: CircleAvatar(
                           backgroundColor: AppColors.primaryOrange,
                           radius: 6,
-                          child: Text(
-                            '$count',
-                            style: TextStyle(
-                              color: AppColors.white,
-                              fontSize: 8,
-                            ),
-                          ),
+              child: Text('$count',
+                style: AppTextStyles.labelSm
+                  .copyWith(color: AppColors.white)),
                         ),
                       ),
                   ],
                 ),
                 SizedBox(width: 8),
-                Text(
-                  text,
-                  style: TextStyle(
-                    color: textColor ?? AppColors.body900,
-                    fontFamily: 'SpecialGothicCondensedOne',
-                    fontSize: 17,
-                  ),
-                ),
+                Text(text,
+                    style: AppTextStyles.body.copyWith(
+                      color: textColor ?? AppColors.body900,
+                      fontSize: 17,
+                    )),
                 Spacer(),
                 hasSuffixIcon
                     ? Icon(

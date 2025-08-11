@@ -2,6 +2,7 @@ import 'package:flutter_assignment_texas/domain/use_cases/get_restaurant_items_u
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_assignment_texas/domain/entities/restaurant_items_response_entity.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
 
 class MenuCubit extends Cubit<MenuState> {
   final GetRestaurantItemsUseCase getRestaurantItemsUseCase;
@@ -41,10 +42,10 @@ class MenuCubit extends Cubit<MenuState> {
     for (final item in items) {
       categories.add(_getCategoryFromItem(item));
     }
-    final categoryList = categories.toList()..sort();
+  final categoryList = categories.toList()..sort();
 
     // Add special categories at the beginning
-    categoryList.insert(0, 'All');
+  categoryList.insert(0, AppStrings.all);
 
     return categoryList;
   }
@@ -152,8 +153,8 @@ class MenuCubit extends Cubit<MenuState> {
     var filtered = items;
 
     // Apply category filter
-    if (category.isNotEmpty && category != 'All') {
-      if (category == 'Favorites') {
+  if (category.isNotEmpty && category != AppStrings.all) {
+      if (category == AppStrings.favorites) {
         // Filter to show only favorite items
         filtered = filtered
             .where((item) => state.favoriteItems.contains(item.itemID))
@@ -188,8 +189,8 @@ class MenuCubit extends Cubit<MenuState> {
     var filtered = items;
 
     // Apply category filter
-    if (category.isNotEmpty && category != 'All') {
-      if (category == 'Favorites') {
+  if (category.isNotEmpty && category != AppStrings.all) {
+      if (category == AppStrings.favorites) {
         // Filter to show only favorite items using the provided favorites set
         filtered = filtered
             .where((item) => favoriteItems.contains(item.itemID))

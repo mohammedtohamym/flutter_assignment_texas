@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 import 'package:flutter_assignment_texas/domain/entities/restaurant_items_response_entity.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -127,11 +129,8 @@ class AppMenuItemCard extends StatelessWidget {
                       child: Transform.translate(
                         offset: Offset(0, -4),
                         child: Text(
-                          item.itemName ?? 'Unknown Item',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'SpecialGothicCondensedOne',
-                          ),
+                          item.itemName ?? AppStrings.unknownItem,
+                          style: AppTextStyles.body.copyWith(fontSize: 20),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -162,15 +161,11 @@ class AppMenuItemCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+        SizedBox(
                   height: 50,
                   child: Text(
-                    item.itemDescription ?? 'No description available',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'SpecialGothicCondensedOne',
-                      color: AppColors.body700,
-                    ),
+          item.itemDescription ?? AppStrings.noDescription,
+          style: AppTextStyles.bodyMuted,
                     softWrap: true,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -192,25 +187,14 @@ class AppMenuItemCard extends StatelessWidget {
                         children: [
                           Text(
                             '\$${item.itemPrice?.toStringAsFixed(0) ?? '0'}',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'SpecialGothicCondensedOne',
-                              color: Colors.black,
-                            ),
+                            style: AppTextStyles.price(),
                           ),
                           SizedBox(width: 16),
                           if ((item.itemPrice ?? 0) >
                               0) // Show discounted price if there's a price
                             Text(
                               '\$${((item.itemPrice ?? 0) * 1.3).toStringAsFixed(0)}',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'SpecialGothicCondensedOne',
-                                color: AppColors.body700,
-                                decoration: TextDecoration.lineThrough,
-                                decorationColor: AppColors.body700,
-                                decorationThickness: 0.8,
-                              ),
+                              style: AppTextStyles.price(muted: true),
                             ),
                         ],
                       ),
@@ -230,15 +214,10 @@ class AppMenuItemCard extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        '$cartQuantity',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontFamily:
-                                              'SpecialGothicCondensedOne',
-                                          color: Colors.black,
-                                        ),
-                                      ),
+                    Text('$cartQuantity',
+                      style: AppTextStyles.body
+                        .copyWith(fontSize: 20,
+                          color: Colors.black)),
                                     ],
                                   ),
                                 ),
@@ -320,14 +299,7 @@ class AppMenuButton extends StatelessWidget {
                 height: 12,
               ),
               SizedBox(width: 4),
-              Text(
-                'Add to Cart',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'SpecialGothicCondensedOne',
-                  color: AppColors.body900,
-                ),
-              ),
+              Text(AppStrings.addToCart, style: AppTextStyles.button),
             ],
           ),
         );
@@ -379,14 +351,7 @@ class AppMenuButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                'Customize',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: 'SpecialGothicCondensedOne',
-                  color: AppColors.secondaryRed,
-                ),
-              ),
+              Text(AppStrings.customize, style: AppTextStyles.buttonSmall),
               SizedBox(width: 4),
               Transform.translate(
                 offset: Offset(0, 2),
@@ -431,15 +396,10 @@ class AppMenuButton extends StatelessWidget {
           height: 16,
         );
       case MenuButtonType.remove:
-        return (isMoreThanOne ?? false)
-            ? Text(
-                '-',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontFamily: 'SpecialGothicCondensedOne',
-                  color: AppColors.body900,
-                ),
-              )
+    return (isMoreThanOne ?? false)
+      ? Text('-',
+        style: AppTextStyles.body
+          .copyWith(fontSize: 24, color: AppColors.body900))
             : SvgPicture.asset(
                 AppAssets.trashIcon,
                 colorFilter: ColorFilter.mode(

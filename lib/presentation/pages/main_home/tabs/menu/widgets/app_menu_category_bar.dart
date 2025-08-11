@@ -3,6 +3,8 @@ import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
 
 class AppMenuCategoryBar extends StatelessWidget {
   const AppMenuCategoryBar({super.key});
@@ -52,7 +54,7 @@ class AppMenuCategoryBar extends StatelessWidget {
                                   backgroundColor: Colors.white,
                                   child: _getCategoryIcon(category),
                                 ),
-                                if (category == 'Favorites' &&
+                                if (category == AppStrings.favorites &&
                                     state.favoriteItems.isNotEmpty)
                                   Positioned(
                                     right: 0,
@@ -87,16 +89,11 @@ class AppMenuCategoryBar extends StatelessWidget {
                                 right: 16,
                                 left: 8,
                               ),
-                              child: Text(
-                                category,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontFamily: 'SpecialGothicCondensedOne',
-                                  color: isSelected
-                                      ? AppColors.body900
-                                      : AppColors.body900,
-                                ),
-                              ),
+                              child: Text(category,
+                                  style: AppTextStyles.body.copyWith(
+                                    fontSize: 18,
+                                    color: AppColors.body900,
+                                  )),
                             ),
                           ],
                         ),

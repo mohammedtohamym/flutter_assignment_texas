@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_assignment_texas/core/resources/app_fonts.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,13 +8,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        'Home Screen',
-        style: TextStyle(
-          fontSize: 24,
-          fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-        ),
-      ),
+    child: Text(AppStrings.homeScreenTitle,
+      style: AppTextStyles.body.copyWith(fontSize: 24)),
     );
   }
 }

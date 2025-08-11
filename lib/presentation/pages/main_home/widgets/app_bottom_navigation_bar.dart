@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_states.dart';
 import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_cubit.dart';
@@ -30,16 +32,8 @@ class AppBottomNavigationBar extends StatelessWidget {
                 hoverColor: Colors.transparent,
               ),
               child: BottomNavigationBar(
-                selectedLabelStyle: TextStyle(
-                  fontFamily: 'SpecialGothicCondensedOne',
-                  fontSize: 14,
-                  color: AppColors.body900,
-                ),
-                unselectedLabelStyle: TextStyle(
-                  fontFamily: 'SpecialGothicCondensedOne',
-                  fontSize: 12,
-                  color: AppColors.body900,
-                ),
+                selectedLabelStyle: AppTextStyles.label,
+                unselectedLabelStyle: AppTextStyles.labelSm,
                 type: BottomNavigationBarType.fixed,
                 backgroundColor: Colors.white,
                 selectedItemColor: AppColors.body900,
@@ -59,7 +53,7 @@ class AppBottomNavigationBar extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: 'Home',
+                    label: AppStrings.home,
                   ),
                   BottomNavigationBarItem(
                     icon: SvgPicture.asset(
@@ -73,7 +67,7 @@ class AppBottomNavigationBar extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: 'Menu',
+                    label: AppStrings.menu,
                   ),
                   BottomNavigationBarItem(
                     icon: Transform.scale(
@@ -109,12 +103,7 @@ class AppBottomNavigationBar extends StatelessWidget {
                                     children: [
                                       Text(
                                         cartState.totalItems.toString(),
-                                        style: TextStyle(
-                                          color: AppColors.body900,
-                                          fontSize: 12,
-                                          fontFamily:
-                                              'SpecialGothicCondensedOne',
-                                        ),
+                                        style: AppTextStyles.labelSm,
                                       ),
                                     ],
                                   ),
@@ -138,7 +127,7 @@ class AppBottomNavigationBar extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                     ),
-                    label: 'Profile',
+                    label: AppStrings.profile,
                   ),
                   BottomNavigationBarItem(
                     icon: SizedBox(
@@ -159,7 +148,7 @@ class AppBottomNavigationBar extends StatelessWidget {
                         ],
                       ),
                     ),
-                    label: 'More',
+                    label: AppStrings.more,
                   ),
                 ],
                 currentIndex: currentIndex,

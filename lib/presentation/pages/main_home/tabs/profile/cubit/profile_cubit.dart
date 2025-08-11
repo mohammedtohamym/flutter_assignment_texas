@@ -2,6 +2,7 @@ import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/cubit/profile_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileInitialState()) {
@@ -16,9 +17,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     await Future.delayed(const Duration(milliseconds: 500));
 
     final profileData = ProfileData(
-      name: 'Ahmed Magdy',
+  name: 'Ahmed Magdy',
       phone: '012-000-00-663',
-      email: 'ahmed@paradigmegypt.com',
+  email: 'ahmed@paradigmegypt.com',
       countryIcon: AppAssets.egyptFlagIcon,
       notificationCount: 1,
     );
@@ -43,38 +44,38 @@ class ProfileCubit extends Cubit<ProfileState> {
   ) {
     return [
       ProfileMenuItem(
-        text: 'My Addresses',
+        text: AppStrings.myAddresses,
         icon: AppAssets.addressIcon,
         iconWidth: 13,
         onTap: () => _onAddressesPressed(),
       ),
       ProfileMenuItem(
-        text: 'Change Password',
+        text: AppStrings.changePassword,
         icon: AppAssets.passwordIcon,
         iconWidth: 20,
         onTap: () => _onChangePasswordPressed(),
       ),
       ProfileMenuItem(
-        text: 'Offers',
+        text: AppStrings.offers,
         icon: AppAssets.offersIcon,
         iconWidth: 17,
         onTap: () => _onOffersPressed(),
       ),
       ProfileMenuItem(
-        text: 'Deals',
+        text: AppStrings.deals,
         icon: AppAssets.dealsIcon,
         iconWidth: 14,
         onTap: () => _onDealsPressed(),
       ),
       ProfileMenuItem(
-        text: 'Notifications',
+        text: AppStrings.notifications,
         icon: AppAssets.notificationsIcon,
         iconWidth: 16,
         count: notificationCount,
         onTap: () => _onNotificationsPressed(),
       ),
       ProfileMenuItem(
-        text: 'Delete my Account',
+        text: AppStrings.deleteMyAccount,
         icon: AppAssets.deleteAccountIcon,
         iconWidth: 17,
         textColor: AppColors.secondaryRed,
@@ -88,19 +89,17 @@ class ProfileCubit extends Cubit<ProfileState> {
   List<ProfileSwitchItem> _buildSwitchItems() {
     return [
       ProfileSwitchItem(
-        mainText: 'Marketing Communication',
+        mainText: AppStrings.marketingCommunication,
         icon: AppAssets.marketingIcon,
-        secondaryText:
-            'once you open it you will receive emails and offer on your inbox',
+        secondaryText: AppStrings.marketingCommunicationDesc,
         isEnabled: false,
         onChanged: (value) => _onMarketingCommunicationChanged(value),
         hasDivider: true,
       ),
       ProfileSwitchItem(
-        mainText: 'App Communication',
+        mainText: AppStrings.appCommunication,
         icon: AppAssets.communicationIcon,
-        secondaryText:
-            'Once you open it you will receive Notifications from our app',
+        secondaryText: AppStrings.appCommunicationDesc,
         isEnabled: true,
         onChanged: (value) => _onAppCommunicationChanged(value),
         fontSize: 18.0,
@@ -112,17 +111,17 @@ class ProfileCubit extends Cubit<ProfileState> {
   List<ProfileCircularNavigator> getCircularNavigators() {
     return [
       ProfileCircularNavigator(
-        title: 'Favorites',
+        title: AppStrings.favoritesTitle,
         imagePath: AppAssets.favoritesIcon,
         onTap: () => _onFavoritesPressed(),
       ),
       ProfileCircularNavigator(
-        title: 'Rewards',
+        title: AppStrings.rewardsTitle,
         imagePath: AppAssets.awardsIcon,
         onTap: () => _onRewardsPressed(),
       ),
       ProfileCircularNavigator(
-        title: 'Orders',
+        title: AppStrings.ordersTitle,
         imagePath: AppAssets.ordersIcon,
         onTap: () => _onOrdersPressed(),
       ),
@@ -139,7 +138,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(
         state.copyWith(
           isUpdatingProfile: false,
-          successMessage: 'Profile updated successfully!',
+          successMessage: AppStrings.profileUpdateSuccess,
         ),
       );
 
@@ -149,7 +148,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(
         state.copyWith(
           isUpdatingProfile: false,
-          error: 'Failed to update profile. Please try again.',
+          error: AppStrings.profileUpdateFailed,
         ),
       );
 
@@ -163,7 +162,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       await Future.delayed(const Duration(milliseconds: 500));
       print('User logged out successfully');
     } catch (e) {
-      emit(state.copyWith(error: 'Failed to logout. Please try again.'));
+  emit(state.copyWith(error: AppStrings.failedToLogout));
     }
   }
 
@@ -196,7 +195,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     print('Marketing Communication changing to: $value');
 
     final updatedSwitchItems = state.switchItems.map((item) {
-      if (item.mainText == 'Marketing Communication') {
+  if (item.mainText == AppStrings.marketingCommunication) {
         return item.copyWith(isEnabled: value);
       }
       return item;
@@ -209,7 +208,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       print('Marketing Communication preference saved: $value');
     } catch (e) {
       final revertedSwitchItems = state.switchItems.map((item) {
-        if (item.mainText == 'Marketing Communication') {
+  if (item.mainText == AppStrings.marketingCommunication) {
           return item.copyWith(isEnabled: !value);
         }
         return item;
@@ -218,7 +217,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(
         state.copyWith(
           switchItems: revertedSwitchItems,
-          error: 'Failed to update preference. Please try again.',
+          error: AppStrings.profileUpdateFailed,
         ),
       );
     }
@@ -228,7 +227,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     print('App Communication changing to: $value');
 
     final updatedSwitchItems = state.switchItems.map((item) {
-      if (item.mainText == 'App Communication') {
+  if (item.mainText == AppStrings.appCommunication) {
         return item.copyWith(isEnabled: value);
       }
       return item;
@@ -241,7 +240,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       print('App Communication preference saved: $value');
     } catch (e) {
       final revertedSwitchItems = state.switchItems.map((item) {
-        if (item.mainText == 'App Communication') {
+  if (item.mainText == AppStrings.appCommunication) {
           return item.copyWith(isEnabled: !value);
         }
         return item;
@@ -250,7 +249,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(
         state.copyWith(
           switchItems: revertedSwitchItems,
-          error: 'Failed to update preference. Please try again.',
+          error: AppStrings.profileUpdateFailed,
         ),
       );
     }
@@ -279,12 +278,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   void _onDeleteAccountPressed() {
     print('Delete Account pressed');
-    emit(
-      state.copyWith(
-        error:
-            'This action will permanently delete your account. Please contact support if you want to proceed.',
-      ),
-    );
+  emit(state.copyWith(error: AppStrings.deleteAccountWarning));
   }
 
   void _onFavoritesPressed() {

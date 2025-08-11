@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
-import 'package:flutter_assignment_texas/core/resources/app_fonts.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppProfileSwitch extends StatelessWidget {
@@ -53,24 +53,16 @@ class AppProfileSwitch extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      mainText,
-                      style: TextStyle(
-                        color: AppColors.body900,
-                        fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                        fontSize: 17,
-                      ),
-                    ),
+          Text(mainText,
+            style: AppTextStyles.body
+              .copyWith(color: AppColors.body900, fontSize: 17)),
                     Text(
                       secondaryText,
                       softWrap: true,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color: AppColors.body700,
-                        fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                        fontSize: fontSize ?? 15,
-                      ),
+            style: AppTextStyles.bodyMuted
+              .copyWith(fontSize: fontSize ?? 15),
                     ),
                   ],
                 ),

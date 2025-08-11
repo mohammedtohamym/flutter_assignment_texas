@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
+import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/widgets/app_menu_category_bar.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/widgets/app_menu_category_count.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/widgets/app_menu_item_card.dart';
@@ -26,14 +28,7 @@ class MenuScreen extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'EXPLORE MENU',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 21,
-                    fontFamily: 'BERNIER',
-                  ),
-                ),
+                Text(AppStrings.exploreMenu, style: AppTextStyles.h2Bernier),
                 Spacer(),
                 IconButton(
                   icon: Icon(Icons.search, size: 29),
@@ -66,19 +61,14 @@ class MenuScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        'Error loading menu items',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'SpecialGothicCondensedOne',
-                        ),
-                      ),
+                      Text(AppStrings.errorLoadingMenuItems,
+                          style: AppTextStyles.body),
                       SizedBox(height: 16),
                       ElevatedButton(
                         onPressed: () {
                           context.read<MenuCubit>().fetchRestaurantItems();
                         },
-                        child: Text('Retry'),
+                        child: Text(AppStrings.retry),
                       ),
                     ],
                   ),
@@ -91,7 +81,7 @@ class MenuScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        state.selectedCategory == 'Favorites'
+                        state.selectedCategory == AppStrings.favorites
                             ? Icons.favorite_border
                             : Icons.search_off,
                         size: 64,
@@ -99,24 +89,19 @@ class MenuScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 16),
                       Text(
-                        state.selectedCategory == 'Favorites'
-                            ? 'No favorite items yet'
-                            : 'No items found',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'SpecialGothicCondensedOne',
+                        state.selectedCategory == AppStrings.favorites
+                            ? AppStrings.noFavoritesYet
+                            : AppStrings.noItemsFound,
+                        style: AppTextStyles.body.copyWith(
                           color: Colors.grey[600],
                         ),
                       ),
-                      if (state.selectedCategory == 'Favorites') ...[
+                      if (state.selectedCategory == AppStrings.favorites) ...[
                         SizedBox(height: 8),
                         Text(
-                          'Tap the heart icon on items to add them to favorites',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: 'SpecialGothicCondensedOne',
-                            color: Colors.grey[500],
-                          ),
+                          AppStrings.tapHeartToFavorite,
+                          style: AppTextStyles.bodyMutedSm
+                              .copyWith(color: Colors.grey[500]),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -208,24 +193,16 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
       builder: (context, state) {
         return AlertDialog(
           backgroundColor: AppColors.primaryOrange.withValues(alpha: .9),
-          title: Text(
-            'Search The Menu',
-            style: TextStyle(
-              fontFamily: 'SpecialGothicCondensedOne',
-              fontSize: 18,
-              color: AppColors.body900,
-            ),
-          ),
+          title: Text(AppStrings.searchTheMenu,
+              style: AppTextStyles.bodySmall.copyWith(
+                color: AppColors.body900,
+              )),
           content: TextField(
             controller: _searchController,
             autofocus: true,
-            style: TextStyle(
-              fontFamily: 'SpecialGothicCondensedOne',
-              fontSize: 16,
-              color: Colors.black,
-            ),
+            style: AppTextStyles.bodySmall.copyWith(color: Colors.black),
             decoration: InputDecoration(
-              hintText: 'Search for items...',
+              hintText: AppStrings.searchHint,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(
@@ -245,11 +222,8 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
                   color: AppColors.body900.withValues(alpha: .9),
                 ),
               ),
-              hintStyle: TextStyle(
-                fontFamily: 'SpecialGothicCondensedOne',
-                fontSize: 16,
-                color: AppColors.body900.withValues(alpha: .8),
-              ),
+              hintStyle: AppTextStyles.bodySmall
+                  .copyWith(color: AppColors.body900.withValues(alpha: .8)),
             ),
             onChanged: (query) => context.read<MenuCubit>().searchItems(query),
           ),
@@ -260,27 +234,19 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
                 context.read<MenuCubit>().searchItems('');
                 Navigator.of(context).pop();
               },
-              child: Text(
-                'Clear',
-                style: TextStyle(
-                  fontFamily: 'SpecialGothicCondensedOne',
-                  fontSize: 18,
-                  color: AppColors.body900.withValues(alpha: .8),
-                ),
-              ),
+              child: Text(AppStrings.clear,
+                  style: AppTextStyles.body.copyWith(
+                    color: AppColors.body900.withValues(alpha: .8),
+                  )),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
-                'Close',
-                style: TextStyle(
-                  fontFamily: 'SpecialGothicCondensedOne',
-                  fontSize: 18,
-                  color: AppColors.body900.withValues(alpha: .8),
-                ),
-              ),
+              child: Text(AppStrings.close,
+                  style: AppTextStyles.body.copyWith(
+                    color: AppColors.body900.withValues(alpha: .8),
+                  )),
             ),
           ],
         );

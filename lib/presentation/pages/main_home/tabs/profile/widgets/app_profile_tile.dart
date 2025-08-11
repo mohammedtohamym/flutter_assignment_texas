@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 
 class AppProfileTile extends StatelessWidget {
   final String text;
@@ -45,14 +46,11 @@ class AppProfileTile extends StatelessWidget {
                   height: iconHeight,
                 ),
                 SizedBox(width: 8),
-                Text(
-                  text,
-                  style: TextStyle(
-                    color: textColor ?? AppColors.body900,
-                    fontFamily: 'SpecialGothicCondensedOne',
-                    fontSize: 17,
-                  ),
-                ),
+                Text(text,
+                    style: AppTextStyles.body.copyWith(
+                      color: textColor ?? AppColors.body900,
+                      fontSize: 17,
+                    )),
                 Spacer(),
                 hasSuffixIcon
                     ? Icon(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 
 class AppProfileCircularNavigators extends StatelessWidget {
   final String title;
@@ -33,14 +34,9 @@ class AppProfileCircularNavigators extends StatelessWidget {
                 : Icon(Icons.favorite, color: AppColors.white, size: 16),
           ),
           SizedBox(height: 4),
-          Text(
-            title,
-            style: TextStyle(
-              color: AppColors.body900,
-              fontFamily: 'SpecialGothicCondensedOne',
-              fontSize: 18,
-            ),
-          ),
+      Text(title,
+        style: AppTextStyles.body
+          .copyWith(color: AppColors.body900, fontSize: 18)),
         ],
       ),
     );
