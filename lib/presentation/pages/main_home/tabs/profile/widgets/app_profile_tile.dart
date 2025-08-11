@@ -25,19 +25,19 @@ class AppProfileTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        color: AppColors.body25,
+        color: AppColors.white,
         child: Column(
           children: [
             Row(
               children: [
-                SizedBox(width: 24),
+                SizedBox(width: 25),
                 SvgPicture.asset(
                   icon,
                   colorFilter: ColorFilter.mode(
                     textColor ?? AppColors.body900,
                     BlendMode.srcIn,
                   ),
-                  height: 20,
+                  width: 16,
                 ),
                 SizedBox(width: 8),
                 Text(
@@ -45,7 +45,7 @@ class AppProfileTile extends StatelessWidget {
                   style: TextStyle(
                     color: textColor ?? AppColors.body900,
                     fontFamily: 'SpecialGothicCondensedOne',
-                    fontSize: 18,
+                    fontSize: 17,
                   ),
                 ),
                 Spacer(),
@@ -53,7 +53,7 @@ class AppProfileTile extends StatelessWidget {
                     ? Icon(
                         Icons.arrow_forward_ios,
                         color: AppColors.body900,
-                        size: 12,
+                        size: 10,
                       )
                     : SizedBox.shrink(),
                 SizedBox(width: 24),

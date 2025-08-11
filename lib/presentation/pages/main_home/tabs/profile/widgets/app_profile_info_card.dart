@@ -21,17 +21,17 @@ class AppProfileInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 190,
-      width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
-      padding: EdgeInsets.only(left: 16, right: 10, top: 16, bottom: 16),
+      width: 408,
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.only(left: 15, right: 10, top: 20, bottom: 21),
       decoration: BoxDecoration(
-        color: AppColors.body25,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(4),
         boxShadow: [
           BoxShadow(
-            color: AppColors.body900.withValues(alpha: 0.16),
-            blurRadius: 4,
-            offset: Offset(0, 2),
+            color: AppColors.black.withValues(alpha: 0.13),
+            blurRadius: 8.73,
+            offset: Offset(0, 0.97),
           ),
         ],
       ),
@@ -41,6 +41,7 @@ class AppProfileInfoCard extends StatelessWidget {
           Column(
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CircleAvatar(
                     radius: 32,
@@ -53,7 +54,7 @@ class AppProfileInfoCard extends StatelessWidget {
                               color: AppColors.body900,
                               fontFamily:
                                   AppFonts.getSpecialGothicCondensedOne(),
-                              fontSize: 24,
+                              fontSize: 31,
                             ),
                           ),
                   ),
@@ -66,26 +67,25 @@ class AppProfileInfoCard extends StatelessWidget {
                         style: TextStyle(
                           color: AppColors.body900,
                           fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                          fontSize: 20,
+                          fontSize: 18,
                         ),
                       ),
-                      SizedBox(height: 4),
+                      // SizedBox(height: 4),
                       Row(
                         children: [
                           SvgPicture.asset(profileData.countryIcon, height: 33),
-                          SizedBox(width: 4),
+                          SizedBox(width: 10),
                           Text(
                             profileData.phone,
                             style: TextStyle(
                               color: AppColors.body900,
                               fontFamily:
                                   AppFonts.getSpecialGothicCondensedOne(),
-                              fontSize: 20,
+                              fontSize: 18,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 4),
                       Text(
                         profileData.email,
                         style: TextStyle(
@@ -98,7 +98,7 @@ class AppProfileInfoCard extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 12),
+              SizedBox(height: 24),
               Center(
                 child: ElevatedButton(
                   onPressed: onUpdateProfile,
@@ -117,7 +117,7 @@ class AppProfileInfoCard extends StatelessWidget {
                   child: Text(
                     'Update Profile',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       fontFamily: AppFonts.getSpecialGothicCondensedOne(),
                       color: AppColors.body900,
                     ),
@@ -128,35 +128,38 @@ class AppProfileInfoCard extends StatelessWidget {
           ),
           GestureDetector(
             onTap: onLogout,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Stack(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: AppColors.secondaryRed,
-                      radius: 12,
-                      child: SvgPicture.asset(
-                        AppAssets.logoutIcon,
-                        colorFilter: ColorFilter.mode(
-                          AppColors.body25,
-                          BlendMode.srcIn,
+            child: Transform.translate(
+              offset: Offset(0, -10),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Stack(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: AppColors.secondaryRed,
+                        radius: 12,
+                        child: SvgPicture.asset(
+                          AppAssets.logoutIcon,
+                          colorFilter: ColorFilter.mode(
+                            AppColors.white,
+                            BlendMode.srcIn,
+                          ),
+                          height: 12,
                         ),
-                        height: 16,
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 4),
-                Text(
-                  'Logout',
-                  style: TextStyle(
-                    color: AppColors.body700,
-                    fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                    fontSize: 18,
+                    ],
                   ),
-                ),
-              ],
+                  SizedBox(width: 4),
+                  Text(
+                    'Logout',
+                    style: TextStyle(
+                      color: AppColors.body700,
+                      fontFamily: AppFonts.getSpecialGothicCondensedOne(),
+                      fontSize: 17,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

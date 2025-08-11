@@ -27,7 +27,7 @@ class AppProfileNotificationTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        color: AppColors.body25,
+        color: AppColors.white,
         child: Column(
           children: [
             Row(
@@ -41,7 +41,7 @@ class AppProfileNotificationTile extends StatelessWidget {
                         textColor ?? AppColors.body900,
                         BlendMode.srcIn,
                       ),
-                      height: 16,
+                      width: 16,
                     ),
                     if (count > 0)
                       Transform.translate(
@@ -52,7 +52,7 @@ class AppProfileNotificationTile extends StatelessWidget {
                           child: Text(
                             '$count',
                             style: TextStyle(
-                              color: AppColors.body25,
+                              color: AppColors.white,
                               fontSize: 8,
                             ),
                           ),
@@ -66,7 +66,7 @@ class AppProfileNotificationTile extends StatelessWidget {
                   style: TextStyle(
                     color: textColor ?? AppColors.body900,
                     fontFamily: 'SpecialGothicCondensedOne',
-                    fontSize: 18,
+                    fontSize: 17,
                   ),
                 ),
                 Spacer(),
@@ -74,7 +74,7 @@ class AppProfileNotificationTile extends StatelessWidget {
                     ? Icon(
                         Icons.arrow_forward_ios,
                         color: AppColors.body900,
-                        size: 12,
+                        size: 10,
                       )
                     : SizedBox.shrink(),
                 SizedBox(width: 24),

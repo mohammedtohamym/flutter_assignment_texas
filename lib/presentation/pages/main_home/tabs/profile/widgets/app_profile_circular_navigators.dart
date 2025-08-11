@@ -22,7 +22,7 @@ class AppProfileCircularNavigators extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor: AppColors.primaryOrange.withValues(alpha: 0.07),
-            radius: 40,
+            radius: 41,
             child: imagePath != null
                 ? SvgPicture.asset(
                     imagePath!,
@@ -30,7 +30,7 @@ class AppProfileCircularNavigators extends StatelessWidget {
                     width: 52,
                     height: 52,
                   )
-                : Icon(Icons.favorite, color: AppColors.body25, size: 16),
+                : Icon(Icons.favorite, color: AppColors.white, size: 16),
           ),
           SizedBox(height: 4),
           Text(
@@ -38,7 +38,7 @@ class AppProfileCircularNavigators extends StatelessWidget {
             style: TextStyle(
               color: AppColors.body900,
               fontFamily: 'SpecialGothicCondensedOne',
-              fontSize: 20,
+              fontSize: 18,
             ),
           ),
         ],
