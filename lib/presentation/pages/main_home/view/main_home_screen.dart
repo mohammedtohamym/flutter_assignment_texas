@@ -28,14 +28,17 @@ class MainHomeScreen extends StatelessWidget {
               backgroundColor: AppColors.body25,
               body: currentPage,
               bottomNavigationBar: const AppBottomNavigationBar(),
-              floatingActionButton: cubit.getCurrentIndex() != 2 // Not on cart page
+              floatingActionButton:
+                  cubit.getCurrentIndex() !=
+                      2 // Not on cart page
                   ? BlocBuilder<MenuCubit, MenuState>(
                       builder: (context, menuState) {
                         return AppCartOverlay(allItems: menuState.allItems);
                       },
                     )
                   : null,
-              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerDocked,
             ),
           );
         },

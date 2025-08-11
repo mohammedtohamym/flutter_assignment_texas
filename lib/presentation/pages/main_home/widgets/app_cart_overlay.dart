@@ -25,61 +25,63 @@ class AppCartOverlay extends StatelessWidget {
         final totalValue = cartCubit.getTotalCartValue(allItems);
 
         return Transform.translate(
-          offset: Offset(0, -20.h), // Move it up a bit from the center
+          offset: Offset(0, -15.h), // Move it up 5.h more from the center
           child: GestureDetector(
             onTap: () {
               // Navigate to cart tab
               // You can add navigation logic here
             },
             child: Container(
-              width: 300.w,
-              height: 50.h,
+              width: 155.w,
+              height: 37.h,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
                   // Rounded rectangle background
                   CustomPaint(
-                    size: Size(300.w, 50.h),
+                    size: Size(152.w, 50.h),
                     painter: RoundedRectangleSnackBarPainter(
                       fillColor: AppColors.secondaryRed,
                     ),
                   ),
                   // Content
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    padding: EdgeInsets.symmetric(horizontal: 8.w),
+                    child: Stack(
                       children: [
+                        SvgPicture.asset(
+                          AppAssets.cartBagIcon,
+                          width: 24.w,
+                          height: 24.h,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SvgPicture.asset(
-                              AppAssets.cartBagIcon,
-                              width: 25.w,
-                              height: 25.h,
-                              colorFilter: const ColorFilter.mode(
-                                Colors.white,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                            SizedBox(width: 8.w),
                             Text(
-                              'View cart (${cartState.totalItems})',
+                              'view cart',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18.sp,
                                 fontFamily: 'SpecialGothicCondensedOne',
                               ),
+                              textAlign: TextAlign.center,
                             ),
+                            Spacer(),
+                            Text(
+                              '\$ ${totalValue.toStringAsFixed(0)}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.sp,
+                                fontFamily: 'SpecialGothicCondensedOne',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(width: 8.w),
                           ],
-                        ),
-                        Text(
-                          '${totalValue.toStringAsFixed(2)} BD',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.sp,
-                            fontFamily: 'SpecialGothicCondensedOne',
-                            fontWeight: FontWeight.bold,
-                          ),
                         ),
                       ],
                     ),
@@ -123,7 +125,10 @@ class RoundedRectangleSnackBarPainter extends CustomPainter {
 
     trianglePath.moveTo(center.dx - triangleSize, triangleTop); // Left point
     trianglePath.lineTo(center.dx + triangleSize, triangleTop); // Right point
-    trianglePath.lineTo(center.dx, triangleTop + triangleSize); // Bottom point
+    trianglePath.lineTo(
+      center.dx,
+      triangleTop + triangleSize * 1.8,
+    ); // Bottom point
     trianglePath.close();
 
     // Draw filled rounded rectangle
