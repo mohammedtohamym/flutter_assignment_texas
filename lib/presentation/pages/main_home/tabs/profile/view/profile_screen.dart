@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/core/resources/app_strings.dart';
-import 'package:flutter_assignment_texas/core/resources/app_text_styles.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/cubit/profile_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/cubit/profile_states.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_circular_navigators.dart';
@@ -11,6 +10,7 @@ import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profi
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_tile.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_header.dart';
 
 class ProfileScreen extends StatelessWidget {
   final MainHomeCubit mainHomeCubit;
@@ -62,41 +62,8 @@ class ProfileScreen extends StatelessWidget {
             return Container(
               color: AppColors.white,
               child: Column(
-                children: [
+                children: const [
                   SizedBox(height: 16),
-                  SafeArea(
-                    child: Row(
-                      children: [
-                        SizedBox(width: 16),
-                        CircleAvatar(
-                          radius: 20,
-                          backgroundColor: AppColors.body100,
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.arrow_back_ios_new_rounded,
-                              color: AppColors.body900,
-                              size: 24,
-                            ),
-                            onPressed: () {
-                              mainHomeCubit.navigateBack();
-                            },
-                          ),
-                        ),
-                        SizedBox(width: 16),
-                        Text(
-                          AppStrings.profileTitle,
-                          style: AppTextStyles.h1Bernier,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Expanded(
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.primaryOrange,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             );
@@ -109,31 +76,9 @@ class ProfileScreen extends StatelessWidget {
             color: AppColors.white,
             child: Column(
               children: [
-                SafeArea(
-                  child: Row(
-                    children: [
-                      SizedBox(width: 16),
-                      CircleAvatar(
-                        radius: 18,
-                        backgroundColor: AppColors.body100,
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            color: AppColors.body900,
-                            size: 18,
-                          ),
-                          onPressed: () {
-                            mainHomeCubit.navigateBack();
-                          },
-                        ),
-                      ),
-                      SizedBox(width: 12),
-                      Text(
-                        AppStrings.profileTitle,
-                        style: AppTextStyles.h2Bernier,
-                      ),
-                    ],
-                  ),
+                AppProfileHeader(
+                  title: AppStrings.profileTitle,
+                  onBack: () => mainHomeCubit.navigateBack(),
                 ),
                 SizedBox(height: 13),
                 Expanded(
