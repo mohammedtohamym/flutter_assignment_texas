@@ -41,10 +41,7 @@ class AppProfileHeader extends StatelessWidget {
             ),
           ),
           SizedBox(width: spacing),
-          Text(
-            title,
-            style: titleStyle ?? AppTextStyles.h2Bernier,
-          ),
+          Text(title, style: titleStyle ?? AppTextStyles.h2Bernier),
         ],
       ),
     );

@@ -61,11 +61,7 @@ class ProfileScreen extends StatelessWidget {
           if (state.isLoading) {
             return Container(
               color: AppColors.white,
-              child: Column(
-                children: const [
-                  SizedBox(height: 16),
-                ],
-              ),
+              child: Column(children: const [SizedBox(height: 16)]),
             );
           }
 
