@@ -163,16 +163,19 @@ class AppMenuItemCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(
-                  item.itemDescription ?? 'No description available',
-                  style: TextStyle(
-                    fontSize: 16.r,
-                    fontFamily: 'SpecialGothicCondensedOne',
-                    color: AppColors.body700,
+                SizedBox(
+                  height: 50.h,
+                  child: Text(
+                    item.itemDescription ?? 'No description available',
+                    style: TextStyle(
+                      fontSize: 16.r,
+                      fontFamily: 'SpecialGothicCondensedOne',
+                      color: AppColors.body700,
+                    ),
+                    softWrap: true,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  softWrap: true,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 8.h),
                 ElevatedButton(
@@ -222,23 +225,25 @@ class AppMenuItemCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            '\$${item.itemPrice?.toStringAsFixed(2) ?? '0.00'}',
+                            '\$${item.itemPrice?.toStringAsFixed(0) ?? '0'}',
                             style: TextStyle(
                               fontSize: 20.r,
                               fontFamily: 'SpecialGothicCondensedOne',
                               color: Colors.black,
                             ),
                           ),
-                          SizedBox(width: 4.w),
+                          SizedBox(width: 16.w),
                           if ((item.itemPrice ?? 0) >
                               0) // Show discounted price if there's a price
                             Text(
-                              '\$${((item.itemPrice ?? 0) * 1.3).toStringAsFixed(2)}',
+                              '\$${((item.itemPrice ?? 0) * 1.3).toStringAsFixed(0)}',
                               style: TextStyle(
                                 fontSize: 18.r,
                                 fontFamily: 'SpecialGothicCondensedOne',
                                 color: AppColors.body700,
                                 decoration: TextDecoration.lineThrough,
+                                decorationColor: AppColors.body700,
+                                decorationThickness: 0.8,
                               ),
                             ),
                         ],

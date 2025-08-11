@@ -30,3 +30,4 @@ class MyApp extends StatelessWidget {
 
 // todo : change all the strings to app strings
 // todo : organize code better (widgets)
+// todo : add button shadow
