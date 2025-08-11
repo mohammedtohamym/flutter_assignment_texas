@@ -85,7 +85,7 @@ class ProfileCubit extends Cubit<ProfileState> {
         mainText: 'Marketing Communication',
         icon: AppAssets.marketingIcon,
         secondaryText:
-            'once you open it you will receive emails and offers on your inbox',
+            'once you open it you will receive emails and offer on your inbox',
         isEnabled: false,
         onChanged: (value) => _onMarketingCommunicationChanged(value),
       ),
@@ -93,9 +93,10 @@ class ProfileCubit extends Cubit<ProfileState> {
         mainText: 'App Communication',
         icon: AppAssets.communicationIcon,
         secondaryText:
-            'Once you open it you will receive notifications from our app',
+            'Once you open it you will receive Notifications from our app',
         isEnabled: true,
         onChanged: (value) => _onAppCommunicationChanged(value),
+        fontSize: 18.0,
       ),
     ];
   }

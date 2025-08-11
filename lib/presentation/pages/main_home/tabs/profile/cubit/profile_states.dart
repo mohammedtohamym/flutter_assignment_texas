@@ -137,6 +137,7 @@ class ProfileSwitchItem {
   final String icon;
   final bool isEnabled;
   final Function(bool)? onChanged;
+  final double? fontSize;
 
   const ProfileSwitchItem({
     required this.mainText,
@@ -144,6 +145,7 @@ class ProfileSwitchItem {
     required this.icon,
     this.isEnabled = false,
     this.onChanged,
+    this.fontSize,
   });
 
   ProfileSwitchItem copyWith({
@@ -152,6 +154,7 @@ class ProfileSwitchItem {
     String? icon,
     bool? isEnabled,
     Function(bool)? onChanged,
+    double? fontSize,
   }) {
     return ProfileSwitchItem(
       mainText: mainText ?? this.mainText,
@@ -159,6 +162,7 @@ class ProfileSwitchItem {
       icon: icon ?? this.icon,
       isEnabled: isEnabled ?? this.isEnabled,
       onChanged: onChanged ?? this.onChanged,
+      fontSize: fontSize ?? this.fontSize,
     );
   }
 }

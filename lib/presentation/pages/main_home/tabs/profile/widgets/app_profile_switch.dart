@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 class AppProfileSwitch extends StatelessWidget {
   final String mainText;
   final String secondaryText;
+  final double? fontSize;
   final String icon;
   final bool isSwitched;
   final Function(bool)? onChanged;
@@ -17,6 +18,7 @@ class AppProfileSwitch extends StatelessWidget {
     required this.secondaryText,
     required this.isSwitched,
     this.onChanged,
+    this.fontSize,
   });
 
   @override
@@ -54,7 +56,7 @@ class AppProfileSwitch extends StatelessWidget {
                       style: TextStyle(
                         color: AppColors.body900,
                         fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                        fontSize: 20,
+                        fontSize: 17,
                       ),
                     ),
                     Text(
@@ -65,7 +67,7 @@ class AppProfileSwitch extends StatelessWidget {
                       style: TextStyle(
                         color: AppColors.body700,
                         fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                        fontSize: 16,
+                        fontSize: fontSize ?? 15,
                       ),
                     ),
                   ],

@@ -203,13 +203,14 @@ class ProfileScreen extends StatelessWidget {
                             onTap: item.onTap,
                           );
                         }).toList(),
-                        Container(height: 12, color: AppColors.body100),
+                        Container(height: 11, color: AppColors.body100),
                         SizedBox(height: 16),
                         ...state.switchItems
                             .map(
                               (item) => AppProfileSwitch(
                                 mainText: item.mainText,
                                 icon: item.icon,
+                                fontSize: item.fontSize,
                                 secondaryText: item.secondaryText,
                                 isSwitched: item.isEnabled,
                                 onChanged: item.onChanged,
