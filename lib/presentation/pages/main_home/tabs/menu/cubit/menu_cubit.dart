@@ -126,10 +126,14 @@ class MenuCubit extends Cubit<MenuState> {
     final filteredItems = _applyFilters(
       state.allItems,
       category,
-      state.searchQuery,
+      '', // Clear search query when selecting a category
     );
     emit(
-      state.copyWith(selectedCategory: category, filteredItems: filteredItems),
+      state.copyWith(
+        selectedCategory: category,
+        filteredItems: filteredItems,
+        searchQuery: '', // Clear search query in state
+      ),
     );
   }
 
