@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/core/resources/app_fonts.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ThemeData getAppTheme(BuildContext context) {
   return ThemeData(
     primaryColor: AppColors.primaryOrange,
     scaffoldBackgroundColor: Colors.white,
-    splashColor: AppColors.primaryOrange.withValues(alpha: 0.1.r),
-    highlightColor: AppColors.primaryOrange.withValues(alpha: 0.1.r),
+  splashColor: AppColors.primaryOrange.withValues(alpha: 0.1),
+  highlightColor: AppColors.primaryOrange.withValues(alpha: 0.1),
     // app bar
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
@@ -27,7 +26,7 @@ ThemeData getAppTheme(BuildContext context) {
           AppColors.primaryOrange,
         ),
         shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         ),
         foregroundColor: WidgetStateProperty.all<Color>(AppColors.body900),
         textStyle: WidgetStateProperty.all<TextStyle>(

@@ -8,7 +8,6 @@ import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/
 import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -23,7 +22,7 @@ class MenuScreen extends StatelessWidget {
       children: [
         SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -31,13 +30,13 @@ class MenuScreen extends StatelessWidget {
                   'EXPLORE MENU',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 22.r,
+                    fontSize: 22,
                     fontFamily: 'BERNIER',
                   ),
                 ),
                 Spacer(),
                 IconButton(
-                  icon: Icon(Icons.search, size: 32.r),
+                  icon: Icon(Icons.search, size: 32),
                   onPressed: () {
                     _showSearchDialog(context);
                   },
@@ -46,11 +45,11 @@ class MenuScreen extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 12.h),
+        SizedBox(height: 12),
         const AppMenuCategoryBar(),
-        SizedBox(height: 16.h),
+        SizedBox(height: 16),
         const AppMenuCategoryCount(),
-        // SizedBox(height: .h),
+        // SizedBox(height: ),
         Expanded(
           child: BlocBuilder<MenuCubit, MenuState>(
             builder: (context, state) {
@@ -70,11 +69,11 @@ class MenuScreen extends StatelessWidget {
                       Text(
                         'Error loading menu items',
                         style: TextStyle(
-                          fontSize: 18.r,
+                          fontSize: 18,
                           fontFamily: 'SpecialGothicCondensedOne',
                         ),
                       ),
-                      SizedBox(height: 16.h),
+                      SizedBox(height: 16),
                       ElevatedButton(
                         onPressed: () {
                           context.read<MenuCubit>().fetchRestaurantItems();
@@ -95,26 +94,26 @@ class MenuScreen extends StatelessWidget {
                         state.selectedCategory == 'Favorites'
                             ? Icons.favorite_border
                             : Icons.search_off,
-                        size: 64.r,
+                        size: 64,
                         color: Colors.grey[400],
                       ),
-                      SizedBox(height: 16.h),
+                      SizedBox(height: 16),
                       Text(
                         state.selectedCategory == 'Favorites'
                             ? 'No favorite items yet'
                             : 'No items found',
                         style: TextStyle(
-                          fontSize: 18.r,
+                          fontSize: 18,
                           fontFamily: 'SpecialGothicCondensedOne',
                           color: Colors.grey[600],
                         ),
                       ),
                       if (state.selectedCategory == 'Favorites') ...[
-                        SizedBox(height: 8.h),
+                        SizedBox(height: 8),
                         Text(
                           'Tap the heart icon on items to add them to favorites',
                           style: TextStyle(
-                            fontSize: 14.r,
+                            fontSize: 14,
                             fontFamily: 'SpecialGothicCondensedOne',
                             color: Colors.grey[500],
                           ),
@@ -213,7 +212,7 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
             'Search The Menu',
             style: TextStyle(
               fontFamily: 'SpecialGothicCondensedOne',
-              fontSize: 18.r,
+              fontSize: 18,
               color: AppColors.body900,
             ),
           ),
@@ -222,33 +221,33 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
             autofocus: true,
             style: TextStyle(
               fontFamily: 'SpecialGothicCondensedOne',
-              fontSize: 16.r,
+              fontSize: 16,
               color: Colors.black,
             ),
             decoration: InputDecoration(
               hintText: 'Search for items...',
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(
                   color: AppColors.body900.withValues(alpha: .9),
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(
                   color: AppColors.body900.withValues(alpha: .9),
                   width: 2.0,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(
                   color: AppColors.body900.withValues(alpha: .9),
                 ),
               ),
               hintStyle: TextStyle(
                 fontFamily: 'SpecialGothicCondensedOne',
-                fontSize: 16.r,
+                fontSize: 16,
                 color: AppColors.body900.withValues(alpha: .8),
               ),
             ),
@@ -265,7 +264,7 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
                 'Clear',
                 style: TextStyle(
                   fontFamily: 'SpecialGothicCondensedOne',
-                  fontSize: 18.r,
+                  fontSize: 18,
                   color: AppColors.body900.withValues(alpha: .8),
                 ),
               ),
@@ -278,7 +277,7 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
                 'Close',
                 style: TextStyle(
                   fontFamily: 'SpecialGothicCondensedOne',
-                  fontSize: 18.r,
+                  fontSize: 18,
                   color: AppColors.body900.withValues(alpha: .8),
                 ),
               ),

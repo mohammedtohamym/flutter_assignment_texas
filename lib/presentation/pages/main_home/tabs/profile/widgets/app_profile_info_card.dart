@@ -3,7 +3,6 @@ import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/core/resources/app_fonts.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/cubit/profile_states.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppProfileInfoCard extends StatelessWidget {
@@ -21,22 +20,22 @@ class AppProfileInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 190.h,
+  height: 190,
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 18.h),
+  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
       padding: EdgeInsets.only(
-        left: 16.w,
-        right: 10.w,
-        top: 16.h,
-        bottom: 16.h,
+  left: 16,
+  right: 10,
+  top: 16,
+  bottom: 16,
       ),
       decoration: BoxDecoration(
         color: AppColors.body25,
-        borderRadius: BorderRadius.circular(4.r),
+  borderRadius: BorderRadius.circular(4),
         boxShadow: [
           BoxShadow(
             color: AppColors.body900.withValues(alpha: 0.16),
-            blurRadius: 4.r,
+            blurRadius: 4,
             offset: Offset(0, 2),
           ),
         ],
@@ -49,7 +48,7 @@ class AppProfileInfoCard extends StatelessWidget {
               Row(
                 children: [
                   CircleAvatar(
-                    radius: 32.r,
+                    radius: 32,
                     backgroundColor: AppColors.body300,
                     child: profileData.imagePath != null
                         ? Image.network(profileData.imagePath!)
@@ -59,11 +58,11 @@ class AppProfileInfoCard extends StatelessWidget {
                               color: AppColors.body900,
                               fontFamily:
                                   AppFonts.getSpecialGothicCondensedOne(),
-                              fontSize: 24.r,
+                              fontSize: 24,
                             ),
                           ),
                   ),
-                  SizedBox(width: 12.w),
+                  SizedBox(width: 12),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -72,53 +71,53 @@ class AppProfileInfoCard extends StatelessWidget {
                         style: TextStyle(
                           color: AppColors.body900,
                           fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                          fontSize: 20.r,
+                          fontSize: 20,
                         ),
                       ),
-                      SizedBox(height: 4.h),
+                      SizedBox(height: 4),
                       Row(
                         children: [
                           SvgPicture.asset(
                             profileData.countryIcon,
-                            height: 33.r,
+                            height: 33,
                           ),
-                          SizedBox(width: 4.w),
+                          SizedBox(width: 4),
                           Text(
                             profileData.phone,
                             style: TextStyle(
                               color: AppColors.body900,
                               fontFamily:
                                   AppFonts.getSpecialGothicCondensedOne(),
-                              fontSize: 20.r,
+                              fontSize: 20,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 4.h),
+                      SizedBox(height: 4),
                       Text(
                         profileData.email,
                         style: TextStyle(
                           color: AppColors.body700,
                           fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                          fontSize: 18.r,
+                          fontSize: 18,
                         ),
                       ),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 12.h),
+              SizedBox(height: 12),
               Center(
                 child: ElevatedButton(
                   onPressed: onUpdateProfile,
                   style: ElevatedButton.styleFrom(
-                    elevation: 0.r,
-                    minimumSize: Size(320.w, 40.h),
+                    elevation: 0,
+                    minimumSize: Size(320, 40),
                     padding: EdgeInsets.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
-                        4.r,
+                        4,
                       ), // Change border radius here
                     ),
                     backgroundColor: AppColors.primaryOrange,
@@ -126,7 +125,7 @@ class AppProfileInfoCard extends StatelessWidget {
                   child: Text(
                     'Update Profile',
                     style: TextStyle(
-                      fontSize: 20.r,
+                      fontSize: 20,
                       fontFamily: AppFonts.getSpecialGothicCondensedOne(),
                       color: AppColors.body900,
                     ),
@@ -144,25 +143,25 @@ class AppProfileInfoCard extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       backgroundColor: AppColors.secondaryRed,
-                      radius: 12.r,
+                      radius: 12,
                       child: SvgPicture.asset(
                         AppAssets.logoutIcon,
                         colorFilter: ColorFilter.mode(
                           AppColors.body25,
                           BlendMode.srcIn,
                         ),
-                        height: 16.h,
+                        height: 16,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(width: 4.w),
+                SizedBox(width: 4),
                 Text(
                   'Logout',
                   style: TextStyle(
                     color: AppColors.body700,
                     fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                    fontSize: 18.r,
+                    fontSize: 18,
                   ),
                 ),
               ],

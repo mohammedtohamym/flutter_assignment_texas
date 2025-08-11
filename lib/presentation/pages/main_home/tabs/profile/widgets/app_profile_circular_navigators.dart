@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AppProfileCircularNavigators extends StatelessWidget {
@@ -23,23 +22,23 @@ class AppProfileCircularNavigators extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor: AppColors.primaryOrange.withValues(alpha: 0.07),
-            radius: 40.r,
+            radius: 40,
             child: imagePath != null
                 ? SvgPicture.asset(
                     imagePath!,
                     fit: BoxFit.cover,
-                    width: 52.r,
-                    height: 52.r,
+                    width: 52,
+                    height: 52,
                   )
-                : Icon(Icons.favorite, color: AppColors.body25, size: 16.r),
+                : Icon(Icons.favorite, color: AppColors.body25, size: 16),
           ),
-          SizedBox(height: 4.h),
+          SizedBox(height: 4),
           Text(
             title,
             style: TextStyle(
               color: AppColors.body900,
               fontFamily: 'SpecialGothicCondensedOne',
-              fontSize: 20.r,
+              fontSize: 20,
             ),
           ),
         ],

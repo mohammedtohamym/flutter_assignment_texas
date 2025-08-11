@@ -9,7 +9,6 @@ import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profi
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/profile/widgets/app_profile_tile.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileScreen extends StatelessWidget {
   final MainHomeCubit mainHomeCubit;
@@ -62,31 +61,31 @@ class ProfileScreen extends StatelessWidget {
               color: AppColors.body25,
               child: Column(
                 children: [
-                  SizedBox(height: 16.h),
+                      SizedBox(height: 16),
                   SafeArea(
                     child: Row(
                       children: [
-                        SizedBox(width: 16.w),
+                            SizedBox(width: 16),
                         CircleAvatar(
-                          radius: 20.r,
+                              radius: 20,
                           backgroundColor: AppColors.body100,
                           child: IconButton(
                             icon: Icon(
                               Icons.arrow_back_ios_new_rounded,
                               color: AppColors.body900,
-                              size: 24.r,
+                                  size: 24,
                             ),
                             onPressed: () {
                               mainHomeCubit.navigateBack();
                             },
                           ),
                         ),
-                        SizedBox(width: 16.w),
+                            SizedBox(width: 16),
                         Text(
                           'PROFILE',
                           style: TextStyle(
                             color: AppColors.body900,
-                            fontSize: 22.r,
+                                fontSize: 22,
                             fontFamily: 'BERNIER',
                           ),
                         ),
@@ -112,43 +111,43 @@ class ProfileScreen extends StatelessWidget {
             color: AppColors.body25,
             child: Column(
               children: [
-                SizedBox(height: 16.h),
+                    SizedBox(height: 16),
                 SafeArea(
                   child: Row(
                     children: [
-                      SizedBox(width: 16.w),
+                          SizedBox(width: 16),
                       CircleAvatar(
-                        radius: 20.r,
+                            radius: 20,
                         backgroundColor: AppColors.body100,
                         child: IconButton(
                           icon: Icon(
                             Icons.arrow_back_ios_new_rounded,
                             color: AppColors.body900,
-                            size: 24.r,
+                                size: 24,
                           ),
                           onPressed: () {
                             mainHomeCubit.navigateBack();
                           },
                         ),
                       ),
-                      SizedBox(width: 16.w),
+                          SizedBox(width: 16),
                       Text(
                         'PROFILE',
                         style: TextStyle(
                           color: AppColors.body900,
-                          fontSize: 22.r,
+                              fontSize: 22,
                           fontFamily: 'BERNIER',
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 16.h),
+                    SizedBox(height: 16),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Container(height: 6.h, color: AppColors.body100),
+                            Container(height: 6, color: AppColors.body100),
                         Stack(
                           children: [
                             AppProfileInfoCard(
@@ -171,7 +170,7 @@ class ProfileScreen extends StatelessWidget {
                               ),
                           ],
                         ),
-                        SizedBox(height: 16.h),
+                            SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: circularNavigators
@@ -184,9 +183,9 @@ class ProfileScreen extends StatelessWidget {
                               )
                               .toList(),
                         ),
-                        SizedBox(height: 16.h),
-                        Container(height: 12.h, color: AppColors.body200),
-                        SizedBox(height: 16.h),
+                            SizedBox(height: 16),
+                            Container(height: 12, color: AppColors.body200),
+                            SizedBox(height: 16),
                         ...state.menuItems.map((item) {
                           if (item.text == 'Notifications' &&
                               item.count != null) {
@@ -209,8 +208,8 @@ class ProfileScreen extends StatelessWidget {
                             onTap: item.onTap,
                           );
                         }).toList(),
-                        Container(height: 12.h, color: AppColors.body100),
-                        SizedBox(height: 16.h),
+                            Container(height: 12, color: AppColors.body100),
+                            SizedBox(height: 16),
                         ...state.switchItems
                             .map(
                               (item) => AppProfileSwitch(

@@ -3,7 +3,6 @@ import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/tabs/menu/cubit/menu_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppMenuCategoryBar extends StatelessWidget {
   const AppMenuCategoryBar({super.key});
@@ -11,10 +10,10 @@ class AppMenuCategoryBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40.h,
+  height: 40,
       child: Row(
         children: [
-          SizedBox(width: 16.w),
+          SizedBox(width: 16),
           Expanded(
             child: BlocBuilder<MenuCubit, MenuState>(
               builder: (context, state) {
@@ -34,18 +33,18 @@ class AppMenuCategoryBar extends StatelessWidget {
                       },
                       child: Container(
                         margin: EdgeInsets.only(
-                          top: 4.h,
-                          bottom: 4.h,
-                          right: 16.w,
+                          top: 4,
+                          bottom: 4,
+                          right: 16,
                         ),
                         decoration: BoxDecoration(
                           color: isSelected
                               ? AppColors.primaryOrange
                               : Colors.transparent,
-                          borderRadius: BorderRadius.circular(24.r),
+                          borderRadius: BorderRadius.circular(24),
                           border: Border.all(
                             color: AppColors.primaryOrange,
-                            width: 1.w,
+                            width: 1,
                           ),
                         ),
                         child: Row(
@@ -53,7 +52,7 @@ class AppMenuCategoryBar extends StatelessWidget {
                             Stack(
                               children: [
                                 CircleAvatar(
-                                  radius: 16.r,
+                                  radius: 16,
                                   backgroundColor: Colors.white,
                                   child: _getCategoryIcon(category),
                                 ),
@@ -63,22 +62,22 @@ class AppMenuCategoryBar extends StatelessWidget {
                                     right: 0,
                                     top: 0,
                                     child: Container(
-                                      padding: EdgeInsets.all(2.r),
+                                        padding: EdgeInsets.all(2),
                                       decoration: BoxDecoration(
                                         color: AppColors.secondaryRed,
                                         borderRadius: BorderRadius.circular(
-                                          8.r,
+                                          8,
                                         ),
                                       ),
                                       constraints: BoxConstraints(
-                                        minWidth: 16.r,
-                                        minHeight: 16.r,
+                                        minWidth: 16,
+                                        minHeight: 16,
                                       ),
                                       child: Text(
                                         '${state.favoriteItems.length}',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 10.r,
+                                          fontSize: 10,
                                           fontWeight: FontWeight.bold,
                                         ),
                                         textAlign: TextAlign.center,
@@ -89,15 +88,15 @@ class AppMenuCategoryBar extends StatelessWidget {
                             ),
                             Container(
                               padding: EdgeInsets.only(
-                                top: 2.h,
-                                bottom: 2.h,
-                                right: 16.w,
-                                left: 8.w,
+                                top: 2,
+                                bottom: 2,
+                                right: 16,
+                                left: 8,
                               ),
                               child: Text(
                                 category,
                                 style: TextStyle(
-                                  fontSize: 18.r,
+                                  fontSize: 18,
                                   fontFamily: 'SpecialGothicCondensedOne',
                                   color: isSelected
                                       ? Colors.white
@@ -148,6 +147,6 @@ class AppMenuCategoryBar extends StatelessWidget {
         iconData = Icons.restaurant;
     }
 
-    return Icon(iconData, size: 16.r, color: iconColor);
+  return Icon(iconData, size: 16, color: iconColor);
   }
 }

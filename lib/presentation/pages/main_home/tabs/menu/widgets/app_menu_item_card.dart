@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/domain/entities/restaurant_items_response_entity.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppMenuItemCard extends StatelessWidget {
@@ -32,46 +31,46 @@ class AppMenuItemCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(8.r),
+  borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
             color: isFavorite
                 ? AppColors.secondaryRed.withValues(alpha: 0.1)
                 : AppColors.body300.withValues(alpha: 1),
-            blurRadius: 6.r,
-            spreadRadius: isFavorite ? 1.r : 0.r,
+            blurRadius: 6,
+            spreadRadius: isFavorite ? 1 : 0,
           ),
         ],
       ),
-      height: 190.h,
-      width: 428.w,
-      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+  height: 190,
+  width: 428,
+  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         children: [
           GestureDetector(
             onTap: () {},
             child: Container(
-              width: 134.w,
+              width: 134,
               decoration: BoxDecoration(
                 color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8.r),
+                borderRadius: BorderRadius.circular(8),
               ),
               child: Stack(
                 children: [
                   item.imageUrl != null
                       ? ClipRRect(
-                          borderRadius: BorderRadius.circular(8.r),
+                          borderRadius: BorderRadius.circular(8),
                           child: Image.network(
                             item.imageUrl!,
                             fit: BoxFit.cover,
-                            width: 134.w,
+                            width: 134,
                             height: double.infinity,
                             errorBuilder: (context, error, stackTrace) {
                               return Container(
                                 color: Colors.grey[200],
                                 child: Icon(
                                   Icons.fastfood,
-                                  size: 48.r,
+                                  size: 48,
                                   color: Colors.grey[400],
                                 ),
                               );
@@ -82,30 +81,30 @@ class AppMenuItemCard extends StatelessWidget {
                           color: Colors.grey[200],
                           child: Icon(
                             Icons.fastfood,
-                            size: 48.r,
+                            size: 48,
                             color: Colors.grey[400],
                           ),
                         ),
                   if (isFavorite)
                     Positioned(
-                      top: 8.h,
-                      right: 8.w,
+                      top: 8,
+                      right: 8,
                       child: Container(
-                        padding: EdgeInsets.all(4.r),
+                        padding: EdgeInsets.all(4),
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(12.r),
+                          borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withValues(alpha: 0.1),
-                              blurRadius: 4.r,
+                              blurRadius: 4,
                             ),
                           ],
                         ),
                         child: Icon(
                           Icons.favorite,
                           color: AppColors.secondaryRed,
-                          size: 12.r,
+                          size: 12,
                         ),
                       ),
                     ),
@@ -113,24 +112,24 @@ class AppMenuItemCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 8.w),
+          SizedBox(width: 8),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 4.h),
+                SizedBox(height: 4),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
                       child: Transform.translate(
-                        offset: Offset(0, -4.h),
+                        offset: Offset(0, -4),
                         child: Text(
                           item.itemName ?? 'Unknown Item',
                           style: TextStyle(
-                            fontSize: 20.r,
+                            fontSize: 20,
                             fontFamily: 'SpecialGothicCondensedOne',
                           ),
                           overflow: TextOverflow.ellipsis,
@@ -152,7 +151,7 @@ class AppMenuItemCard extends StatelessWidget {
                           color: isFavorite
                               ? AppColors.secondaryRed
                               : Colors.grey,
-                          size: 24.r,
+                          size: 24,
                         ),
                       ),
                       onPressed: () {
@@ -164,11 +163,11 @@ class AppMenuItemCard extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 50.h,
+                  height: 50,
                   child: Text(
                     item.itemDescription ?? 'No description available',
                     style: TextStyle(
-                      fontSize: 16.r,
+                      fontSize: 16,
                       fontFamily: 'SpecialGothicCondensedOne',
                       color: AppColors.body700,
                     ),
@@ -177,14 +176,14 @@ class AppMenuItemCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                SizedBox(height: 8.h),
+                SizedBox(height: 8),
                 AppMenuButton(
                   onPressed: () {
                     // Handle customize action - could navigate to customization page
                   },
                   buttonType: MenuButtonType.customize,
                 ),
-                SizedBox(height: 4.h),
+                SizedBox(height: 4),
                 Row(
                   children: [
                     Expanded(
@@ -194,18 +193,18 @@ class AppMenuItemCard extends StatelessWidget {
                           Text(
                             '\$${item.itemPrice?.toStringAsFixed(0) ?? '0'}',
                             style: TextStyle(
-                              fontSize: 20.r,
+                              fontSize: 20,
                               fontFamily: 'SpecialGothicCondensedOne',
                               color: Colors.black,
                             ),
                           ),
-                          SizedBox(width: 16.w),
+                          SizedBox(width: 16),
                           if ((item.itemPrice ?? 0) >
                               0) // Show discounted price if there's a price
                             Text(
                               '\$${((item.itemPrice ?? 0) * 1.3).toStringAsFixed(0)}',
                               style: TextStyle(
-                                fontSize: 18.r,
+                                fontSize: 18,
                                 fontFamily: 'SpecialGothicCondensedOne',
                                 color: AppColors.body700,
                                 decoration: TextDecoration.lineThrough,
@@ -216,7 +215,7 @@ class AppMenuItemCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(width: 8.w),
+                    SizedBox(width: 8),
                     isInCart
                         ? Expanded(
                             child: Row(
@@ -226,19 +225,19 @@ class AppMenuItemCard extends StatelessWidget {
                                   buttonType: MenuButtonType.remove,
                                   isMoreThanOne: isMoreThanOne,
                                 ),
-                                SizedBox(width: 16.w),
+                                SizedBox(width: 16),
                                 Container(
-                                  width: 15.w,
+                                  width: 15,
                                   child: Text(
                                     '$cartQuantity',
                                     style: TextStyle(
-                                      fontSize: 20.r,
+                                      fontSize: 20,
                                       fontFamily: 'SpecialGothicCondensedOne',
                                       color: Colors.black,
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 8.w),
+                                SizedBox(width: 8),
                                 AppMenuButton(
                                   onPressed: onAddToCart,
                                   buttonType: MenuButtonType.addSmall,
@@ -257,7 +256,7 @@ class AppMenuItemCard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 8.w),
+          SizedBox(width: 8),
         ],
       ),
     );
@@ -294,12 +293,12 @@ class AppMenuButton extends StatelessWidget {
         return ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            elevation: 0.r,
-            minimumSize: Size(140.w, 40.h),
+            elevation: 0,
+            minimumSize: Size(140, 40),
             padding: EdgeInsets.zero,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4.r),
+              borderRadius: BorderRadius.circular(4),
             ),
             backgroundColor: AppColors.primaryOrange,
           ),
@@ -312,14 +311,14 @@ class AppMenuButton extends StatelessWidget {
                   AppColors.body900,
                   BlendMode.srcIn,
                 ),
-                width: 12.w,
-                height: 12.h,
+                width: 12,
+                height: 12,
               ),
-              SizedBox(width: 4.w),
+              SizedBox(width: 4),
               Text(
                 'Add to Cart',
                 style: TextStyle(
-                  fontSize: 20.r,
+                  fontSize: 20,
                   fontFamily: 'SpecialGothicCondensedOne',
                   color: AppColors.body900,
                 ),
@@ -332,24 +331,24 @@ class AppMenuButton extends StatelessWidget {
       case MenuButtonType.remove:
         return Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6.r),
+            borderRadius: BorderRadius.circular(6),
             boxShadow: [
               BoxShadow(
                 color: AppColors.body700.withValues(alpha: 0.2),
-                blurRadius: 4.r,
-                spreadRadius: 1.r,
+                blurRadius: 4,
+                spreadRadius: 1,
               ),
             ],
           ),
           child: ElevatedButton(
             onPressed: onPressed,
             style: ElevatedButton.styleFrom(
-              elevation: 4.r,
-              minimumSize: Size(40.w, 40.h),
+              elevation: 4,
+              minimumSize: Size(40, 40),
               padding: EdgeInsets.zero,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6.r),
+                borderRadius: BorderRadius.circular(6),
               ),
               backgroundColor: _getButtonColor(),
             ),
@@ -361,12 +360,12 @@ class AppMenuButton extends StatelessWidget {
         return ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            elevation: 0.r,
-            minimumSize: Size(4.w, 20.h),
+            elevation: 0,
+            minimumSize: Size(4, 20),
             padding: EdgeInsets.zero,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4.r),
+              borderRadius: BorderRadius.circular(4),
             ),
             backgroundColor: AppColors.transparent,
           ),
@@ -378,17 +377,17 @@ class AppMenuButton extends StatelessWidget {
               Text(
                 'Customize',
                 style: TextStyle(
-                  fontSize: 18.r,
+                  fontSize: 18,
                   fontFamily: 'SpecialGothicCondensedOne',
                   color: AppColors.secondaryRed,
                 ),
               ),
-              SizedBox(width: 4.w),
+              SizedBox(width: 4),
               Transform.translate(
-                offset: Offset(0, 2.h),
+                offset: Offset(0, 2),
                 child: Icon(
                   Icons.play_circle_filled,
-                  size: 20.r,
+                  size: 20,
                   color: AppColors.secondaryRed,
                 ),
               ),
@@ -415,15 +414,15 @@ class AppMenuButton extends StatelessWidget {
         return SvgPicture.asset(
           AppAssets.addIcon,
           colorFilter: ColorFilter.mode(AppColors.body900, BlendMode.srcIn),
-          width: 16.w,
-          height: 16.h,
+          width: 16,
+          height: 16,
         );
       case MenuButtonType.remove:
         return (isMoreThanOne ?? false)
             ? Text(
                 '-',
                 style: TextStyle(
-                  fontSize: 24.r,
+                  fontSize: 24,
                   fontFamily: 'SpecialGothicCondensedOne',
                   color: AppColors.body900,
                 ),
@@ -434,8 +433,8 @@ class AppMenuButton extends StatelessWidget {
                   AppColors.body900,
                   BlendMode.srcIn,
                 ),
-                width: 12.r,
-                height: 12.r,
+                width: 12,
+                height: 12,
               );
       default:
         return Container();

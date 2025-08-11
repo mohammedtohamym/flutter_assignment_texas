@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_assets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/presentation/pages/main_home/cubit/main_home_cubit.dart';
@@ -24,12 +23,12 @@ class AppBottomNavigationBar extends StatelessWidget {
             return BottomNavigationBar(
               selectedLabelStyle: TextStyle(
                 fontFamily: 'SpecialGothicCondensedOne',
-                fontSize: 14.sp,
+                fontSize: 14,
                 color: AppColors.body900,
               ),
               unselectedLabelStyle: TextStyle(
                 fontFamily: 'SpecialGothicCondensedOne',
-                fontSize: 12.sp,
+                fontSize: 12,
                 color: AppColors.body900,
               ),
               type: BottomNavigationBarType.fixed,
@@ -42,8 +41,8 @@ class AppBottomNavigationBar extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     'assets/icons/home_icon.svg',
-                    width: 24.w,
-                    height: 24.h,
+                    width: 24,
+                    height: 24,
                     colorFilter: ColorFilter.mode(
                       currentIndex == 0
                           ? AppColors.primaryOrange
@@ -56,8 +55,8 @@ class AppBottomNavigationBar extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     'assets/icons/menu_icon.svg',
-                    width: 24.w,
-                    height: 24.h,
+                    width: 24,
+                    height: 24,
                     colorFilter: ColorFilter.mode(
                       currentIndex == 1
                           ? AppColors.primaryOrange
@@ -69,26 +68,26 @@ class AppBottomNavigationBar extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: Transform.translate(
-                    offset: Offset(0, 8.h),
+                    offset: Offset(0, 8),
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
                         CircleAvatar(
                           backgroundColor: AppColors.primaryOrange,
-                          radius: 32.r,
+                          radius: 32,
                         ),
                         SvgPicture.asset(
                           AppAssets.texasLogoIcon,
-                          width: 40.w,
-                          height: 40.h,
+                          width: 40,
+                          height: 40,
                         ),
                         // Cart badge
                         if (cartState.hasItems)
                           Positioned(
-                            top: -6.h,
-                            left: -6.w,
+                            top: -6,
+                            left: -6,
                             child: Container(
-                              padding: EdgeInsets.all(6.r),
+                              padding: EdgeInsets.all(6),
                               decoration: BoxDecoration(
                                 color: AppColors.body25,
                                 shape: BoxShape.circle,
@@ -97,7 +96,7 @@ class AppBottomNavigationBar extends StatelessWidget {
                                 cartState.totalItems.toString(),
                                 style: TextStyle(
                                   color: AppColors.body900,
-                                  fontSize: 18.sp,
+                                  fontSize: 18,
                                   fontFamily: 'SpecialGothicCondensedOne',
                                 ),
                               ),
@@ -111,8 +110,8 @@ class AppBottomNavigationBar extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     AppAssets.profileIcon,
-                    width: 24.w,
-                    height: 24.h,
+                    width: 24,
+                    height: 24,
                     colorFilter: ColorFilter.mode(
                       currentIndex == 3
                           ? AppColors.primaryOrange
@@ -124,11 +123,11 @@ class AppBottomNavigationBar extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: Padding(
-                    padding: EdgeInsets.only(bottom: 4.0.h),
+                    padding: EdgeInsets.only(bottom: 4.0),
                     child: SvgPicture.asset(
                       AppAssets.moreIcon,
-                      width: 8.w,
-                      height: 8.h,
+                      width: 8,
+                      height: 8,
                       colorFilter: ColorFilter.mode(
                         currentIndex == 4
                             ? AppColors.primaryOrange

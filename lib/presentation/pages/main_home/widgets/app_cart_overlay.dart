@@ -4,7 +4,6 @@ import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_cubit.dart';
 import 'package:flutter_assignment_texas/presentation/cubits/cart/cart_states.dart';
 import 'package:flutter_assignment_texas/domain/entities/restaurant_items_response_entity.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,34 +25,34 @@ class AppCartOverlay extends StatelessWidget {
         final totalValue = cartCubit.getTotalCartValue(allItems);
 
         return Transform.translate(
-          offset: Offset(0, -15.h), // Move it up 5.h more from the center
+          offset: Offset(0, -15), // Adjusted static offset
           child: GestureDetector(
             onTap: () {
               // Navigate to cart tab
               // You can add navigation logic here
             },
             child: Container(
-              width: 155.w,
-              height: 37.h,
+              width: 155,
+              height: 37,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
                   // Rounded rectangle background
                   CustomPaint(
-                    size: Size(152.w, 50.h),
+                    size: Size(152, 50),
                     painter: RoundedRectangleSnackBarPainter(
                       fillColor: AppColors.secondaryRed,
                     ),
                   ),
                   // Content
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w),
+                    padding: EdgeInsets.symmetric(horizontal: 8),
                     child: Stack(
                       children: [
                         SvgPicture.asset(
                           AppAssets.cartBagIcon,
-                          width: 24.w,
-                          height: 24.h,
+                          width: 24,
+                          height: 24,
                           colorFilter: const ColorFilter.mode(
                             Colors.white,
                             BlendMode.srcIn,
@@ -66,7 +65,7 @@ class AppCartOverlay extends StatelessWidget {
                               'view cart',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18.sp,
+                                fontSize: 18,
                                 fontFamily: 'SpecialGothicCondensedOne',
                               ),
                               textAlign: TextAlign.center,
@@ -76,12 +75,12 @@ class AppCartOverlay extends StatelessWidget {
                               '\$ ${totalValue.toStringAsFixed(0)}',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18.sp,
+                                fontSize: 18,
                                 fontFamily: 'SpecialGothicCondensedOne',
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(width: 8.w),
+                            SizedBox(width: 8),
                           ],
                         ),
                       ],
@@ -116,12 +115,12 @@ class RoundedRectangleSnackBarPainter extends CustomPainter {
     // Create rounded rectangle for snackbar
     final rect = RRect.fromRectAndRadius(
       Rect.fromCenter(center: center, width: rectWidth, height: rectHeight),
-      Radius.circular(8.r), // Slightly rounded corners
+  Radius.circular(8), // Slightly rounded corners
     );
 
     // Create small triangle pointing down
     final trianglePath = Path();
-    final triangleSize = 8.0.r;
+  final triangleSize = 8.0;
     final triangleTop = center.dy + (rectHeight / 2);
 
     trianglePath.moveTo(center.dx - triangleSize, triangleTop); // Left point

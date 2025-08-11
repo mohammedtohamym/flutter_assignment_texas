@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppProfileNotificationTile extends StatelessWidget {
@@ -33,7 +32,7 @@ class AppProfileNotificationTile extends StatelessWidget {
           children: [
             Row(
               children: [
-                SizedBox(width: 24.w),
+                SizedBox(width: 24),
                 Stack(
                   children: [
                     SvgPicture.asset(
@@ -42,32 +41,32 @@ class AppProfileNotificationTile extends StatelessWidget {
                         textColor ?? AppColors.body900,
                         BlendMode.srcIn,
                       ),
-                      height: 16.h,
+                      height: 16,
                     ),
                     if (count > 0)
                       Transform.translate(
-                        offset: Offset(8.w, -4.h),
+                        offset: Offset(8, -4),
                         child: CircleAvatar(
                           backgroundColor: AppColors.primaryOrange,
-                          radius: 6.r,
+                          radius: 6,
                           child: Text(
                             '$count',
                             style: TextStyle(
                               color: AppColors.body25,
-                              fontSize: 8.h,
+                              fontSize: 8,
                             ),
                           ),
                         ),
                       ),
                   ],
                 ),
-                SizedBox(width: 8.w),
+                SizedBox(width: 8),
                 Text(
                   text,
                   style: TextStyle(
                     color: textColor ?? AppColors.body900,
                     fontFamily: 'SpecialGothicCondensedOne',
-                    fontSize: 18.r,
+                    fontSize: 18,
                   ),
                 ),
                 Spacer(),
@@ -75,22 +74,22 @@ class AppProfileNotificationTile extends StatelessWidget {
                     ? Icon(
                         Icons.arrow_forward_ios,
                         color: AppColors.body900,
-                        size: 12.r,
+                        size: 12,
                       )
                     : SizedBox.shrink(),
-                SizedBox(width: 24.w),
+                SizedBox(width: 24),
               ],
             ),
-            SizedBox(height: 8.h),
+            SizedBox(height: 8),
             Divider(
               color: hasDivider
-                  ? AppColors.body900.withValues(alpha: 0.05.r)
+                  ? AppColors.body900.withValues(alpha: 0.05)
                   : Colors.transparent,
-              thickness: 1.r,
-              indent: 24.w,
-              endIndent: 24.w,
+              thickness: 1,
+              indent: 24,
+              endIndent: 24,
             ),
-            SizedBox(height: hasDivider ? 8.h : 0),
+            SizedBox(height: hasDivider ? 8 : 0),
           ],
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment_texas/core/resources/app_colors.dart';
 import 'package:flutter_assignment_texas/core/resources/app_fonts.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppProfileSwitch extends StatelessWidget {
@@ -28,9 +27,9 @@ class AppProfileSwitch extends StatelessWidget {
         children: [
           Row(
             children: [
-              SizedBox(width: 24.w),
+              SizedBox(width: 24),
               Container(
-                height: 56.h,
+                height: 56,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -40,12 +39,12 @@ class AppProfileSwitch extends StatelessWidget {
                         AppColors.body900,
                         BlendMode.srcIn,
                       ),
-                      height: 18.h,
+                      height: 18,
                     ),
                   ],
                 ),
               ),
-              SizedBox(width: 8.w),
+              SizedBox(width: 8),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +54,7 @@ class AppProfileSwitch extends StatelessWidget {
                       style: TextStyle(
                         color: AppColors.body900,
                         fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                        fontSize: 20.r,
+                        fontSize: 20,
                       ),
                     ),
                     Text(
@@ -66,13 +65,13 @@ class AppProfileSwitch extends StatelessWidget {
                       style: TextStyle(
                         color: AppColors.body700,
                         fontFamily: AppFonts.getSpecialGothicCondensedOne(),
-                        fontSize: 16.r,
+                        fontSize: 16,
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(width: 16.w),
+              SizedBox(width: 16),
               Switch(
                 value: !isSwitched,
                 onChanged: (value) {
@@ -92,28 +91,28 @@ class AppProfileSwitch extends StatelessWidget {
                     return Icon(
                       Icons.check,
                       color: AppColors.body900,
-                      size: 12.r,
+                      size: 12,
                     );
                   }
 
                   return Icon(
                     Icons.check,
                     color: AppColors.body900,
-                    size: 12.r,
+                    size: 12,
                   );
                 }),
               ),
-              SizedBox(width: 24.w),
+              SizedBox(width: 24),
             ],
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 8),
           Divider(
-            color: AppColors.body900.withValues(alpha: 0.05.r),
-            thickness: 1.r,
-            indent: 24.w,
-            endIndent: 24.w,
+            color: AppColors.body900.withValues(alpha: 0.05),
+            thickness: 1,
+            indent: 24,
+            endIndent: 24,
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 8),
         ],
       ),
     );
