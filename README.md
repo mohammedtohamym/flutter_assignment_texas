@@ -51,8 +51,8 @@ A Flutter-based mobile application prototype for a restaurant ordering experienc
 
 ## Screenshots
 
-<img width="373" height="828" alt="Image" src="https://github.com/user-attachments/assets/7b2e5e95-a739-448b-a684-47e62cf4059f" />
-<img width="374" height="830" alt="Image" src="https://github.com/user-attachments/assets/571ec157-e2b9-4140-9633-cbf0a6fdf55b" />
+<img width="371" height="825" alt="Image" src="https://github.com/user-attachments/assets/df7e38e0-1ef5-436a-ac7b-310fa2de3ac3" />
+<img width="371" height="825" alt="Image" src="https://github.com/user-attachments/assets/6b620ceb-ddff-41d1-bb35-b7c372e2d7b8" />
 
 ### App Flow Screenshots
 
