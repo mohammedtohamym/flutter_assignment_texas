@@ -85,20 +85,20 @@ class AppBottomNavigationBar extends StatelessWidget {
                         // Cart badge
                         if (cartState.hasItems)
                           Positioned(
-                            top: 0,
-                            right: 0,
+                            top: -6.h,
+                            left: -6.w,
                             child: Container(
                               padding: EdgeInsets.all(6.r),
                               decoration: BoxDecoration(
-                                color: AppColors.secondaryRed,
+                                color: AppColors.body25,
                                 shape: BoxShape.circle,
                               ),
                               child: Text(
                                 cartState.totalItems.toString(),
                                 style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.body900,
+                                  fontSize: 18.sp,
+                                  fontFamily: 'SpecialGothicCondensedOne',
                                 ),
                               ),
                             ),
