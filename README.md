@@ -1,10 +1,11 @@
 # Texas Restaurant Mobile App
 
-A modern Flutter-based mobile application for a restaurant ordering system with intuitive UI/UX, featuring menu browsing, cart management, user profiles, and favorites functionality.
+A Flutter-based mobile application prototype for a restaurant ordering experience (technical assessment). Current focus: menu browsing, category & search filtering, cart handling, in‑memory favorites, and a mock profile screen.
 
 ![Flutter](https://img.shields.io/badge/Flutter-3.8.1-blue.svg)
 ![Dart](https://img.shields.io/badge/Dart-3.8.1-blue.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+<!-- License badge removed until a license file is added -->
 
 ## Table of Contents
 
@@ -20,23 +21,33 @@ A modern Flutter-based mobile application for a restaurant ordering system with 
 
 ## Features
 
-### Core Features
+### Implemented (Current State)
 
-- **🏠 Home Dashboard** - Clean and intuitive main navigation
-- **📱 Menu Browsing** - Category-wise food item display with search functionality
-- **🛒 Shopping Cart** - Add/remove items with quantity management
-- **❤️ Favorites System** - Save and manage favorite menu items
-- **👤 User Profile** - Complete profile management with settings
-- **🔔 Notifications** - In-app notification system
+- **Menu Browsing** – Category extraction + search filtering using `MenuCubit`.
+- **Shopping Cart (In‑Memory)** – Add / remove / quantity with transient overlay feedback via `CartCubit` (singleton in DI).
+- **Favorites (In‑Memory)** – Toggled & filtered within `MenuCubit`; not persisted between sessions.
+- **Profile Screen (Mock Data)** – Static (simulated) user info, menu items, switches & a notification badge count.
+- **Basic Connectivity Check** – Single connectivity status check before fetching restaurant items.
+- **Splash Screen Assets** – Configured via `flutter_native_splash` (generation command available).
 
-### Technical Features
+### NOT Yet Implemented / Placeholder
 
-- **Clean Architecture** - Organized codebase following SOLID principles
-- **BLoC State Management** - Reactive state management with flutter_bloc
-- **Responsive Design** - Adaptive UI using flutter_screenutil
-- **Custom Fonts & Icons** - Brand-consistent typography and iconography
-- **Dependency Injection** - Using get_it for better code organization
-- **Network Connectivity** - Real-time connectivity status monitoring
+- **Persistent Storage** (favorites, cart, profile) – All state resets on app restart.
+- **Real-time Connectivity Monitoring** – No subscription to connectivity changes; only on-demand check.
+- **Push / Local Notifications** – Notification badge is mock; no notification service integration.
+- **Authentication / Authorization** – None.
+- **Payment / Checkout Flow** – None.
+- **Offline Caching** – None.
+
+### Technical Characteristics
+
+- **Layered Structure (Clean Architecture Inspired)** – `data / domain / presentation / core` separation.
+- **State Management** – `flutter_bloc` cubits per feature + DI scoping (factory vs singleton).
+- **Dependency Injection** – `get_it` with explicit registration in `dependency_injection.dart`.
+- **Responsive Sizing** – `flutter_screenutil` wrapping `MaterialApp`.
+- **Functional Constructs** – `dartz` Either for data source and repository error handling.
+- **HTTP Client** – `dio` basic usage (no interceptors yet).
+- **Custom Assets** – SVG icons & custom fonts (BERNIER, SpecialGothicCondensedOne).
 
 ## Screenshots
 
@@ -58,34 +69,41 @@ _Screenshots showing the complete user journey from browsing to ordering_
 
 ## Project Structure
 
-The project follows **Clean Architecture** principles with a feature-based organization:
+Current (reflects repository, simplified):
 
 ```
 lib/
-├── app/                          # App-level configuration
-├── core/                         # Shared utilities and resources
-│   ├── di/                       # Dependency injection setup
-│   └── resources/                # Colors, fonts, assets constants
-├── data/                         # Data layer (repositories, models)
-├── domain/                       # Business logic (entities, use cases)
-├── presentation/                 # UI layer
-│   ├── cubits/                   # Global state management
-│   ├── pages/                    # Screen-specific components
-│   │   └── main_home/            # Main navigation container
-│   │       ├── tabs/             # Bottom navigation tabs
-│   │       │   ├── menu/         # Menu browsing feature
-│   │       │   └── profile/      # User profile feature
-│   │       └── widgets/          # Reusable UI components
-│   └── widgets/                  # Global reusable widgets
-└── utils/                        # Utility functions and helpers
+├── core/
+│   ├── api/                  # API manager & constants
+│   ├── di/                   # get_it registrations
+│   ├── errors/               # Failure abstractions
+│   └── resources/            # Colors, assets, styles
+├── data/
+│   ├── data_sources/remote/  # Remote data source impls
+│   ├── model/                # DTOs
+│   └── repositories/         # Repository implementations
+├── domain/
+│   ├── entities/
+│   ├── repositories/
+│   └── use_cases/
+├── presentation/
+│   ├── cubits/               # App-wide cubits (e.g., Cart)
+│   └── pages/main_home/
+│       ├── tabs/
+│       │   ├── home/
+│       │   ├── menu/
+│       │   ├── cart/
+│       │   ├── more/
+│       │   └── profile/
+│       └── widgets/          # Main home specific widgets
+├── utils/                    # Routing, helpers
+└── main.dart
 ```
 
-### Key Architectural Decisions
+Notes:
 
-- **Feature-based structure** for scalability
-- **Separation of concerns** with clear layer boundaries
-- **Reusable components** for consistent UI
-- **State management** isolated per feature
+- No global `presentation/widgets` directory (widgets are feature/local).
+- Both `ApiEndpoints` and `ApiConstants` define endpoints; consider consolidating to a single source.
 
 ## Tech Stack
 
@@ -94,17 +112,17 @@ lib/
 - **Flutter** `3.8.1` - Cross-platform mobile development
 - **Dart** `3.8.1` - Programming language
 
-### Core Dependencies
+### Core Dependencies (pubspec)
 
-- **cupertino_icons** `1.0.8` - iOS-style icons and design elements
-- **flutter_bloc** `9.1.1` - Reactive state management with BLoC pattern
-- **flutter_screenutil** `5.9.3` - Responsive UI design across different screen sizes
-- **dartz** `0.10.1` - Functional programming utilities (Either, Option types)
-- **dio** `5.9.0` - Powerful HTTP client for API requests and interceptors
-- **connectivity_plus** `6.1.4` - Network connectivity status monitoring
-- **flutter_svg** `2.2.0` - SVG vector graphics support
-- **get_it** `8.0.2` - Service locator for dependency injection
-- **flutter_native_splash** `2.4.1` - Native splash screen generation
+- **cupertino_icons** `^1.0.8`
+- **flutter_bloc** `^9.1.1`
+- **flutter_screenutil** `^5.9.3`
+- **dartz** `^0.10.1`
+- **dio** `^5.9.0` (basic GET usage; no interceptors configured yet)
+- **connectivity_plus** `^6.1.4` (single pre-fetch check only)
+- **flutter_svg** `^2.2.0`
+- **get_it** `^8.0.2`
+- **flutter_native_splash** `^2.4.1`
 
 ### Development Tools
 
@@ -145,7 +163,7 @@ Before running this project, ensure you have:
    flutter pub get
    ```
 
-3. **Generate splash screen** (if needed)
+3. **Generate splash screen** (if you change the config)
 
    ```bash
    flutter pub run flutter_native_splash:create
@@ -179,19 +197,20 @@ flutter build ios --release
 
 ### Development Setup
 
-No additional configuration files are required for basic functionality. The app uses:
+Current prototype uses:
 
-- **Mock data** for demonstration purposes
-- **Local state management** for user preferences
-- **Asset-based** icons and images
+- **Remote menu items** fetched from `https://fakerestaurantapi.runasp.net/api` (see `ApiConstants.baseUrl`).
+- **Mock profile data** (see `ProfileCubit`).
+- **In-memory state only** (cart, favorites, switches not persisted).
+- **Asset-based icons & custom fonts**.
 
 ### Environment Variables
 
-Currently, the app doesn't require external API keys or environment variables. A fake API is used and some data is mocked for demonstration purposes.
+Currently, the app does not require API keys. A public test API is queried for menu items; profile & some counts are mocked.
 
 ## Testing
 
-Run the test suite using:
+Run the (placeholder) test suite using:
 
 ```bash
 # Run all tests
@@ -204,34 +223,42 @@ flutter test --coverage
 flutter test test/widget_test.dart
 ```
 
-### Test Coverage
+### Test Coverage / Status
 
-- No tests were made
+- Only the default template `widget_test.dart` exists and is outdated (it tests a counter UI that is not part of the app). Replace with meaningful tests (menu fetch, filtering, cart operations) or delete until real tests are added.
 
 ## Known Issues / Limitations
 
 ### Current Limitations
 
-- **Mock Data**: Uses static data and a fake API integration
-- **Authentication**: No user authentication system implemented
-- **Offline Support**: Limited offline functionality
-- **Payment Integration**: No payment gateway integration
+- **State Persistence**: None (all volatile in-memory).
+- **Notifications**: Badge count mock only; no actual push/local notifications.
+- **Connectivity**: One-off check; no live subscription.
+- **Authentication**: Not implemented.
+- **Offline Support**: None / no caching.
+- **Payment / Checkout**: Not implemented.
+- **Testing**: Only placeholder default test present.
+- **License File**: Not yet added (remove or add MIT before claiming license).
+- **Duplicate Endpoint Definitions**: `ApiEndpoints` vs `ApiConstants` inconsistency.
+- **Stray Folder**: `cubit copy` directory should be removed.
 
-### Future Enhancements
+### Planned / Suggested Enhancements
 
-- Real-time order tracking
-- Push notifications
-- Social login integration
-- Multi-language support
-- Dark mode theme
+- Real-time order tracking.
+- Push / local notifications integration.
+- Persistence layer (Hive / SharedPreferences) for cart & favorites.
+- Authentication & user settings backend.
+- Endpoint consolidation & HTTP interceptors (logging, auth, retry).
+- Multi-language (intl) & dark mode support.
+- Replace mock profile with real API + editable form.
 
 ## Credits
 
 ### Design & Assets
 
-- **Custom Icons**: SVG icons designed for brand consistency
-- **Typography**: BERNIER and SpecialGothicCondensedOne fonts
-- **Color Scheme**: Texas restaurant brand colors
+- **Custom Icons**: SVG icons (asset-based)
+- **Typography**: BERNIER & SpecialGothicCondensedOne fonts
+- **Color Scheme**: Texas-themed palette (see `AppColors`)
 
 ### Dependencies
 
@@ -263,16 +290,18 @@ Special thanks to the Flutter community and package maintainers:
 
 ## Development Notes
 
-This project demonstrates:
+This prototype demonstrates:
 
-- **Clean Architecture** implementation in Flutter
-- **Professional UI/UX** design patterns
-- **Scalable code structure** for enterprise applications
-- **Modern Flutter development** practices and conventions
+- Layered (Clean Architecture-inspired) organization.
+- Feature-scoped state management via cubits.
+- Responsive layout setup.
+- Asset & font integration.
+
+It intentionally omits persistence, auth, full notification integration, and production-hardening concerns pending future iterations.
 
 **Developed by**: Mohammed Tohamy  
 **Repository**: [flutter_assignment_texas](https://github.com/mohammedtohamym/flutter_assignment_texas)
 
 ---
 
-_This README was created for a Flutter developer technical assessment to showcase professional documentation standards and attention to detail._
+_This README reflects the current prototype state for a Flutter developer technical assessment. Sections will be expanded as features are implemented._
