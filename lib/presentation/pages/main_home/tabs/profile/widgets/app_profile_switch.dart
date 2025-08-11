@@ -53,16 +53,21 @@ class AppProfileSwitch extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-          Text(mainText,
-            style: AppTextStyles.body
-              .copyWith(color: AppColors.body900, fontSize: 17)),
+                    Text(
+                      mainText,
+                      style: AppTextStyles.body.copyWith(
+                        color: AppColors.body900,
+                        fontSize: 17,
+                      ),
+                    ),
                     Text(
                       secondaryText,
                       softWrap: true,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-            style: AppTextStyles.bodyMuted
-              .copyWith(fontSize: fontSize ?? 15),
+                      style: AppTextStyles.bodyMuted.copyWith(
+                        fontSize: fontSize ?? 15,
+                      ),
                     ),
                   ],
                 ),

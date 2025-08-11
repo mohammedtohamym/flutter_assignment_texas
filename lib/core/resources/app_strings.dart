@@ -2,8 +2,8 @@ class AppStrings {
   // General
   static const String home = 'Home';
   static const String menu = 'Menu';
-    static const String profile = 'Profile';
-    static const String profileTitle = 'PROFILE';
+  static const String profile = 'Profile';
+  static const String profileTitle = 'PROFILE';
   static const String more = 'More';
   static const String loading = 'Loading...';
   static const String retry = 'Retry';
@@ -14,7 +14,7 @@ class AppStrings {
   // Home & More
   static const String homeScreenTitle = 'Home Screen';
   static const String moreScreenTitle = 'More Screen';
-    static const String cartScreenTitle = 'Cart Screen';
+  static const String cartScreenTitle = 'Cart Screen';
 
   // Menu
   static const String exploreMenu = 'EXPLORE MENU';

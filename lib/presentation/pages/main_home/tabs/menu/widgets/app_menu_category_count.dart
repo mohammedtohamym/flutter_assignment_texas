@@ -16,11 +16,13 @@ class AppMenuCategoryCount extends StatelessWidget {
       child: BlocBuilder<MenuCubit, MenuState>(
         builder: (context, state) {
           if (state.isLoading) {
-      return Row(
+            return Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-        Text(AppStrings.loading,
-          style: AppTextStyles.body.copyWith(fontSize: 24)),
+                Text(
+                  AppStrings.loading,
+                  style: AppTextStyles.body.copyWith(fontSize: 24),
+                ),
               ],
             );
           }
@@ -28,16 +30,20 @@ class AppMenuCategoryCount extends StatelessWidget {
           final categoryName = state.selectedCategoryName;
           final itemCount = state.selectedCategoryItemCount;
 
-      return Row(
+          return Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-        Text(categoryName,
-          style: AppTextStyles.body.copyWith(fontSize: 24)),
+              Text(
+                categoryName,
+                style: AppTextStyles.body.copyWith(fontSize: 24),
+              ),
               SizedBox(width: 4),
               Transform.translate(
                 offset: Offset(0, 2),
-        child: Text(AppStrings.itemsCount(itemCount),
-          style: AppTextStyles.bodyMuted),
+                child: Text(
+                  AppStrings.itemsCount(itemCount),
+                  style: AppTextStyles.bodyMuted,
+                ),
               ),
               if (state.favoriteItems.isNotEmpty) ...[
                 SizedBox(width: 16),
@@ -60,11 +66,13 @@ class AppMenuCategoryCount extends StatelessWidget {
                         size: 14,
                       ),
                       SizedBox(width: 4),
-                      Text('${state.favoriteItems.length}',
-                          style: AppTextStyles.bodyMutedSm.copyWith(
-                            color: AppColors.secondaryRed,
-                            fontWeight: FontWeight.bold,
-                          )),
+                      Text(
+                        '${state.favoriteItems.length}',
+                        style: AppTextStyles.bodyMutedSm.copyWith(
+                          color: AppColors.secondaryRed,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -75,8 +83,9 @@ class AppMenuCategoryCount extends StatelessWidget {
                   offset: Offset(0, 2),
                   child: Text(
                     AppStrings.searchQueryLabel(state.searchQuery),
-                    style: AppTextStyles.bodyMutedSm
-                        .copyWith(color: AppColors.secondaryRed),
+                    style: AppTextStyles.bodyMutedSm.copyWith(
+                      color: AppColors.secondaryRed,
+                    ),
                   ),
                 ),
               ],

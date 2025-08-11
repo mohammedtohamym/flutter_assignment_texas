@@ -63,16 +63,21 @@ class AppCartOverlay extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-              Text(AppStrings.viewCart,
-                style: AppTextStyles.body
-                  .copyWith(color: Colors.white),
-                textAlign: TextAlign.center),
+                            Text(
+                              AppStrings.viewCart,
+                              style: AppTextStyles.body.copyWith(
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                             Spacer(),
-                            Text('\$ ${totalValue.toStringAsFixed(0)}',
-                                style: AppTextStyles.body.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                )),
+                            Text(
+                              '\$ ${totalValue.toStringAsFixed(0)}',
+                              style: AppTextStyles.body.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             SizedBox(width: 8),
                           ],
                         ),

@@ -8,8 +8,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-    child: Text(AppStrings.homeScreenTitle,
-      style: AppTextStyles.body.copyWith(fontSize: 24)),
+      child: Text(
+        AppStrings.homeScreenTitle,
+        style: AppTextStyles.body.copyWith(fontSize: 24),
+      ),
     );
   }
 }

@@ -42,10 +42,10 @@ class MenuCubit extends Cubit<MenuState> {
     for (final item in items) {
       categories.add(_getCategoryFromItem(item));
     }
-  final categoryList = categories.toList()..sort();
+    final categoryList = categories.toList()..sort();
 
     // Add special categories at the beginning
-  categoryList.insert(0, AppStrings.all);
+    categoryList.insert(0, AppStrings.all);
 
     return categoryList;
   }
@@ -153,7 +153,7 @@ class MenuCubit extends Cubit<MenuState> {
     var filtered = items;
 
     // Apply category filter
-  if (category.isNotEmpty && category != AppStrings.all) {
+    if (category.isNotEmpty && category != AppStrings.all) {
       if (category == AppStrings.favorites) {
         // Filter to show only favorite items
         filtered = filtered
@@ -189,7 +189,7 @@ class MenuCubit extends Cubit<MenuState> {
     var filtered = items;
 
     // Apply category filter
-  if (category.isNotEmpty && category != AppStrings.all) {
+    if (category.isNotEmpty && category != AppStrings.all) {
       if (category == AppStrings.favorites) {
         // Filter to show only favorite items using the provided favorites set
         filtered = filtered

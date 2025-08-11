@@ -161,11 +161,11 @@ class AppMenuItemCard extends StatelessWidget {
                     ),
                   ],
                 ),
-        SizedBox(
+                SizedBox(
                   height: 50,
                   child: Text(
-          item.itemDescription ?? AppStrings.noDescription,
-          style: AppTextStyles.bodyMuted,
+                    item.itemDescription ?? AppStrings.noDescription,
+                    style: AppTextStyles.bodyMuted,
                     softWrap: true,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -214,10 +214,13 @@ class AppMenuItemCard extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                    Text('$cartQuantity',
-                      style: AppTextStyles.body
-                        .copyWith(fontSize: 20,
-                          color: Colors.black)),
+                                      Text(
+                                        '$cartQuantity',
+                                        style: AppTextStyles.body.copyWith(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -396,10 +399,14 @@ class AppMenuButton extends StatelessWidget {
           height: 16,
         );
       case MenuButtonType.remove:
-    return (isMoreThanOne ?? false)
-      ? Text('-',
-        style: AppTextStyles.body
-          .copyWith(fontSize: 24, color: AppColors.body900))
+        return (isMoreThanOne ?? false)
+            ? Text(
+                '-',
+                style: AppTextStyles.body.copyWith(
+                  fontSize: 24,
+                  color: AppColors.body900,
+                ),
+              )
             : SvgPicture.asset(
                 AppAssets.trashIcon,
                 colorFilter: ColorFilter.mode(

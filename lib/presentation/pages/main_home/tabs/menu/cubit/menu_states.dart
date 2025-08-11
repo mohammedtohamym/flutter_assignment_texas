@@ -49,7 +49,7 @@ class MenuState {
       selectedCategory.isEmpty ? AppStrings.allItems : selectedCategory;
 
   int get selectedCategoryItemCount {
-  if (selectedCategory.isEmpty || selectedCategory == AppStrings.all) {
+    if (selectedCategory.isEmpty || selectedCategory == AppStrings.all) {
       return filteredItems.length;
     } else if (selectedCategory == AppStrings.favorites) {
       return favoriteItems.length;

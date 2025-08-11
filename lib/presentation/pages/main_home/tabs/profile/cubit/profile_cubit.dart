@@ -17,9 +17,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     await Future.delayed(const Duration(milliseconds: 500));
 
     final profileData = ProfileData(
-  name: 'Ahmed Magdy',
+      name: 'Ahmed Magdy',
       phone: '012-000-00-663',
-  email: 'ahmed@paradigmegypt.com',
+      email: 'ahmed@paradigmegypt.com',
       countryIcon: AppAssets.egyptFlagIcon,
       notificationCount: 1,
     );
@@ -162,7 +162,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       await Future.delayed(const Duration(milliseconds: 500));
       print('User logged out successfully');
     } catch (e) {
-  emit(state.copyWith(error: AppStrings.failedToLogout));
+      emit(state.copyWith(error: AppStrings.failedToLogout));
     }
   }
 
@@ -195,7 +195,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     print('Marketing Communication changing to: $value');
 
     final updatedSwitchItems = state.switchItems.map((item) {
-  if (item.mainText == AppStrings.marketingCommunication) {
+      if (item.mainText == AppStrings.marketingCommunication) {
         return item.copyWith(isEnabled: value);
       }
       return item;
@@ -208,7 +208,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       print('Marketing Communication preference saved: $value');
     } catch (e) {
       final revertedSwitchItems = state.switchItems.map((item) {
-  if (item.mainText == AppStrings.marketingCommunication) {
+        if (item.mainText == AppStrings.marketingCommunication) {
           return item.copyWith(isEnabled: !value);
         }
         return item;
@@ -227,7 +227,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     print('App Communication changing to: $value');
 
     final updatedSwitchItems = state.switchItems.map((item) {
-  if (item.mainText == AppStrings.appCommunication) {
+      if (item.mainText == AppStrings.appCommunication) {
         return item.copyWith(isEnabled: value);
       }
       return item;
@@ -240,7 +240,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       print('App Communication preference saved: $value');
     } catch (e) {
       final revertedSwitchItems = state.switchItems.map((item) {
-  if (item.mainText == AppStrings.appCommunication) {
+        if (item.mainText == AppStrings.appCommunication) {
           return item.copyWith(isEnabled: !value);
         }
         return item;
@@ -278,7 +278,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   void _onDeleteAccountPressed() {
     print('Delete Account pressed');
-  emit(state.copyWith(error: AppStrings.deleteAccountWarning));
+    emit(state.copyWith(error: AppStrings.deleteAccountWarning));
   }
 
   void _onFavoritesPressed() {

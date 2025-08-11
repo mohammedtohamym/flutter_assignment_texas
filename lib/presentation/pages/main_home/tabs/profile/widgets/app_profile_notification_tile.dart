@@ -50,19 +50,24 @@ class AppProfileNotificationTile extends StatelessWidget {
                         child: CircleAvatar(
                           backgroundColor: AppColors.primaryOrange,
                           radius: 6,
-              child: Text('$count',
-                style: AppTextStyles.labelSm
-                  .copyWith(color: AppColors.white)),
+                          child: Text(
+                            '$count',
+                            style: AppTextStyles.labelSm.copyWith(
+                              color: AppColors.white,
+                            ),
+                          ),
                         ),
                       ),
                   ],
                 ),
                 SizedBox(width: 8),
-                Text(text,
-                    style: AppTextStyles.body.copyWith(
-                      color: textColor ?? AppColors.body900,
-                      fontSize: 17,
-                    )),
+                Text(
+                  text,
+                  style: AppTextStyles.body.copyWith(
+                    color: textColor ?? AppColors.body900,
+                    fontSize: 17,
+                  ),
+                ),
                 Spacer(),
                 hasSuffixIcon
                     ? Icon(

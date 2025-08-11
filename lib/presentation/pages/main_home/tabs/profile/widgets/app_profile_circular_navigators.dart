@@ -34,9 +34,13 @@ class AppProfileCircularNavigators extends StatelessWidget {
                 : Icon(Icons.favorite, color: AppColors.white, size: 16),
           ),
           SizedBox(height: 4),
-      Text(title,
-        style: AppTextStyles.body
-          .copyWith(color: AppColors.body900, fontSize: 18)),
+          Text(
+            title,
+            style: AppTextStyles.body.copyWith(
+              color: AppColors.body900,
+              fontSize: 18,
+            ),
+          ),
         ],
       ),
     );

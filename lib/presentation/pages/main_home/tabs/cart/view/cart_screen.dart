@@ -8,8 +8,10 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-    child: Text(AppStrings.cartScreenTitle,
-      style: AppTextStyles.body.copyWith(fontSize: 24)),
+      child: Text(
+        AppStrings.cartScreenTitle,
+        style: AppTextStyles.body.copyWith(fontSize: 24),
+      ),
     );
   }
 }

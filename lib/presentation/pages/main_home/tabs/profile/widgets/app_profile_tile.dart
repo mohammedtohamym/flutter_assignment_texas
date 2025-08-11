@@ -46,11 +46,13 @@ class AppProfileTile extends StatelessWidget {
                   height: iconHeight,
                 ),
                 SizedBox(width: 8),
-                Text(text,
-                    style: AppTextStyles.body.copyWith(
-                      color: textColor ?? AppColors.body900,
-                      fontSize: 17,
-                    )),
+                Text(
+                  text,
+                  style: AppTextStyles.body.copyWith(
+                    color: textColor ?? AppColors.body900,
+                    fontSize: 17,
+                  ),
+                ),
                 Spacer(),
                 hasSuffixIcon
                     ? Icon(

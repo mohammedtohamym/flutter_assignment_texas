@@ -89,11 +89,13 @@ class AppMenuCategoryBar extends StatelessWidget {
                                 right: 16,
                                 left: 8,
                               ),
-                              child: Text(category,
-                                  style: AppTextStyles.body.copyWith(
-                                    fontSize: 18,
-                                    color: AppColors.body900,
-                                  )),
+                              child: Text(
+                                category,
+                                style: AppTextStyles.body.copyWith(
+                                  fontSize: 18,
+                                  color: AppColors.body900,
+                                ),
+                              ),
                             ),
                           ],
                         ),

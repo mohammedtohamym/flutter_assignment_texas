@@ -9,8 +9,8 @@ class MoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-  AppStrings.moreScreenTitle,
-  style: AppTextStyles.body.copyWith(fontSize: 24),
+        AppStrings.moreScreenTitle,
+        style: AppTextStyles.body.copyWith(fontSize: 24),
       ),
     );
   }

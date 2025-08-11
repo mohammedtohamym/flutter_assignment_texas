@@ -61,8 +61,10 @@ class MenuScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(AppStrings.errorLoadingMenuItems,
-                          style: AppTextStyles.body),
+                      Text(
+                        AppStrings.errorLoadingMenuItems,
+                        style: AppTextStyles.body,
+                      ),
                       SizedBox(height: 16),
                       ElevatedButton(
                         onPressed: () {
@@ -100,8 +102,9 @@ class MenuScreen extends StatelessWidget {
                         SizedBox(height: 8),
                         Text(
                           AppStrings.tapHeartToFavorite,
-                          style: AppTextStyles.bodyMutedSm
-                              .copyWith(color: Colors.grey[500]),
+                          style: AppTextStyles.bodyMutedSm.copyWith(
+                            color: Colors.grey[500],
+                          ),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -193,10 +196,10 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
       builder: (context, state) {
         return AlertDialog(
           backgroundColor: AppColors.primaryOrange.withValues(alpha: .9),
-          title: Text(AppStrings.searchTheMenu,
-              style: AppTextStyles.bodySmall.copyWith(
-                color: AppColors.body900,
-              )),
+          title: Text(
+            AppStrings.searchTheMenu,
+            style: AppTextStyles.bodySmall.copyWith(color: AppColors.body900),
+          ),
           content: TextField(
             controller: _searchController,
             autofocus: true,
@@ -222,8 +225,9 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
                   color: AppColors.body900.withValues(alpha: .9),
                 ),
               ),
-              hintStyle: AppTextStyles.bodySmall
-                  .copyWith(color: AppColors.body900.withValues(alpha: .8)),
+              hintStyle: AppTextStyles.bodySmall.copyWith(
+                color: AppColors.body900.withValues(alpha: .8),
+              ),
             ),
             onChanged: (query) => context.read<MenuCubit>().searchItems(query),
           ),
@@ -234,19 +238,23 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
                 context.read<MenuCubit>().searchItems('');
                 Navigator.of(context).pop();
               },
-              child: Text(AppStrings.clear,
-                  style: AppTextStyles.body.copyWith(
-                    color: AppColors.body900.withValues(alpha: .8),
-                  )),
+              child: Text(
+                AppStrings.clear,
+                style: AppTextStyles.body.copyWith(
+                  color: AppColors.body900.withValues(alpha: .8),
+                ),
+              ),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(AppStrings.close,
-                  style: AppTextStyles.body.copyWith(
-                    color: AppColors.body900.withValues(alpha: .8),
-                  )),
+              child: Text(
+                AppStrings.close,
+                style: AppTextStyles.body.copyWith(
+                  color: AppColors.body900.withValues(alpha: .8),
+                ),
+              ),
             ),
           ],
         );
