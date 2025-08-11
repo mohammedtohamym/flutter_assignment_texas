@@ -219,9 +219,27 @@ class _SearchDialogContentState extends State<_SearchDialogContent> {
           content: TextField(
             controller: _searchController,
             autofocus: true,
+            style: TextStyle(
+              fontFamily: 'SpecialGothicCondensedOne',
+              fontSize: 16.r,
+              color: Colors.black,
+            ),
             decoration: InputDecoration(
               hintText: 'Search for items...',
               border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.r),
+                borderSide: BorderSide(
+                  color: AppColors.body900.withValues(alpha: .9),
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8.r),
+                borderSide: BorderSide(
+                  color: AppColors.body900.withValues(alpha: .9),
+                  width: 2.0,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.r),
                 borderSide: BorderSide(
                   color: AppColors.body900.withValues(alpha: .9),

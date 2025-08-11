@@ -34,3 +34,4 @@ class MyApp extends StatelessWidget {
 // todo : change all the strings to app strings
 // todo : add more and home page text
 // todo : use app assets
+// todo : organize code better (widgets)
