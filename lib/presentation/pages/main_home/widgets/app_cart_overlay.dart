@@ -17,7 +17,8 @@ class AppCartOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, cartState) {
-        if (!cartState.hasItems) {
+        // Only show when cart has items AND showOverlay is true
+        if (!cartState.hasItems || !cartState.showOverlay) {
           return const SizedBox.shrink();
         }
 

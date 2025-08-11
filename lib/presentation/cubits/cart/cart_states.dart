@@ -1,13 +1,23 @@
 class CartState {
   final Map<int, int> cartItems; // itemId -> quantity
   final bool isLoading;
+  final bool showOverlay; // Show overlay temporarily
 
-  CartState({this.cartItems = const {}, this.isLoading = false});
+  CartState({
+    this.cartItems = const {}, 
+    this.isLoading = false,
+    this.showOverlay = false,
+  });
 
-  CartState copyWith({Map<int, int>? cartItems, bool? isLoading}) {
+  CartState copyWith({
+    Map<int, int>? cartItems, 
+    bool? isLoading,
+    bool? showOverlay,
+  }) {
     return CartState(
       cartItems: cartItems ?? this.cartItems,
       isLoading: isLoading ?? this.isLoading,
+      showOverlay: showOverlay ?? this.showOverlay,
     );
   }
 
@@ -45,5 +55,8 @@ class CartLoadingState extends CartState {
 }
 
 class CartUpdatedState extends CartState {
-  CartUpdatedState({required super.cartItems}) : super(isLoading: false);
+  CartUpdatedState({
+    required super.cartItems,
+    super.showOverlay = false,
+  }) : super(isLoading: false);
 }
