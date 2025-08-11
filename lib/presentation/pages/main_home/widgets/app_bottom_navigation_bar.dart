@@ -76,42 +76,45 @@ class AppBottomNavigationBar extends StatelessWidget {
                     label: 'Menu',
                   ),
                   BottomNavigationBarItem(
-                    icon: Transform.translate(
-                      offset: Offset(0, 8),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: AppColors.primaryOrange,
-                            radius: 32,
-                          ),
-                          SvgPicture.asset(
-                            AppAssets.texasLogoIcon,
-                            width: 40,
-                            height: 40,
-                          ),
-                          // Cart badge
-                          if (cartState.hasItems)
-                            Positioned(
-                              top: -6,
-                              left: -6,
-                              child: Container(
-                                padding: EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  color: AppColors.white,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Text(
-                                  cartState.totalItems.toString(),
-                                  style: TextStyle(
-                                    color: AppColors.body900,
-                                    fontSize: 18,
-                                    fontFamily: 'SpecialGothicCondensedOne',
+                    icon: Transform.scale(
+                      scale: 1.6,
+                      child: Transform.translate(
+                        offset: Offset(0, 4),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: AppColors.primaryOrange,
+                              radius: 20,
+                            ),
+                            SvgPicture.asset(
+                              AppAssets.texasLogoIcon,
+                              width: 28,
+                              height: 28,
+                            ),
+                            // Cart badge
+                            if (cartState.hasItems)
+                              Positioned(
+                                top: -6,
+                                left: -6,
+                                child: Container(
+                                  // padding: EdgeInsets.all(6),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.white,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Text(
+                                    cartState.totalItems.toString(),
+                                    style: TextStyle(
+                                      color: AppColors.body900,
+                                      fontSize: 18,
+                                      fontFamily: 'SpecialGothicCondensedOne',
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     label: '', // Empty label - no text will show
