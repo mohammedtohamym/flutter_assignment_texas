@@ -89,7 +89,11 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   const Expanded(
-                    child: Center(child: CircularProgressIndicator()),
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.primaryOrange,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -154,7 +158,9 @@ class ProfileScreen extends StatelessWidget {
                                     alpha: 0.3,
                                   ),
                                   child: const Center(
-                                    child: CircularProgressIndicator(),
+                                    child: CircularProgressIndicator(
+                                      color: AppColors.primaryOrange,
+                                    ),
                                   ),
                                 ),
                               ),
