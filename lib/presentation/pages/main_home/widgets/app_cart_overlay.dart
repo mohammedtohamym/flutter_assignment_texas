@@ -115,12 +115,12 @@ class RoundedRectangleSnackBarPainter extends CustomPainter {
     // Create rounded rectangle for snackbar
     final rect = RRect.fromRectAndRadius(
       Rect.fromCenter(center: center, width: rectWidth, height: rectHeight),
-  Radius.circular(8), // Slightly rounded corners
+      Radius.circular(8), // Slightly rounded corners
     );
 
     // Create small triangle pointing down
     final trianglePath = Path();
-  final triangleSize = 8.0;
+    final triangleSize = 8.0;
     final triangleTop = center.dy + (rectHeight / 2);
 
     trianglePath.moveTo(center.dx - triangleSize, triangleTop); // Left point

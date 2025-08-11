@@ -61,31 +61,31 @@ class ProfileScreen extends StatelessWidget {
               color: AppColors.body25,
               child: Column(
                 children: [
-                      SizedBox(height: 16),
+                  SizedBox(height: 16),
                   SafeArea(
                     child: Row(
                       children: [
-                            SizedBox(width: 16),
+                        SizedBox(width: 16),
                         CircleAvatar(
-                              radius: 20,
+                          radius: 20,
                           backgroundColor: AppColors.body100,
                           child: IconButton(
                             icon: Icon(
                               Icons.arrow_back_ios_new_rounded,
                               color: AppColors.body900,
-                                  size: 24,
+                              size: 24,
                             ),
                             onPressed: () {
                               mainHomeCubit.navigateBack();
                             },
                           ),
                         ),
-                            SizedBox(width: 16),
+                        SizedBox(width: 16),
                         Text(
                           'PROFILE',
                           style: TextStyle(
                             color: AppColors.body900,
-                                fontSize: 22,
+                            fontSize: 22,
                             fontFamily: 'BERNIER',
                           ),
                         ),
@@ -111,43 +111,43 @@ class ProfileScreen extends StatelessWidget {
             color: AppColors.body25,
             child: Column(
               children: [
-                    SizedBox(height: 16),
+                SizedBox(height: 16),
                 SafeArea(
                   child: Row(
                     children: [
-                          SizedBox(width: 16),
+                      SizedBox(width: 16),
                       CircleAvatar(
-                            radius: 20,
+                        radius: 20,
                         backgroundColor: AppColors.body100,
                         child: IconButton(
                           icon: Icon(
                             Icons.arrow_back_ios_new_rounded,
                             color: AppColors.body900,
-                                size: 24,
+                            size: 24,
                           ),
                           onPressed: () {
                             mainHomeCubit.navigateBack();
                           },
                         ),
                       ),
-                          SizedBox(width: 16),
+                      SizedBox(width: 16),
                       Text(
                         'PROFILE',
                         style: TextStyle(
                           color: AppColors.body900,
-                              fontSize: 22,
+                          fontSize: 22,
                           fontFamily: 'BERNIER',
                         ),
                       ),
                     ],
                   ),
                 ),
-                    SizedBox(height: 16),
+                SizedBox(height: 16),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                            Container(height: 6, color: AppColors.body100),
+                        Container(height: 6, color: AppColors.body100),
                         Stack(
                           children: [
                             AppProfileInfoCard(
@@ -157,20 +157,15 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             if (state.isUpdatingProfile)
                               Positioned.fill(
-                                child: Container(
-                                  color: AppColors.body900.withValues(
-                                    alpha: 0.3,
-                                  ),
-                                  child: const Center(
-                                    child: CircularProgressIndicator(
-                                      color: AppColors.primaryOrange,
-                                    ),
+                                child: const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColors.primaryOrange,
                                   ),
                                 ),
                               ),
                           ],
                         ),
-                            SizedBox(height: 16),
+                        SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: circularNavigators
@@ -183,9 +178,9 @@ class ProfileScreen extends StatelessWidget {
                               )
                               .toList(),
                         ),
-                            SizedBox(height: 16),
-                            Container(height: 12, color: AppColors.body200),
-                            SizedBox(height: 16),
+                        SizedBox(height: 16),
+                        Container(height: 12, color: AppColors.body200),
+                        SizedBox(height: 16),
                         ...state.menuItems.map((item) {
                           if (item.text == 'Notifications' &&
                               item.count != null) {
@@ -208,8 +203,8 @@ class ProfileScreen extends StatelessWidget {
                             onTap: item.onTap,
                           );
                         }).toList(),
-                            Container(height: 12, color: AppColors.body100),
-                            SizedBox(height: 16),
+                        Container(height: 12, color: AppColors.body100),
+                        SizedBox(height: 16),
                         ...state.switchItems
                             .map(
                               (item) => AppProfileSwitch(

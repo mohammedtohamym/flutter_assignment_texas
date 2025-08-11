@@ -95,11 +95,7 @@ class AppProfileSwitch extends StatelessWidget {
                     );
                   }
 
-                  return Icon(
-                    Icons.check,
-                    color: AppColors.body900,
-                    size: 12,
-                  );
+                  return Icon(Icons.check, color: AppColors.body900, size: 12);
                 }),
               ),
               SizedBox(width: 24),

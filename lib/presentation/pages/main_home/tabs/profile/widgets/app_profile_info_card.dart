@@ -20,18 +20,13 @@ class AppProfileInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-  height: 190,
+      height: 190,
       width: double.infinity,
-  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
-      padding: EdgeInsets.only(
-  left: 16,
-  right: 10,
-  top: 16,
-  bottom: 16,
-      ),
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 18),
+      padding: EdgeInsets.only(left: 16, right: 10, top: 16, bottom: 16),
       decoration: BoxDecoration(
         color: AppColors.body25,
-  borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(4),
         boxShadow: [
           BoxShadow(
             color: AppColors.body900.withValues(alpha: 0.16),
@@ -53,7 +48,7 @@ class AppProfileInfoCard extends StatelessWidget {
                     child: profileData.imagePath != null
                         ? Image.network(profileData.imagePath!)
                         : Text(
-                             profileData.name[0],
+                            profileData.name[0],
                             style: TextStyle(
                               color: AppColors.body900,
                               fontFamily:
@@ -67,7 +62,7 @@ class AppProfileInfoCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        profileData.name ,
+                        profileData.name,
                         style: TextStyle(
                           color: AppColors.body900,
                           fontFamily: AppFonts.getSpecialGothicCondensedOne(),
@@ -77,10 +72,7 @@ class AppProfileInfoCard extends StatelessWidget {
                       SizedBox(height: 4),
                       Row(
                         children: [
-                          SvgPicture.asset(
-                            profileData.countryIcon,
-                            height: 33,
-                          ),
+                          SvgPicture.asset(profileData.countryIcon, height: 33),
                           SizedBox(width: 4),
                           Text(
                             profileData.phone,

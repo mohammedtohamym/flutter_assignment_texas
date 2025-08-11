@@ -31,7 +31,7 @@ class AppMenuItemCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-  borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
             color: isFavorite
@@ -42,9 +42,9 @@ class AppMenuItemCard extends StatelessWidget {
           ),
         ],
       ),
-  height: 190,
-  width: 428,
-  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      height: 190,
+      width: 428,
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         children: [
           GestureDetector(

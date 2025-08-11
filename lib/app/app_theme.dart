@@ -6,8 +6,8 @@ ThemeData getAppTheme(BuildContext context) {
   return ThemeData(
     primaryColor: AppColors.primaryOrange,
     scaffoldBackgroundColor: Colors.white,
-  splashColor: AppColors.primaryOrange.withValues(alpha: 0.1),
-  highlightColor: AppColors.primaryOrange.withValues(alpha: 0.1),
+    splashColor: AppColors.primaryOrange.withValues(alpha: 0.1),
+    highlightColor: AppColors.primaryOrange.withValues(alpha: 0.1),
     // app bar
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,

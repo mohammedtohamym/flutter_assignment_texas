@@ -10,7 +10,7 @@ class AppMenuCategoryBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-  height: 40,
+      height: 40,
       child: Row(
         children: [
           SizedBox(width: 16),
@@ -32,11 +32,7 @@ class AppMenuCategoryBar extends StatelessWidget {
                         context.read<MenuCubit>().selectCategory(category);
                       },
                       child: Container(
-                        margin: EdgeInsets.only(
-                          top: 4,
-                          bottom: 4,
-                          right: 16,
-                        ),
+                        margin: EdgeInsets.only(top: 4, bottom: 4, right: 16),
                         decoration: BoxDecoration(
                           color: isSelected
                               ? AppColors.primaryOrange
@@ -62,12 +58,10 @@ class AppMenuCategoryBar extends StatelessWidget {
                                     right: 0,
                                     top: 0,
                                     child: Container(
-                                        padding: EdgeInsets.all(2),
+                                      padding: EdgeInsets.all(2),
                                       decoration: BoxDecoration(
                                         color: AppColors.secondaryRed,
-                                        borderRadius: BorderRadius.circular(
-                                          8,
-                                        ),
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                       constraints: BoxConstraints(
                                         minWidth: 16,
@@ -147,6 +141,6 @@ class AppMenuCategoryBar extends StatelessWidget {
         iconData = Icons.restaurant;
     }
 
-  return Icon(iconData, size: 16, color: iconColor);
+    return Icon(iconData, size: 16, color: iconColor);
   }
 }

@@ -9,7 +9,7 @@ class AppProfileTile extends StatelessWidget {
   final bool hasSuffixIcon;
   final bool hasDivider;
   final VoidCallback? onTap;
-  
+
   const AppProfileTile({
     super.key,
     required this.text,
@@ -61,12 +61,12 @@ class AppProfileTile extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Divider(
-        color: hasDivider
-          ? AppColors.body900.withValues(alpha: 0.05)
-          : Colors.transparent,
-        thickness: 1,
-        indent: 24,
-        endIndent: 24,
+              color: hasDivider
+                  ? AppColors.body900.withValues(alpha: 0.05)
+                  : Colors.transparent,
+              thickness: 1,
+              indent: 24,
+              endIndent: 24,
             ),
             SizedBox(height: hasDivider ? 8 : 0),
           ],

@@ -10,7 +10,7 @@ class AppProfileNotificationTile extends StatelessWidget {
   final bool hasDivider;
   final int count;
   final VoidCallback? onTap;
-  
+
   const AppProfileNotificationTile({
     super.key,
     required this.text,
